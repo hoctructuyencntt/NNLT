@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html>
+<title>Bài 2 </title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="w3.css">
+<link rel="stylesheet" href="font.css">
+<link rel="stylesheet" href="font-awesome.min.css">
+<style>
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Raleway", sans-serif
+  }
+
+  table,
+  td,
+  th {
+    border: 1px solid black;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .video-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  .video-container::after {
+    padding-top: 56.25%;
+    display: block;
+    content: '';
+  }
+
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+a {color:blue;}
+</style>
+
+<body class="w3-light-grey w3-content" style="max-width:1600px">
+
+  <!-- Sidebar/menu -->
+  <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+    <div class="w3-container">
+      <a href="#" style="text-decoration: none;" onclick="w3_close()"
+        class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="Đóng"> X </a>
+      <!--<h4><b>Giáo trình</b></h4>-->
+    </div>
+    <div class="w3-bar-block">
+      <a href="Bai01.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding ">Bài 1</a>
+      <a href="Bai02.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal">Bài 2</a>
+      <a href="Bai03.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 3</a>
+      <a href="Bai04.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 4</a>
+      <a href="Bai05.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 5</a>
+      <a href="Bai06.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 6</a>
+      <a href="Bai07.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 7</a>
+    </div>
+  </nav>
+
+  <!-- Overlay effect when opening sidebar on small screens -->
+  <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"
+    title="close side menu" id="myOverlay">=</div>
+
+  <!-- !PAGE CONTENT! -->
+  <div class="w3-main" style="margin-left:300px">
+
+    <!-- Header -->
+    <header id="portfolio">
+      <!--<a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;"
+          class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>-->
+      <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()">=</span>
+      <div class="w3-container">
+        <h1><b>Bài 2: CÁC THÀNH PHẦN CƠ BẢN</b></h1>
+        <div class="w3-section w3-bottombar"></div>
+      </div>
+    </header>
+    <div class="video-container">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/HLVUc6pZF28" title="YouTube video player"
+        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+    <div class="w3-container w3-padding-large" style="margin-bottom:32px">
+      <h4><b>I. Hệ thống ký hiệu và từ khóa</b></h4>
+      <p><b>Hệ thống ký hiệu</b></p>
+      <p>Mọi ngôn ngữ lập trình đều được xây dựng từ một bộ ký tự nào đó. Các ký tự được nhóm lại theo nhiều cách khác
+        nhau để tạo nên các từ. Các từ lại được liên kết với nhau theo một qui tắc nào đó để tạo nên các câu lệnh. Một
+        chương trình bao gồm nhiều câu lệnh và thể hiện một thuật toán để giải một bài toán nào đó. Ngôn ngữ C được xây
+        dựng trên bộ ký tự sau :</p>
+      <ul>
+        <li> 26 chữ cái hoa : A B C .. Z</li>
+        <li> 26 chữ cái thường : a b c .. z</li>
+        <li> 10 chữ số : 0 1 2 .. 9</li>
+        <li>Các ký hiệu toán học : + - * / = ( )</li>
+        <li> Ký tự gạch nối : _</li>
+        <li>Các ký tự khác : . , : ; [ ] {} ! \ & % # $ ...</li>
+        <li>Dấu cách (space) dùng để tách các từ. Ví dụ chữ VIET NAM có 8 ký tự, còn VIETNAM chỉ có 7 ký tự.</li>
+      </ul>
+      <p>Chú ý :</p>
+      <p>Khi viết chương trình, ta không được sử dụng bất kỳ ký tự nào khác ngoài các ký tự trên.</p>
+      <p>Ví dụ như khi lập chương trình giải phương trình bậc hai ax<sup>2</sup> +bx+c=0 , ta cần tính biệt thức Delta
+        Δ= b<sup>2</sup> - 4ac, trong ngôn ngữ C không cho phép dùng ký tự Δ, vì vậy ta phải dùng ký hiệu khác để thay
+        thế.</p>
+      <p><b>Từ khóa</b></p>
+      <p>Từ khoá là những từ được sử dụng để khai báo các kiểu dữ liệu, để viết các toán tử và các câu lệnh. Bảng dưới
+        đây
+        liệt kê các từ khoá của TURBO C :</p>
+      <p style="background-color: aquamarine;">
+        asm break case cdecl char const continue default do double else enum extern far float for goto huge if int
+        interrupt long near pascal register return short signed sizeof static struct switch tipedef union unsigned void
+        volatile while</p>
+      <p>Ý nghĩa và cách sử dụng của mỗi từ khoá sẽ được đề cập sau này, ở đây ta cần chú ý:</p>
+      <ul>
+        <li>Không được dùng các từ khoá để đặt tên cho các hằng, biến, mảng, hàm ...</li>
+        <li>Từ khoá phải được viết bằng chữ thường, ví dụ : viết từ khoá khai báo kiểu nguyên là int chứ không phải là
+          INT.</li>
+      </ul>
+      <p><b>Tên</b></p>
+      <p>Tên là một khái niệm rất quan trọng, nó dùng để xác định các đại lượng khác nhau trong một chương trình. Chúng
+        ta
+        có tên hằng, tên biến, tên mảng, tên hàm, tên con trỏ, tên tệp, tên cấu trúc, tên nhãn,...</p>
+      <p>Tên được đặt theo qui tắc sau :</p>
+      <ul>
+        <li>Tên là một dãy các ký tự bao gồm chữ cái, số và gạch nối.</li>
+        <li>Ký tự đầu tiên của tên phải là chữ hoặc gạch nối.</li>
+        <li>Tên không được trùng với khoá.</li>
+        <li>Độ dài cực đại của tên theo mặc định là 32 và có thể được đặt lại là một trong các giá trị từ 1 tới 32 nhờ
+          chức
+          năng : Option-Compiler-Source- Identifier length khi dùng TURBO C.</li>
+      </ul>
+      <p>Ví dụ :</p>
+      <ul>
+        <li>Các tên đúng : a_1 delta x1 _step GAMA</li>
+        <li> Các tên sai : 3MN Ký tự đầu tiên là số</li>
+        <li>m#2 : Sử dụng ký tự # </li>
+        <li>f(x) : Sử dụng các dấu () do Trùng với từ khoá </li>
+        <li>te ta : Sử dụng dấu trắng </li>
+        <li>Y-3 : Sử dụng dấu -</li>
+      </ul>
+      <p><b>Chú ý :</b></p>
+      <p>Trong TURBO C, tên bằng chữ thường và chữ hoa là khác nhau ví dụ tên AB khác với ab. Trong C, ta thường dùng
+        chữ hoa để đặt tên cho các hằng và dùng chữ thường để đặt tên cho hầu hết cho các đại lượng khác như biến, biến
+        mảng, hàm, cấu trúc. Tuy nhiên đây không phải là điều bắt buộc.</p>
+      <h4><b>II. Các kiểu dữ liệu</b></h4>
+      <p>Trong C sử dụng các các kiểu dữ liệu sau :</p>
+      <p><b> 1. Kiểu ký tự (char)</b></p>
+      <p> Một giá trị kiểu char chiếm 1 byte ( 8 bit ) và biểu diễn được một ký tự thông qua bảng mã ASCII.</p>
+      <p> Ví dụ :</p>
+      <table>
+        <tr>
+          <th>Ký tự</th>
+          <th>Mã ASCII</th>
+        </tr>
+        <tr>
+          <td>0</td>
+          <td>048</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>049</td>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>065</td>
+        </tr>
+        <tr>
+          <td>B</td>
+          <td>066</td>
+        </tr>
+        <tr>
+          <td>a</td>
+          <td>097</td>
+        </tr>
+        <tr>
+          <td>b</td>
+          <td>098</td>
+        </tr>
+      </table>
+
+      <p> Có hai kiểu dữ liệu char : kiểu signed char và unsigned char.</p>
+      <table>
+        <tr>
+          <th>Kiểu</th>
+          <th>Phạm vi biểu diễn</th>
+          <th>Số ký tự</th>
+          <th>Kích thước</th>
+        </tr>
+        <tr>
+          <td>char (signed char )</td>
+          <td>-128 đến 127</td>
+          <td>256</td>
+          <td>1 byte</td>
+        </tr>
+        <tr>
+          <td>unsigned char</td>
+          <td>0 đến 255</td>
+          <td>256</td>
+          <td>1 byte</td>
+        </tr>
+      </table>
+      <p> Ví dụ sau minh hoạ sự khác nhau giữa hai kiểu dữ liệu trên. Xét đoạn chương trình sau :</p>
+      <p>char ch1;<br>
+        unsigned char ch2;<br>
+        ......<br>
+        ch1=200; ch2=200;
+        Khi đó thực chất :
+        ch1=-56; ch2=200;<br>
+        Nhưng cả ch1 và ch2 đều biểu diễn cùng một ký tự có mã 200.</p>
+      <p><b>Phân loại ký tự :</b></p>
+      <p>Có thể chia 256 ký tự làm ba nhóm :</p>
+      <ul>
+        <li>Nhóm 1: Nhóm các ký tự điều khiển có mã từ 0 đến 31. Chẳng hạn ký tự mã 13 dùng để chuyển con trỏ về đầu
+          dòng, ký tự 10 chuyển con trỏ xuống dòng dưới (trên cùng một cột). Các ký tự nhóm này nói chung không hiển thị
+          ra màn hình.</li>
+        <li>Nhóm 2 : Nhóm các ký tự văn bản có mã từ 32 đến 126. Các ký tự này có thể được đưa ra màn hình hoặc máy in.
+        </li>
+        <li>Nhóm 3 : Nhóm các ký tự đồ hoạ có mã số từ 127 đến 255. Các ký tự này có thể đưa ra màn hình nhưng không in
+          ra được (bằng các lệnh DOS).</li>
+      </ul>
+      <p><b>2. Kiểu nguyên</b></p>
+      <p>Trong C cho phép sử dụng số nguyên kiểu int, số nguyên dài kiểu long và số nguyên không dấu kiểu unsigned. Kích
+        cỡ và phạm vi biểu diễn của chúng được chỉ ra trong bảng dưới đây :</p>
+      <table>
+        <tr>
+          <th>Kiểu</th>
+          <th>Phạm vi biểu diễn</th>
+          <th>Kích thước</th>
+        </tr>
+        <tr>
+          <td>int</td>
+          <td>-32.768 đến 32.767</td>
+          <td>2 byte</td>
+        </tr>
+        <tr>
+          <td>unsigned int</td>
+          <td>0 đến 65.535</td>
+          <td>2 byte</td>
+        </tr>
+        <tr>
+          <td>long</td>
+          <td>-2.147.483.648 đến 2.147.483.647</td>
+          <td>4 byte</td>
+        </tr>
+        <tr>
+          <td>unsigned long</td>
+          <td>0 đến 4.294.967.295</td>
+          <td>4 byte</td>
+        </tr>
+      </table>
+      <p>Chú ý :
+        Kiểu ký tự cũng có thể xem là một dạng của kiểu nguyên.</p>
+      <p><b>3. Kiểu dấu phẩy động</b></p>
+      <p>Trong C cho phép sử dụng ba loại dữ liệu dấu phảy động, đó là float, double và long double. Kích cỡ và phạm vi
+        biểu diễn của chúng được chỉ ra trong bảng dưới đây :</p>
+      <table>
+        <tr>
+          <th>Kiểu</th>
+          <th>Phạm vi biểu diễn</th>
+          <th>Số chữ số có nghĩa</th>
+          <th>Kích thước</th>
+        </tr>
+        <tr>
+          <td>float</td>
+          <td>-3.4E-38 đến 3.4E+38</td>
+          <td>7 đến 8</td>
+          <td>4 byte</td>
+        </tr>
+        <tr>
+          <td>double</td>
+          <td>1.7E-308 đến 1.7E+308</td>
+          <td>15 đến 16</td>
+          <td>8 byte</td>
+        </tr>
+        <tr>
+          <td>long double</td>
+          <td>3.4E-4932 đến 1.1E4932</td>
+          <td>17 đến 18</td>
+          <td>10 byte</td>
+        </tr>
+      </table>
+
+      <p>Giải thích :Máy tính có thể lưu trữ được các số kiểu float có giá trị tuyệt đối từ 3.4E- 38 đến 3.4E+38. Các số
+        có giá trị tuyệt đối nhỏ hơn 3.4E-38 được xem bằng
+        0. Phạm vi biểu diễn của số double được hiểu theo nghĩa tương tự.</p>
+
+      <h4><b>III. Biến, Hằng,biểu thức</b></h4>
+      <p><b>1. Biến</b></p>
+      <p>Mỗi biến cần phải được khai báo trước khi đưa vào sử dụng. Việc khai báo biến được thực hiện theo cú pháp sau :
+      </p>
+      <p><b>Kiểu dữ liệu của biến</b> <i>tên biến</i> ; </p>
+      <p>Ví dụ :</p>
+      <ul>
+        <li>int a, b, c; // Khai báo ba biến int là a,b,c </li>
+        <li>long dai, n; // Khai báo hai biến long là dai và n </li>
+        <li>char kt1, kt2; // Khai báo hai biến ký tự là kt1 và kt2 </li>
+        <li>float x, y; // Khai báo hai biến float là x và y </li>
+        <li>double canh1, canh2; // Khai báo hai biến double là canh1 và canh2</li>
+      </ul>
+      <p>Biến kiểu int chỉ nhận được các giá trị kiểu int. Các biến khác cũng có ý nghĩa tương tự. Các biến kiểu char
+        chỉ chứa được một ký tự. Để lưu trữ được một xâu ký tự cần sử dụng một mảng kiểu char.</p>
+      <p>Vị trí của khai báo biến :</p>
+      <p>Các khai báo cần phải được đặt ngay sau dấu { đầu tiên của thân hàm và cần đứng trước mọi câu lệnh khác. Sau
+        đây
+        là một ví dụ về khai báo biến d ở vị trí không phù hợp :</p>
+      <div class="w3-code notranslate htmlHigh">
+        main()<br>
+        {<br>
+        &nbsp;int a,b,c;<br>
+        &nbsp;a=2;<br>
+        &nbsp;int d; /* Vị trí của khai báo không phù hợp */<br>
+        &nbsp;.....<br>
+        }<br>
+      </div>
+      <p> <b>Khởi tạo cho biến :</b></p>
+      <p>Nếu trong khai báo ngay sau tên biến ta đặt dấu = và một giá trị nào đó thì đây chính là cách vừa khai báo vừa
+        khởi tạo cho biến. Ví dụ :</p>
+      <div class="w3-code notranslate htmlHigh">
+        int a,b=20,c,d=40;<br>
+        float e=-55.2, x=27.23, y, z, t=18.98;
+      </div>
+      <p>Việc khởi đầu và việc khai báo biến rồi gán giá trị cho nó sau này là hoàn toàn tương đương.</p>
+      <p><b>Lấy địa chỉ của biến :</b></p>
+      <p>Mỗi biến được cấp phát một vùng nhớ gồm một số byte liên tiếp. Số hiệu của byte đầu chính là địa chỉ của biến.
+        Địa
+        chỉ của biến sẽ được sử dụng trong một số hàm ta sẽ nghiên cứu sau này(ví dụ như hàm scanf ).</p>
+      <p>Để lấy địa chỉ của một biến ta sử dụng phép toán : <b>& tên biến</b></p>
+      <p><b>2. Hằng</b></p>
+      <p>Hằng là các đại lượng mà giá trị của nó không thay đổi trong quá trình tính toán.</p>
+      <p><b>2.1. Tên hằng</b></p>
+      <p>Để đặt tên một hằng, ta dùng dòng lệnh sau :</p>
+      <p><b>#define</b> <i>tên hằng</i> giá trị</p>
+      <p>Ví dụ :</p>
+      <div class="w3-code notranslate htmlHigh">
+        #define MAX 1000
+      </div>
+      <p>Lúc này, tất cả các tên MAX trong chương trình xuất hiện sau này đều được thay bằng 1000. Vì vậy, ta thường gọi
+        MAX là tên hằng, nó biểu diễn số 1000.</p>
+      <p>Một ví dụ khác :</p>
+      <div class="w3-code notranslate htmlHigh">
+        #define pi 3.141593
+      </div>
+      <p>Đặt tên cho một hằng float là pi có giá trị là 3.141593.</p>
+      <p><b>2.2. Các loại hằng</b></p>
+      <p><b>2.2.1 Hằng int</b></p>
+      <p>Hằng int là số nguyên có giá trị trong khoảng từ -32.768 đến 32.767. Ví dụ :</p>
+      <div class="w3-code notranslate htmlHigh">
+        #define number1 -50 // Định nghiã hằng int number1 có giá trị là -50 <br>
+        #define sodem 2732 // Định nghiã hằng int sodem có giá trị là 2732
+      </div>
+      <p>Chú ý :</p>
+      <p>Cần phân biệt hai hằng 5056 và 5056.0 : ở đây 5056 là số nguyên còn 5056.0 là hằng thực.</p>
+      <p><b>2.2.2 Hằng long</b></p>
+      <p>Hằng long là số nguyên có giá trị trong khoảng từ -2.147.483.648 đến 2.147.483.647.
+        Hằng long được viết theo cách : 1234L hoặc 1234l(thêm L hoặc l vào đuôi ).
+        Một số nguyên vượt ra ngoài miền xác định của int cũng được xem là long.</p>
+      <p>Ví dụ :</p>
+      <div class="w3-code notranslate htmlHigh">
+        #define sl 8865056L // Định nghiã hằng long sl có giá trị là 8865056 <br>
+        #define sl 8865056 // Định nghiã hằng long sl có giá trị là 8865056
+      </div>
+      <p><b>2.2.3 Hằng int hệ 8</b></p>
+      <p>Hằng int hệ 8 được viết theo cách 0c1c2c3. Ở đây ci là một số nguyên dương trong
+        khoảng từ 1 đến 7. Hằng int hệ 8 luôn luôn nhận giá trị dương. Ví dụ :</p>
+      <div class="w3-code notranslate htmlHigh">
+        #define h8 0345 // Định nghiã hằng int hệ 8 có giá trị là 3*8*8+4*8+5=229
+      </div>
+      <p><b>2.2.4 Hằng int hệ 16</b></p>
+      <p>Trong hệ này ta sử dụng 16 ký tự : 0,1..,9,A,B,C,D,E,F.</p>
+      <p>
+      <pre>
+Cách viết   Giá trị
+a hoặc A      10	
+b hoặc B      11	
+c hoặc C      12	
+d hoặc D      13	
+e hoặc E      14	
+f hoặc F      15	
+      </pre>
+      </p>
+
+      <p>Hằng số hệ 16 có dạng 0xc1c2c3... hặc 0Xc1c2c3. Ở đây ci là một số trong hệ 16. Ví dụ :</p>
+      <div class="w3-code notranslate htmlHigh">
+        #define h16 0xa5<br>
+        #define h16 0xA5<br>
+        #define h16 0Xa5<br>
+        #define h16 0XA5<br>
+      </div>
+      <p> Cho ta các hằng số h16 trong hệ 16 có giá trị như nhau. Giá trị của chúng trong hệ 10 là : 10*16+5=165.</p>
+      <p><b> 2.2.5 Hằng ký tự</b></p>
+      <p>Hằng ký tự là một ký tự riêng biệt được viết trong hai dấu nháy đơn, ví dụ 'a'. Giá trị của 'a' chính là mã
+        ASCII
+        của chữ a. Như vậy giá trị của 'a' là 97.
+        Hằng ký tự có thể tham gia vào các phép toán như mọi số nguyên khác. Ví
+        dụ : '9'-'0'=57- 48=9 </p>
+      <p>Ví dụ :</p>
+      <div class="w3-code notranslate htmlHigh">
+        #define kt 'a' // Định nghiã hằng ký tự kt có giá trị là 97
+      </div>
+      <p> Hằng ký tự còn có thể được viết theo cách sau :
+        ' \c1c2c3'  trong đó c1c2c3 là một số hệ 8 mà giá trị của nó bằng mã ASCII của ký tự cần biểu diễn.</p>
+      <p> Ví dụ : chữ a có mã hệ 10 là 97, đổi ra hệ 8 là 0141. Vậy hằng ký tự 'a' có thể viết dưới dạng '\141'.
+        Đối với một vài hằng ký tự đặc biệt ta cần sử dụng cách viết sau (thêm dấu \ )</p>
+      <p> Chú ý :</p>
+      <table>
+        <tr>
+          <th>Cách viết</th>
+          <th> Ký tự</th>
+
+        </tr>
+        <tr>
+          <td>'\'' </td>
+          <td> '</td>
+
+        </tr>
+        <tr>
+          <td>'\"'</td>
+          <td>"</td>
+
+        </tr>
+        <tr>
+          <td>'\\'</td>
+          <td>\</td>
+
+        </tr>
+        <tr>
+          <td>'\n' </td>
+          <td>\n (chuyển dòng)</td>
+
+        </tr>
+        <tr>
+          <td>'\0'</td>
+          <td>\0 ( null )</td>
+        </tr>
+        <tr>
+          <td>'\t'</td>
+          <td>Tab</td>
+        </tr>
+        <tr>
+          <td>'\b'</td>
+          <td>Backspace</td>
+        </tr>
+        <tr>
+          <td>'\r'</td>
+          <td>CR ( về đầu dòng )</td>
+        </tr>
+        <tr>
+          <td>'\f'</td>
+          <td>LF ( sang trang )
+          </td>
+        </tr>
+      </table>
+
+
+      <p>Cần phân biệt hằng ký tự '0' và '\0'. Hằng '0' ứng với chữ số 0 có mã ASCII là 48, còn hằng '\0' ứng với ký tự
+        \0
+        ( thường gọi là ký tự null ) có mã ASCII là 0. Hằng
+
+        ký tự thực sự là một số nguyên, vì vậy có thể dùng các số nguyên hệ 10 để biểu diễn các ký tự, ví dụ lệnh
+        printf("%c%c",65,66) sẽ in ra AB.</p>
+      <p><b> 2.2.6. Hằng xâu ký tự</b></p>
+      <p>Hằng xâu ký tự là một dãy ký tự bất kỳ đặt trong hai dấu nháy kép. Ví dụ :</p>
+      <div class="w3-code notranslate htmlHigh">
+        #define xau1 "Ha noi"<br>
+        #define xau2 "My name is Giang"
+      </div>
+      <p>
+        Xâu ký tự được lưu trữ trong máy dưới dạng một bảng có các phần tử là các ký tự riêng biệt. Trình biên dịch tự
+        động thêm ký tự null \0 vào cuối mỗi xâu ( ký tự \0 được xem là dấu hiệu kết thúc của một xâu ký tự ). Chú ý :
+        Cần phân biệt hai hằng 'a' và "a". 'a' là hằng ký tự được lưu trữ trong 1 byte, còn "a" là hằng xâu ký tự được
+        lưu
+        trữ trong 1 mảng hai phần tử : phần tử thứ nhất chứa chữ a còn phần tử thứ hai chứa \0.</p>
+      <p><b>3. Biểu thức</b></p>
+      <p>Biểu thức là một sự kết hợp giữa các phép toán và các toán hạng để diễn đạt một công thức toán học nào đó. Mỗi
+        biểu thức có sẽ có một giá trị. Như vậy hằng, biến, phần tử mảng và hàm cũng được xem là biểu thức.</p>
+      <p>Trong C, ta có hai khái niệm về biểu thức :</p>
+      <ul>
+        <li>Biểu thức gán.</li>
+        <li>Biểu thức điều kiện.</li>
+      </ul>
+      <p>Biểu thức được phân loại theo kiểu giá trị : nguyên và thực. Trong các mệnh đề logic, biểu thức được phân thành
+        đúng ( giá trị khác 0 ) và sai ( giá trị bằng 0 ).</p>
+      <p>Biểu thức thường được dùng trong:</p>
+      <ul>
+        <li>Vế phải của câu lệnh gán.</li>
+        <li>Làm tham số thực sự của hàm.</li>
+        <li>Làm chỉ số.</li>
+        <li>Trong các toán tử của các cấu trúc điều khiển.</li>
+      </ul>
+      <p> Tới đây, ta đã có hai khái niệm chính tạo nên biểu thức đó là toán hạng và phép toán. </p>
+      <p>Toán hạng gồm : hằng, biến,
+        phần tử mảng và hàm trước đây ta đã xét.</p>
+      <p>Dưới đây ta sẽ nói đến các phép toán. </p>
+      <p>Biểu thức gán là biểu thức có dạng: v = e</p>
+      <p>Trong đó v là một biến ( hay phần tử mảng ), e là một biểu thức. Giá trị của biểu thức gán là giá trị của e,
+        kiểu
+        của nó là kiểu của v. Nếu đặt dấu ; vào sau biểu thức gán ta sẽ thu được phép toán gán có dạng: v = e;</p>
+      <p>Biểu thức gán có thể sử dụng trong các phép toán và các câu lệnh như các biểu thức khác.
+        Ví dụ như khi ta viết a = b = 5; thì điều đó có nghĩa là gán giá trị của biểu thức b = 5 cho biến a. Kết quả là
+        b=5 và
+        a = 5.</p>
+      <p>Hoàn toàn tương tự như : a = b = c = d = 6; gán 6 cho cả a, b, c và d Ví dụ : z = (y = 2)*(x = 6); { ở đây * là
+        phép toán nhân }
+        gán 2 cho y, 6 cho x và nhân hai biểu thức lại cho ta z = 12.</p>
+      <h4><b>IV. Các phép toán, lệnh, khối lệnh</b></h4>
+      <p><b>1. Phép toán số học</b></p>
+      <p>Các phép toán hai ngôi số học là</p>
+      <table>
+        <tr>
+          <th>Phép toán</th>
+          <th>Ý nghĩa</th>
+          <th>Ví dụ</th>
+        </tr>
+        <tr>
+          <td>+</td>
+          <td> Phép cộng</td>
+          <td>a + b</td>
+        </tr>
+        <tr>
+          <td>-</td>
+          <td>Phép trừ</td>
+          <td>a - b</td>
+        </tr>
+        <tr>
+          <td>*</td>
+          <td>Phép nhân</td>
+          <td>a * b</td>
+        </tr>
+        <tr>
+          <td>/</td>
+          <td>Phép chia </td>
+          <td>a / b (Chia số nguyên sẽ bỏ phần thập phân)</td>
+        </tr>
+        <tr>
+          <td>%</td>
+          <td>Phép lấy phần dư</td>
+          <td>a % b (Cho phần dư của phép chia a cho b)</td>
+        </tr>
+      </table>
+
+      <p>
+        Có phép toán một ngôi - ví du -(a+b) sẽ đảo giá trị của phép cộng (a+b). Ví dụ :</p>
+      <div class="w3-code notranslate htmlHigh">
+        11/3=3<br>
+        11%3=2<br>
+        -(2+6)=-8<br>
+      </div>
+      <p>
+        Các phép toán + và - có cùng thứ tự ưu tiên, có thứ tự ưu tiên nhỏ hơn các phép * , /
+        , % và cả ba phép này lại có thứ tự ưu tiên nhỏ hơn phép trừ một ngôi.
+        Các phép toán số học được thực hiện từ trái sang phải.
+        Số ưu tiên và khả năng kết hợp của phép toán được chỉ ra trong một mục sau này.</p>
+      <p><b>2. Phép toán quan hệ và logic</b></p>
+      <p>Phép toán quan hệ và logic cho ta giá trị đúng ( 1 ) hoặc giá trị sai ( 0 ).
+        Nói cách khác, khi các điều kiện nêu ra là đúng thì ta nhận được giá trị 1, trái lại ta nhận giá trị 0.</p>
+      <p>Các phép toán quan hệ là:</p>
+      <table>
+        <tr>
+          <th>Phép toán</th>
+          <th>Ý nghĩa</th>
+          <th>Ví dụ</th>
+        </tr>
+        <tr>
+          <td>></td>
+          <td> So sánh lớn hơn</td>
+          <td>a > b (4 > 5 có giá trị 0)</td>
+        </tr>
+        <tr>
+          <td>>=</td>
+          <td>So sánh lớn hơn hoặc bằng</td>
+          <td>a >= b (6 >= 2 có giá trị 1)</td>
+        </tr>
+        <tr>
+          <td>&lt;</td>
+          <td>So sánh nhỏ hơn</td>
+          <td> a &lt; b (6 &lt; 7 có giá trị 1)</td>
+        </tr>
+        <tr>
+          <td>&lt;=</td>
+          <td>So sánh nhỏ hơn hoặc bằng </td>
+          <td>a &lt;= b (8 &lt;= 5 có giá trị 0)</td>
+        </tr>
+        <tr>
+          <td>==</td>
+          <td>So sánh bằng nhau</td>
+          <td>a == b (6 == 6 có giá trị 1)</td>
+        </tr>
+        <tr>
+          <td>!=</td>
+          <td>So sánh khác nhau </td>
+          <td> a != b (9 != 9 có giá trị 0)</td>
+        </tr>
+      </table>
+      <p>Bốn phép toán đầu có cùng số ưu tiên, hai phép sau có cùng số thứ tự ưu tiên nhưng thấp hơn số thứ tự của bốn
+        phép đầu.</p>
+      <p>Các phép toán quan hệ có số thứ tự ưu tiên thấp hơn so với các phép toán số học, cho nên biểu thức : i &lt; n-1
+        được
+        hiểu là i &lt; (n-1). </p>
+      <p><b>Các phép toán logic</b></p>
+      <p>Trong C sử dụng ba phép toán logic:</p>
+      <ul>
+        <li>Phép phủ định một ngôi ! </li>
+        <li>Phép và (AND) && </li>
+        <li>Phép hoặc ( OR ) || </li>
+      </ul>
+      <p>Các phép quan hệ có số ưu tiên nhỏ hơn so với ! nhưng lớn hơn so với && và ||, vì
+        vậy biểu thức như :(a &lt; b) && (c > d) có thể viết lại thành : a &lt; b && c > d </p>
+      <p>Chú ý : Cả a và b có thể là nguyên hoặc thực.</p>
+      <p><b>3. Chuyển đổi kiểu giá trị</b></p>
+      <p>Việc chuyển đổi kiểu giá trị thường diễn ra một cách tự động trong hai trường hợp sau :</p>
+      <ul>
+        <li>Khi gán biểu thức gồm các toán hạng khác kiểu.</li>
+        <li>Khi gán một giá trị kiểu này cho một biến ( hoặc phần tử mảng ) kiểu khác. Điều này xảy ra trong toán tử
+          gán, trong việc truyền giá trị các tham số thực sự cho các đối. Ngoài ra, ta có thể chuyển từ một kiểu giá trị
+          sang một kiểu bất kỳ mà ta muốn bằng phép chuyển sau :</li>
+      </ul>
+      <p><b>(type)</b> <i>biểu thức</i></p>
+      <p>Ví dụ : (float) (a+b)</p>
+      <p><b>Chuyển đổi kiểu trong biểu thức:</b></p>
+      <p>Khi hai toán hạng trong một phép toán có kiểu khác nhau thì kiểu thấp hơn sẽ được nâng thành kiểu cao hơn
+        trước khi thực hiện phép toán. Kết quả thu được là một giá trị kiểu cao hơn. Chẳng hạn :
+        Giữa int và long thì int chuyển thành long. Giữa int và float thì int chuyển thành float.
+        Giữa float và double thì float chuyển thành double.</p>
+      <p>Ví dụ :</p>
+      <div class="w3-code notranslate htmlHigh">
+        1.5*(11/3) = 4.5<br>
+        1.5*11/3 = 5.5 <br>
+        (11/3)*1.5 = 4.5<br>
+      </div>
+      <p><b>Chuyển đổi kiểu thông qua phép gán:</b></p>
+      <p>Giá trị của vế phải được chuyển sang kiểu vế trái đó là kiểu của kết quả. Kiểu int có thể được được chuyển
+        thành float. Kiểu float có thể chuyển thành int do chặt đi phần thập phân.
+        Kiểu double chuyển thành float bằng cách làm tròn. Kiểu long được chuyển thành int bằng cách cắt bỏ một vài
+        chữ số.</p>
+      <p>Ví dụ:</p>
+      <div class="w3-code notranslate htmlHigh">
+        int n;<br>
+        n = 15.6; // giá trị của n là 15
+      </div>
+      <p><b>Đổi kiểu dạng (type)biểu thức:</b></p>
+      <p>Theo cách này, kiểu của biểu thức được đổi thành kiểu type theo nguyên tắc trên.</p>
+      <p>Ví dụ:</p>
+      <p>Phép toán : (int)a cho một giá trị kiểu int. Nếu a là float thì ở đây có sự chuyển đổi từ float sang int. Chú
+        ý rằng bản thân kiểu của a vẫn không bị thay đổi. Nói cách khác, a vẫn có kiểu float nhưng (int)a có kiểu int.
+      </p>
+      <p>Đối với hàm toán học của thư viện chuẩn, thì giá trị của đối và giá trị của hàm đều có kiểu double, vì vậy để
+        tính căn bậc hai của một biến nguyên n ta phải dùng phép ép kiểu để chuyển kiểu int sang double như sau :
+        sqrt((double)n)</p>
+      <p>Phép ép kiểu có cùng số ưu tiên như các toán tử một ngôi. </p>
+      <p>Chú ý :
+        Muốn có giá trị chính xác trong phép chia hai số nguyên cần dùng phép ép kiểu : ((float)a)/b
+        Để đổi giá trị thực r sang nguyên, ta dùng :
+        (int)(r+0.5)</p>
+      <p>Chú ý thứ tự ưu tiên : (int)1.4*10=1*10=10 (int)(1.4*10)=(int)14.0=14</p>
+      <p><b>4. Phép toán tăng giảm</b></p>
+      <p>C đưa ra hai phép toán một ngôi để tăng và giảm các biến ( nguyên và thực ). Toán tử tăng là ++ sẽ cộng 1 vào
+        toán hạng của nó, toán tử giảm -- thì sẽ trừ toán hạng đi 1.</p>
+      <p> Ví dụ : n = 5<br>
+        ++n Cho ta n = 6<br>
+        --n Cho ta n = 4</p>
+      <p>Ta có thể viết phép toán ++ và -- trước hoặc sau toán hạng như sau : ++n, n++, --n, n--. Sự khác nhau của ++n
+        và
+        n++ ở chỗ : trong phép n++ thì tăng sau khi giá trị của
+
+        nó đã được sử dụng, còn trong phép ++n thì n được tăng trước khi sử dụng. Sự khác nhau giữa n-- và --n cũng như
+        vậy.</p>
+      <p>Ví dụ : n = 5 <br>
+        x = ++n Cho ta x = 6 và n = 6 <br>
+        x = n++ Cho ta x = 5 và n = 6
+      <p><b> 5. Lệnh</b></p>
+      <p>Là một tác vụ, biểu thức, hàm, cấu trúc điều khiển...</p>
+      <p>Ví dụ 1:</p>
+      <div class="w3-code notranslate htmlHigh">
+        x = x + 2; <br>
+        printf("Day la mot lenh\n");
+      </div>
+      <p><b>6. Khối lệnh</b></p>
+      <p>Là một dãy các câu lệnh được bọc bởi cặp dấu { }, các lệnh trong khối lệnh phải viết thụt vô 1 tab so với cặp
+        dấu { }</p>
+      <p>Ví dụ 2:</p>
+      <div class="w3-code notranslate htmlHigh">
+        { //đầu khối <br>
+        &nbsp;a = 5;<br>
+        &nbsp;b = 6; //viết thụt vô 1 tab so với cặp { }<br>
+        &nbsp;printf("Tong %d + %d = %d", a, b, a+b);<br>
+        } //cuối khối
+      </div>
+      <h4><b>V. Lệnh gán, lệnh xuất nhập, lệnh gán kết hợp</b></h4>
+      <p><b>1. Lệnh gán</b></p>
+      <p>Lệnh gán có dạng: <b>Biến</b> = <i>Biểu thức</i> </p>
+      <p>Ví dụ : a = b + c</p>
+      <p>Các toán hạng bên trái bao giờ cũng phải là một biến.</p>
+      <p>Lệnh gán có thể sử dụng trong các phép toán và các câu lệnh như các biểu thức khác.</p>
+      <p>Ví dụ: </p>
+      <div class="w3-code notranslate htmlHigh">
+        a = b = 5; // nghĩa là gán giá trị của biểu thức b=5 cho biến a. Kết quả là b=5 và a=5.<br>
+        a = b = c = d = 6; // gán 6 cho cả a, b, c và d
+      </div>
+      <p><b> 2. Lệnh gán kết hợp</b></p>
+      <p> Có dạng : <b>Biến</b> pt= <i>Biểu thức</i></p>
+      <p>Trong đó pt có thể là một trong các phép toán hai ngôi: +, -, *, /, %, &lt;, >, &, |, ^ </p>
+      Ví dụ :
+      <div class="w3-code notranslate htmlHigh">
+        x *= y + 3; // nghĩa là x = x * (y + 3);<br>
+        a +=b; // nghĩa là a = a + b;
+      </div>
+      <p>Người ta thường sử dụng lệnh gán kết hợp khi toán hạng bên phải là một biểu thức khá dài.</p>
+      <p><b>3. Lệnh xuất nhập</b></p>
+      <p><b>Xuất dữ liệu lên màn hình</b></p>
+      <p>Kết xuất dữ liệu được định dạng sử dụng hàm <b>printf</b> theo cú pháp: </p>
+      <p style="background-color: aqua;"><i><b>printf ("chuỗi định dạng"[, đối mục 1, đối mục 2,...]); </b></i></p>
+      <p>
+        Khi sử dụng hàm
+        phải khai báo tiền xử lý <b>#include &lt;stdio.h&gt;</b> và tên hàm <b>printf</b> phải viết bằng chữ thường.</p>
+      <p><i>đối mục 1</i>, <i>đối số mục 2</i>,...: là các mục dữ kiện cần in ra màn hình. Các đối mục này có thể là
+        biến, hằng hoặc biểu thức phải
+        được định trị trước khi in ra.</p>
+      <p><i>chuỗi định dạng</i>: được đặt trong cặp nháy kép (" "), gồm 3 loại:</p>
+      <ul>
+        <li>Đối với chuỗi kí tự ghi như thế nào in ra giống như vậy.</li>
+        <li>Đối với những kí tự chuyển đổi dạng thức cho phép kết xuất giá trị của các đối mục ra màn hình tạm gọi
+          là mã
+          định dạng. Sau đây là các dấu mô tả định dạng:</li>
+      </ul>
+      <p>
+        %c : Ký tự đơn<br>
+        %s : Chuỗi<br>
+        %d : Số nguyên thập phân có dấu<br>
+        %f : Số chấm động (ký hiệu thập phân)<br>
+        %e : Số chấm động (ký hiệu có số mũ)<br>
+        %g : Số chấm động (%f hay %g)<br>
+        %x : Số nguyên thập phân không dấu<br>
+        %u : Số nguyên hex không dấu <br>
+        %o : Số nguyên bát phân không dấu<br>
+        l : Tiền tố dùng kèm với %d, %u, %x, %o để chỉ số nguyên dài (ví dụ %ld)<br>
+      </p>
+      <ul>
+        <li>Các ký tự điều khiển và ký tự đặc biệt: </li>
+      </ul>
+      <p>
+        \n : Nhảy xuống dòng kế tiếp canh về cột đầu tiên.<br>
+
+        \t : Canh cột tab ngang.<br>
+        \r : Nhảy về đầu hàng, không xuống hàng.
+        \a : Tiếng kêu bip.<br>
+        \\ : In ra dấu \<br>
+        \" : In ra dấu "<br>
+        \' : In ra dấu '<br>
+        %%: In ra dấu %<br>
+      </p>
+      <p><b>Ví dụ 1:</b> Xuất ra màn hình chuỗi <i><b>Bai hoc C dau tien</b></i> kèm theo ký tự điều
+        khiển xuống dòng <i><b>\n</b></i></p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4dSW?stdin=0&arg=0"></div>
+
+      <p><b>Ví dụ 2:</b> Xuất ra màn hình các số có dấu chấm động</p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4dTe?stdin=0&arg=0"></div>
+      <p> 7: độ rộng trường (bao gồm phần nguyên, phần lẻ và dấu chấm động)<br>
+        .2 : số chữ số thập phân </p>
+      <p><b>Nhập dữ liệu từ bàn phím</b></p>
+      <p>Nhập dữ liệu từ bàn phím sử dụng hàm <b>scanf</b> theo cú pháp: </p>
+      <p style="background-color: aqua;"><i><b>scanf ("chuỗi định dạng"[, đối mục 1, đối mục 2,...]);</b> </i></p>
+      <p>
+        Khi sử dụng hàm
+        phải khai báo tiền xử lý<b> #include &lt;stdio.h&gt; </b>và tên hàm <b>scanf</b> phải viết bằng chữ thường.</p>
+      <p><i>đối mục 1</i>, <i>đối số mục 2</i>,...: là danh sách các đối mục cách nhau bởi dấu phẩy, mỗi đối mục sẽ tiếp
+        nhận giá trị nhập vào. Lưu ý trước mỗi đối mục sẽ kèm một dấu <b>&</b>.</p>
+      <p><i>chuỗi định dạng</i>: được đặt trong cặp nháy kép (" ") là hình ảnh dạng dữ liệu nhập vào.</p>
+      <p><b>Ví dụ 3:</b> Nhập một số nguyên từ bàn phím và xuất ra màn hình.</p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4dTB?arg=0"></div>
+      <p>Nhập vào 12abc, biến i chỉ nhận giá trị 12. Nhập 3.4 chỉ nhận giá trị 3.</p>
+      <p><b>Ví dụ 4:</b> Nhập vào 2 số a, b phải cách nhau bằng khoảng trắng hoặc enter. </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4dTG?arg=0"></div>
+      <div class="w3-section w3-bottombar"></div>
+      <h4><b>Tài liệu và các nguồn tham khảo khác</b></h4>
+      <ul>
+        <li><a
+            href="https://www.amazon.com/Programming-Language-2nd-Brian-Kernighan/dp/0131103628?asin=0131103628&revisionId=&format=4&depth=1"
+            target="_blank">C
+            Programming Language, 2nd Edition 2nd Edition by Brian W. Kernighan (Author), Dennis M. Ritchie (Author)</a>
+        </li>
+        <li><a href="https://www.programiz.com/c-programming" target="_blank">Learn C Programming </a></li>
+        <li><a href="https://www.tutorialspoint.com/cprogramming/index.htm" target="_blank">C Tutorial </a></li>
+      </ul>
+    </div>
+    <div class="w3-black w3-center w3-padding-24">Giáo trình Ngôn ngữ lập trình.</div>
+  </div>
+
+  <!-- End page content -->
+  </div>
+  <script src="https://www.jdoodle.com/assets/jdoodle-pym.min.js" type="text/javascript"></script>
+  <script>
+    // Script to open and close sidebar
+    function w3_open() {
+      document.getElementById("mySidebar").style.display = "block";
+      document.getElementById("myOverlay").style.display = "block";
+    }
+
+    function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+      document.getElementById("myOverlay").style.display = "none";
+    }
+
+  </script>
+
+</body>
+
+</html>
