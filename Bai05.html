@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<title>Bài 5 </title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="w3.css">
+<link rel="stylesheet" href="font.css">
+<link rel="stylesheet" href="font-awesome.min.css">
+<style>
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Raleway", sans-serif
+  }
+</style>
+
+<body class="w3-light-grey w3-content" style="max-width:1600px">
+
+  <!-- Sidebar/menu -->
+  <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+    <div class="w3-container">
+      <a href="#" style="text-decoration: none;" onclick="w3_close()"
+        class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu"> X </a>
+      <!--<h4><b>Giáo trình</b></h4>-->
+    </div>
+    <div class="w3-bar-block">
+      <a href="Bai01.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 1</a>
+      <a href="Bai02.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 2</a>
+      <a href="Bai03.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 3</a>
+      <a href="Bai04.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 4</a>
+      <a href="Bai05.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal">Bài 5</a>
+      <a href="Bai06.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 6</a>
+      <a href="Bai07.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 7</a>
+    </div>
+  </nav>
+
+  <!-- Overlay effect when opening sidebar on small screens -->
+  <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"
+    title="close side menu" id="myOverlay">=</div>
+
+  <!-- !PAGE CONTENT! -->
+  <div class="w3-main" style="margin-left:300px">
+
+    <!-- Header -->
+    <header id="portfolio">
+      <!--<a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;"
+          class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>-->
+      <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()">=</span>
+      <div class="w3-container">
+        <h1><b>Bài 5: Kiểu mảng</b></h1>
+      </div>
+    </header>
+    <div class="w3-container w3-padding-large" style="margin-bottom:32px">
+      <h4><b>I. Khai báo mảng</b></h4>
+      <p>Là tập hợp các phần tử có cùng dữ liệu. Giả sử bạn muốn lưu n số nguyên để tính trung bình, bạn không thể khai
+        báo n biến để lưu n giá trị rồi sau đó tính trung bình. Ví dụ 1 : bạn muốn tính trung bình 10 số nguyên nhập vào
+        từ bàn phím, bạn sẽ khai báo 10 biến: a, b, c, d, e, f, g, h, i, j có kiểu int và lập thao tác nhập cho 10 biến
+        này như sau:</p>
+      <div class="w3-code notranslate htmlHigh">
+        printf("Nhap vao bien a:"); <br>
+        scanf("%d", &a);
+      </div>
+      <p>10 biến bạn sẽ thực hiện 2 lệnh trên 10 lần, sau đó tính trung bình: (a + b + c + d + e + f + g + h + i + j)/10
+      </p>
+      <p>Điều này chỉ phù hợp với n nhỏ, còn đối với n lớn thì khó có thể thực hiện được. Vì vậy khái niệm mảng được sử
+        dụng.</p>
+      <p><b>Cách khai báo mảng</b></p>
+      <div class="w3-code notranslate htmlHigh">
+        KieuDLptu Tenmang[sopt];
+      </div>
+      Ví dụ:
+      <div class="w3-code notranslate htmlHigh">
+        int ia[10];
+      </div>
+      <p>với int là kiểu mảng (KieuDLptu), ia là tên mảng (Tenmang), 10 số phần tử mảng (sopt).</p>
+      <p>Ý nghĩa: Khai báo một mảng số nguyên gồm 10 phần tử, mỗi phần tử có kiểu int. </p>
+      <p><b>Tham chiếu đến từng phần tử mảng</b></p>
+      <p>Sau khi mảng được khai báo, mỗi phần tử trong mảng đều có chỉ số để tham chiếu. <b>Chỉ số bắt đầu từ 0 đến n-1
+          (với n là kích thước mảng)</b>. Trong ví dụ trên, ta khai báo mảng 10 phần tử thì chỉ số bắt đầu từ 0 đến 9. 0
+        1 2 3
+        4 5 6 7 8 9</p>
+      <p>Cách tham chiếu : Tên mảng [chỉ số]</p>
+      <p><b>Nhập dữ liệu cho mảng</b></p>
+      <div class="w3-code notranslate htmlHigh">
+        for (i = 0; i &gt; 10; i++) //vòng for có giá trị i chạy từ 0 đến 9<br>
+        { <br>
+        &nbsp; &nbsp;printf("Nhap vao phan tu thu %d: ", i + 1); <br>
+        &nbsp; &nbsp;scanf("%d", &ia[i]);<br>
+        }
+      </div>
+      <p><b>Đọc dữ liệu từ mảng</b></p>
+      <div class="w3-code notranslate htmlHigh">
+        for(i = 0; i &gt; 10; i++) <br>
+        &nbsp; &nbsp;printf("%3d ", ia[i]);
+      </div>
+      <p>Ví dụ chương trình tính trung bình cộng của n số nguyên cho trước.</p>
+      <p>Nhập giá trị n và kế tiếp nhập n số nguyên bất kỳ cách nhau bởi khoảng trắng vào ô <b>Stdin Inputs</b>. Ví dụ
+        nhập 3 1 1 2
+        nghĩa
+        là n = 3 và các phần tử mảng lần lượt là 1, 1, 2. Nhấn nút <b>Execute</b> màu xanh
+        để
+        xem kết quả.</p>
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4JNJ?arg=0"></div>
+
+      <h4><b>II. Mảng và tham số của hàm</b></h4>
+      <p>Khi truyền mảng sang hàm, không tạo bản sao mảng mới. Vì vậy mảng truyền sang hàm có dạng tham biến. Nghĩa là
+        giá trị của các phần tử trong mảng sẽ bị ảnh hưởng nếu có sự thay đổi trên chúng.</p>
+      <p>Ví dụ chương trình tìm số lớn nhất dùng hàm</p>
+      <p>Nhập n số nguyên bất kỳ cách nhau bởi khoảng trắng vào ô <b>Stdin Inputs</b>. Ví dụ nhập 3 10 7 2. Nhấn nút
+        <b>Execute</b> màu xanh
+        để
+        xem kết quả.
+      </p>
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4JPq?arg=0"></div>
+      <p>Chương trình ban đầu hàm max có hai tham số truyền vào và kết quả trả về là giá trị max có kiểu nguyên, một
+        tham số là mảng 1 chiều kiểu int và một tham số có kiểu int. Với chương trình sau khi sửa hàm max chỉ còn một
+        tham số truyền vào nhưng cho kết quả như nhau.</p>
+      <p>Ví dụ chương trình tìm số lớn nhất dùng hàm max chỉ có một tham số</p>
+      <p>Nhập n số nguyên bất kỳ cách nhau bởi khoảng trắng vào ô <b>Stdin Inputs</b>. Ví dụ nhập 3 10 7 2. Nhấn nút
+        <b>Execute</b> màu xanh
+        để
+        xem kết quả.
+      </p>
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4JPL?arg=0"></div>
+
+      <p>Do sau khi sửa chương trình mảng ia[MAX] được khai báo lại là biến
+        toàn cục nên hàm max không cần truyền tham số mảng vào cũng có thể sử dụng được. Tuy vậy, khi lập trình bạn nên
+        viết như chương trình ban đầu là truyền tham số mảng vào (dạng tổng quát) để hàm max có thể thực hiện được trên
+        nhiều
+        mảng khác nhau. Còn với chương trình sửa lại bạn chỉ sử dụng hàm max được với mảng a mà thôi.</p>
+      <h4><b>III. Sắp xếp mảng</b></h4>
+      <p>Trong thực tế ta thường gặp những công việc cần phải sắp xếp theo một thứ tự nào đó, chẳng hạn danh sách học
+        sinh trong lớp có thể được sắp xếp theo Họ hoặc Điểm trung bình. Việc sắp xếp thứ tự 1 mảng giúp ta dễ dàng tìm
+        kiếm các phần tử của mảng.
+        Từ trước đến nay người ta đã tìm ra nhiều phương pháp sắp xếp mảng như:</p>
+      <ul>
+        <li>Phương pháp chèn vào thẳng (Straight insertion)</li>
+        <li>Phương pháp chèn vào chia đôi hay còn gọi là phương pháp chèn nhị phân (binary insertion)</li>
+        <li>Phương pháp chọn lựa thẳng (Straight selection)</li>
+        <li>Các phương pháp đổi chỗ gồm:
+          <ul>
+            <li>Phương pháp nổi bọt (bubble sort)</li>
+            <li>Phương pháp rung (shakesort)</li>
+          </ul>
+        </li>
+        <li>Các phương pháp sắp xếp khác gồm có:
+          <ul>
+            <li>Phương pháp shell</li>
+            <li>Phương pháp Heapsort</li>
+            <li>Phương pháp Quicksort</li>
+          </ul>
+        </li>
+      </ul>
+      <p>Phần dưới đây trình bày hai giải thuật sắp xếp thường được sử dụng nhiều nhất đó là phương pháp Bubble sort và
+        Quicksort. Chúng ta sẽ gặp lại và tìm hiểu kỹ hơn về các thuật toán này trong môn học Cấu trúc dữ liệu và Giải
+        thuật.</p>
+      <p><b>Phương pháp Bubble sort</b></p>
+      <p>Thuật toán sắp xếp nổi bọt thực hiện sắp xếp dãy số bằng cách lặp lại công việc đổi chỗ 2 số liên tiếp nhau nếu
+        chúng đứng sai thứ tự (số sau bé hơn số trước với trường hợp sắp xếp tăng dần) cho đến khi dãy số được sắp xếp.
+      </p>
+      <p>Ví dụ minh họa: Giả sử chúng ta cần sắp xếp dãy số [5 1 4 2 8] này tăng dần.</p>
+      <p>Lần lặp đầu tiên:</p>
+      <div class="w3-code notranslate htmlHigh">
+        ( 5 1 4 2 8 ) –> ( 1 5 4 2 8 ) So sánh hai phần tử đầu tiên, và đổi chỗ cho nhau do 5 >
+        1.<br>
+        ( 1 5 4 2 8 ) –> ( 1 4 5 2 8 ) Đổi chỗ do 5 > 4<br>
+        ( 1 4 5 2 8 ) –> ( 1 4 2 5 8 ) Đổi chỗ do 5 > 2<br>
+        ( 1 4 2 5 8 ) –> ( 1 4 2 5 8 ) Hai phần tử đang xét đã đúng thứ tự (8 > 5), vậy ta không cần đổi chỗ.
+      </div>
+
+      <p>Lần lặp thứ 2:</p>
+      <div class="w3-code notranslate htmlHigh">
+        ( 1 4 2 5 8 ) –> ( 1 4 2 5 8 )<br>
+        ( 1 4 2 5 8 ) –> ( 1 2 4 5 8 ) Đổi chỗ do 4 > 2<br>
+        ( 1 2 4 5 8 ) –> ( 1 2 4 5 8 )<br>
+        ( 1 2 4 5 8 ) –> ( 1 2 4 5 8 )
+      </div>
+      <p>Bây giờ, dãy số đã được sắp xếp, Nhưng thuật toán của chúng ta không nhận ra điều đó ngay được. Thuật toán sẽ
+        cần thêm một lần lặp nữa để kết luận dãy đã sắp xếp khi và khi khi nó đi từ đầu tới cuối mà không có bất kỳ lần
+        đổi chỗ nào được thực hiện.</p>
+
+      <p>Lần lặp thứ 3:</p>
+      <div class="w3-code notranslate htmlHigh">
+        ( 1 2 4 5 8 ) –> ( 1 2 4 5 8 )<br>
+        ( 1 2 4 5 8 ) –> ( 1 2 4 5 8 )<br>
+        ( 1 2 4 5 8 ) –> ( 1 2 4 5 8 )<br>
+        ( 1 2 4 5 8 ) –> ( 1 2 4 5 8 )
+      </div>
+
+      <p>Ví dụ chương trình sau đây sắp xếp và hiển thị dãy số nguyên cho trước.</p>
+      <p>Nhấn nút <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4K2L?stdin=0&arg=0"></div>
+
+      <p>Đánh giá độ phức tạp thuật toán thuật toán sắp xếp nổi bọt</p>
+      <ul>
+        <li>Trường hợp tốt: O(n)</li>
+        <li>Trung bình: O(n<sup>2</sup>)</li>
+        <li>Trường hợp xấu: O(n<sup>2</sup>)</li>
+        <li>Không gian bộ nhớ sử dụng: O(1)</li>
+      </ul>
+      <p><b>Thuật toán Quick Sort - Sắp xếp nhanh</b></p>
+      <p>Thuật toán sắp xếp quick sort là một thuật toán chia để trị (Divide and Conquer algorithm). Nó chọn một phần tử
+        trong mảng làm điểm đánh dấu (pivot). Thuật toán sẽ thực hiện chia mảng thành các mảng con dựa vào pivot đã
+        chọn.
+        Việc lựa chọn pivot ảnh hưởng rất nhiều tới tốc độ sắp xếp. Nhưng máy tính lại không thể biết khi nào thì nên
+        chọn theo cách nào. Dưới đây là một số cách để chọn pivot thường được sử dụng:</p>
+      <ul>
+        <li>Luôn chọn phần tử đầu tiên của mảng.</li>
+        <li>Luôn chọn phần tử cuối cùng của mảng. (Được sử dụng trong bài này)</li>
+        <li>Chọn một phần tử random.</li>
+        <li>Chọn một phần tử có giá trị nằm giữa mảng(median element).</li>
+      </ul>
+      <p>Tầm quan trọng của phân đoạn trong thuật toán quick sort</p>
+      <p>Mấu chốt chính của thuật toán quick sort là việc phân đoạn dãy số (Xem hàm partition()). Mục tiêu của công việc
+        này là: Cho một mảng và một phần tử x là pivot. Đặt x vào đúng vị trí của mảng đã sắp xếp. Di chuyển tất cả các
+        phần tử của mảng mà nhỏ hơn x sang bên trái vị trí của x, và di chuyển tất cả các phần tử của mảng mà lớn hơn x
+        sang bên phải vị trí của x.</p>
+
+      <p> Khi đó ta sẽ có 2 mảng con: mảng bên trai của x và mảng bên phải của x. Tiếp tục công việc với mỗi mảng
+        con (chọn pivot, phân đoạn) cho tới khi mảng được sắp xếp.</p>
+
+      <p>Thuật toán phân đoạn</p>
+      <p>Đặt pivot là phần tử cuối cùng của dãy số arr. Chúng ta bắt đầu từ phần tử trái nhất của dãy số có chỉ số là
+        left, và phần tử phải nhất của dãy số có chỉ số là right -1(bỏ qua phần tử pivot). Chừng nào left &lt; right mà
+        arr[left] > pivot và arr[right] &lt; pivot thì đổi chỗ hai phần tử left và right. Sau cùng, ta đổi chỗ hai phần
+        tử left và pivot cho nhau. Xem hình minh họa phía dưới. Khi đó, phần tử left đã đứng đúng vị trí và chia dãy số
+        làm đôi (bên trái và bên phải)</p>
+
+      <p> Code minh họa thuật toán phân đoạn</p>
+      <div class="w3-code notranslate htmlHigh">
+        int partition (int arr[], int low, int high)<br>
+        {<br>
+        &nbsp; &nbsp;int pivot = arr[high]; // pivot<br>
+        &nbsp; &nbsp;int left = low;<br>
+        &nbsp; &nbsp;int right = high - 1;<br>
+        &nbsp; &nbsp;while(true) {<br>
+        &nbsp; &nbsp;&nbsp; &nbsp;while(left &lt;= right && arr[left] &lt; pivot) left++; // Tìm phần tử >=
+        arr[pivot]<br>
+        &nbsp; &nbsp;&nbsp; &nbsp;while(right >= left && arr[right] > pivot) right--; // Tìm phần tử &lt;=
+        arr[pivot]<br>
+        &nbsp; &nbsp;&nbsp; &nbsp;if (left >= right) break; // Đã duyệt xong thì thoát vòng lặp<br>
+        &nbsp; &nbsp;&nbsp; &nbsp;swap(&arr[left], &arr[right]); // Nếu chưa xong, đổi chỗ.<br>
+        &nbsp; &nbsp;&nbsp; &nbsp;left++; // Vì left hiện tại đã xét, nên cần tăng<br>
+        &nbsp; &nbsp;&nbsp; &nbsp;right--; // Vì right hiện tại đã xét, nên cần giảm<br>
+        &nbsp; &nbsp;}<br>
+        &nbsp; &nbsp;swap(&arr[left], &arr[high]);<br>
+        &nbsp; &nbsp;return left; // Trả về chỉ số sẽ dùng để chia đổi mảng<br>
+        }
+      </div>
+      <p>Ví dụ cho quá trình phân đoạn</p>
+      <div class="w3-code notranslate htmlHigh">
+
+        arr[] = {10, 80, 30, 90, 40, 50, 70}<br>
+        Indexes: 0 1 2 3 4 5 6<br><br>
+
+        pivot = 6, left = 0, right = 5<br><br>
+
+        arr[left] = 10 &lt; arr[pivot] = 70 và left &lt;= right, left = 1<br>
+        arr[left] = 80 > arr[pivot] = 70, tạm dừng<br><br>
+
+        arr[right] = 50 &lt; arr[pivot] = 70, tạm dừng<br><br>
+
+        Do left &lt; right, đổi chỗ arr[left], arr[right]<br>
+        arr[] = {10, 50, 30, 90, 40, 80, 70}<br>
+        left = 2, right = 4<br><br>
+
+        arr[left] = 30 &lt; arr[pivot] = 70 và left &lt;= right, left = 3<br>
+        arr[left] = 90 > arr[pivot] = 70, tạm dừng<br><br>
+
+        arr[right] = 40 &lt; arr[pivot] = 70, tạm dừng<br><br>
+
+        Do left &lt; right, đổi chỗ arr[left], arr[right]<br>
+        arr[] = {10, 50, 30, 40, 90, 80, 70}<br>
+        left = 4, right = 3<br><br>
+
+        // Do left >= right<br>
+        arr[] = {10, 50, 30, 40, 70, 80, 90}. // Đổi chỗ arr[left] và arr[pivot]<br>
+      </div>
+      <p>Bây giờ, 70 đã nằm đúng vị trí, các phần từ &lt;= 70 nằm phía trước và lớn hơn 70 nằm phía sau.</p>
+      <p>Quy trình của thuật toán sắp xếp quick sort</p>
+      <ul>
+        <li>Bước 1: Lấy phần tử chốt là phần tử ở cuối danh sách.</li>
+        <li>Bước 2: Chia mảng theo phần tử chốt.</li>
+        <li>Bước 3: Sử dụng sắp xếp nhanh một cách đệ qui với mảng con bên trái.</li>
+        <li>Bước 4: Sử dụng sắp xếp nhanh một cách đệ qui với mảng con bên phải.</li>
+      </ul>
+      <p>Mã hàm quickSort</p>
+      <div class="w3-code notranslate htmlHigh">
+        void quickSort(int arr[], int low, int high)<br>
+        {<br>
+        &nbsp; &nbsp;if (low &lt; high)<br>
+        &nbsp; &nbsp;{<br>
+        &nbsp; &nbsp;&nbsp; &nbsp;/* pi là chỉ số nơi phần tử này đã đứng đúng vị trí<br>
+        &nbsp; &nbsp;&nbsp; &nbsp;và là phần tử chia mảng làm 2 mảng con trái & phải */<br>
+        &nbsp; &nbsp;&nbsp; &nbsp;int pi = partition(arr, low, high);<br>
+
+        &nbsp; &nbsp;&nbsp; &nbsp;// Gọi đệ quy sắp xếp 2 mảng con trái và phải<br>
+        &nbsp; &nbsp;&nbsp; &nbsp;quickSort(arr, low, pi - 1);<br>
+        &nbsp; &nbsp;&nbsp; &nbsp;quickSort(arr, pi + 1, high);<br>
+        &nbsp; &nbsp;}<br>
+        }
+      </div>
+      <p>Ví dụ chương trình sau đây sắp xếp tăng dần và hiển thị dãy số nguyên cho trước.</p>
+      <p>Nhấn nút <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4K6A?stdin=0&arg=0"></div>
+      <h4><b>IV. Gán giá trị cho mảng</b></h4>
+      <p>Hai mảng A và B có cùng kiểu thành phần (các phần tử mảng có cùng kiểu dữ liệu) có thể chuyển giá trị cho nhau
+        bằng hàm <b>memmove</b>, cú pháp như sau:
+      <div class="w3-code notranslate htmlHigh">
+        memmove(b, a, sizeof(a))
+      </div>
+      <p><b>a</b>: Tên mảng nguồn; <b>b</b>: Tên mảng đích; <b>sizeof(a)</b>: Số phần tử chép.</p>
+      <p>Hàm này thuộc thư viện <b>string.h</b>.
+      <p>Ví dụ chương trình sau đây chuyển các giá trị từ mảng a cho trước sang mảng b.</p>
+      <p>Nhấn nút <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4K6Z?stdin=0&arg=0"></div>
+
+
+      <div class="w3-section w3-bottombar"></div>
+      <h4><b>Tài liệu và các nguồn tham khảo khác</b></h4>
+      <ul>
+        <li><a
+            href="https://www.amazon.com/Programming-Language-2nd-Brian-Kernighan/dp/0131103628?asin=0131103628&revisionId=&format=4&depth=1"
+            target="_blank">C
+            Programming Language, 2nd Edition 2nd Edition by Brian W. Kernighan (Author), Dennis M. Ritchie
+            (Author)</a>
+        </li>
+        <li><a href="https://www.programiz.com/c-programming" target="_blank">Learn C Programming </a></li>
+        <li><a href="https://www.tutorialspoint.com/cprogramming/index.htm" target="_blank">C Tutorial </a></li>
+      </ul>
+
+    </div>
+    <div class="w3-black w3-center w3-padding-24">Giáo trình Ngôn ngữ lập trình.</div>
+
+    <!-- End page content -->
+  </div>
+  <script src="https://www.jdoodle.com/assets/jdoodle-pym.min.js" type="text/javascript"></script>
+  <script>
+    // Script to open and close sidebar
+    function w3_open() {
+      document.getElementById("mySidebar").style.display = "block";
+      document.getElementById("myOverlay").style.display = "block";
+    }
+
+    function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+      document.getElementById("myOverlay").style.display = "none";
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<title>Bài 4 </title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="w3.css">
+<link rel="stylesheet" href="font.css">
+<link rel="stylesheet" href="font-awesome.min.css">
+<style>
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Raleway", sans-serif
+  }
+</style>
+
+<body class="w3-light-grey w3-content" style="max-width:1600px">
+
+  <!-- Sidebar/menu -->
+  <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+    <div class="w3-container">
+      <a href="#" style="text-decoration: none;" onclick="w3_close()"
+        class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu"> X </a>
+      <!--<h4><b>Giáo trình</b></h4>-->
+    </div>
+    <div class="w3-bar-block">
+      <a href="Bai01.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 1</a>
+      <a href="Bai02.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 2</a>
+      <a href="Bai03.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 3</a>
+      <a href="Bai04.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal">Bài 4</a>
+      <a href="Bai05.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 5</a>
+      <a href="Bai06.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 6</a>
+      <a href="Bai07.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 7</a>
+    </div>
+  </nav>
+
+  <!-- Overlay effect when opening sidebar on small screens -->
+  <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"
+    title="close side menu" id="myOverlay">=</div>
+
+  <!-- !PAGE CONTENT! -->
+  <div class="w3-main" style="margin-left:300px">
+
+    <!-- Header -->
+    <header id="portfolio">
+      <!--<a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;"
+          class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>-->
+      <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()">=</span>
+      <div class="w3-container">
+        <h1><b>Bài 4: Hàm</b></h1>
+      </div>
+    </header>
+    <div class="w3-container w3-padding-large" style="margin-bottom:32px">
+      <h4><b>1. Khái niệm</b></h4>
+      <p>Một chương trình viết trong ngôn ngữ C là một dãy các hàm, trong đó có một hàm chính (hàm <b>main()</b>). Hàm
+        chia các
+        bài toán lớn thành các công việc nhỏ hơn, giúp thực hiện những công việc lặp lại nào đó một cách nhanh chóng mà
+        không phải viết lại đoạn chương trình. Thứ tự các hàm trong chương trình là bất kỳ, song chương trình bao giờ
+        cũng đi thực hiện từ hàm <b>main()</b>.
+        Hàm có thể xem là một đơn vị độc lập của chương trình. Các hàm có vai trò ngang nhau, vì vậy không có phép xây
+        dựng một hàm bên trong các hàm khác.</p>
+      <h4><b>2. Quy tắc xây dựng một hàm</b></h4>
+      <p>Xây dựng một hàm bao gồm: khai báo kiểu hàm, đặt tên hàm, khai báo các đối và đưa ra câu lệnh cần thiết để thực
+        hiện yêu cầu đề ra cho hàm. Một hàm được viết theo mẫu sau:</p>
+      <div class="w3-code notranslate htmlHigh">
+        kiểu_hàm tên_hàm (danh sách các tham số)<br>
+        {<br>
+        &nbsp;Khai báo các biến cục bộ <br>
+        &nbsp;Các câu lệnh<br>
+        &nbsp;[return[biểu thức];]<br>
+        }
+      </div>
+      <p>Trong dòng đầu tiên của khai báo hàm chứa các thông tin về : kiểu hàm, tên hàm, kiểu và tên mỗi tham số.</p>
+
+      <p>Khai báo các tham số có dạng: Kiểu tham số 1 tên tham số 1, kiểu tham số 2 tên tham số 2,..., kiểu tham số n
+        tên tham số n. </p>
+      Ví dụ:
+      <div class="w3-code notranslate htmlHigh">
+        float max3s(float a, float b, float c)
+      </div>
+      <p>Khai báo hàm: kiểu hàm là float, tên hàm là max3s, các tham số là a, b, c cùng có kiểu là float.</p>
+
+      <p> Kế tiếp là thân hàm. Thân hàm là nội dung chính của hàm bắt đầu và kết thúc bằng các dấu { }.</p>
+      <p>Trong thân hàm chứa các câu lệnh cần thiết để thực hiện một yêu cầu nào đó đã đề ra cho hàm. Thân hàm có thể sử
+        dụng một câu lệnh return, có thể dùng nhiều câu lệnh return ở các chỗ khác nhau, và cũng có thể không sử dụng
+        câu
+        lệnh này.</p>
+      <p>Dạng tổng quát của return là:</p>
+      <div class="w3-code notranslate htmlHigh">
+        return [biểu thức];
+      </div>
+      <p>Giá trị của biểu thức trong câu lệnh return sẽ được gán cho hàm.</p>
+      <p>Ví dụ:</p>
+      <p>Xét bài toán: Tìm giá trị lớn nhất của ba số mà giá trị mà giá trị của chúng được đưa vào bàn phím.</p>
+      <p>
+        Xây dựng chương trình và tổ chức thành hai hàm: Hàm <b>main()</b> và hàm <b>max3s</b>. Nhiệm vụ của hàm
+        <b>max3s</b> là tính giá trị
+        lớn nhất của ba số đọc vào, giả sử là a,b,c. Nhiệm vụ của hàm <b>main()</b> là đọc ba giá trị vào từ bàn phím,
+        rồi dùng
+        hàm <b>max3s</b> để tính như trên, rồi đưa kết quả ra màn hình.
+      </p>
+      <p>Chương trình có thể được viết như sau:</p>
+      <p>Nhập 3 số lẻ bất kỳ cách nhau bởi khoảng trắng vào ô <b>Stdin Inputs</b> và nhấn nút <b>Execute</b> màu xanh
+        để
+        xem kết quả.</p>
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4JKO?arg=0"></div>
+      <h4><b>3. Sử dụng hàm</b></h4>
+      <p>Một cách tổng quát lời gọi hàm có dạng sau: tên hàm ([Danh sách các tham số thực])</p>
+      <p> Số các tham số thực tế phải bằng số tham số hình thức trong danh sách tham số và lần lượt chúng có kiểu tương
+        ứng với nhau.</p>
+      <h4><b>4. Nguyên tắc hoạt động của hàm</b></h4>
+      <p>Khi gặp một lời gọi hàm thì nó sẽ bắt đầu được thực hiện. Nói cách khác, khi máy gặp lời gọi hàm ở một vị trí
+        nào đó trong chương trình, máy sẽ tạm dời chỗ đó và chuyển đến hàm tương ứng. Quá trình đó diễn ra theo trình tự
+        sau:</p>
+      <ul>
+        <li>Cấp phát bộ nhớ cho các biến cục bộ.</li>
+
+        <li>Gán giá trị của các tham số thực cho các đối tương ứng.</li>
+        <li>Thực hiện các câu lệnh trong thân hàm.</li>
+        <li>Khi gặp câu lệnh return hoặc dấu } cuối cùng của thân hàm thì máy sẽ xoá các đối, biến cục bộ và ra khỏi
+          hàm.</li>
+        <li>Nếu trở về từ một câu lệnh return có chứa biểu thức thì giá trị của biểu thức được gán cho hàm. Giá trị của
+          hàm sẽ được sử dụng trong các biểu thức chứa nó.</li>
+      </ul>
+      <h4><b>5. Cách truyền tham số</b></h4>
+      <p><b>Truyền tham trị</b></p>
+      <p>Là truyền giá trị của biến (không phải là địa chỉ ô nhớ), khi đó phương thức sẽ tự động tạo ra một địa chỉ ô
+        nhớ mới để lưu trữ giá trị này, do đó nó chỉ được thay đổi trong phương thức hiện hành và giá trị của biến không
+        bị thay đổi bên ngoài phương thức hiện hành.</p>
+      <p>Ví dụ truyền tham trị trong C. Nhấn nút <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4JL2?stdin=0&arg=0"></div>
+      <p>Trong ví dụ trên, giá trị của biến x không bị thay đổi bên ngoài phương thức change(), mặc dù bên trong phương
+        thức change() chúng ta đã cố gắng thay đổi bằng cách tăng m lên 1.</p>
+      <p><b>Truyền tham chiếu</b></p>
+      <p>Là truyền địa chỉ ô nhớ của biến, do đó khi thay đổi giá trị của biến bên trong phương thức thì giá trị của
+        biến cũng bị thay đổi bên ngoài phương thức.</p>
+      <p>Ví dụ truyền tham trị trong C. Nhấn nút <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4JL5?stdin=0&arg=0"></div>
+
+      <p>Trong ví dụ trên, giá trị của biến x bị thay đổi cả bên trong và bên ngoài phương thức change().</p>
+      <p> Lưu ý: Để hiểu về truyền tham chiếu trong C, bạn phải có hiểu biết về con trỏ (pointer) trong C và đây là nội
+        dung trong <a href="Bai07.html">Bài 7</a>.</p>
+      <h4><b>6. Hàm không trả về các giá trị</b></h4>
+      <p> Các hàm không cho giá trị giống như thủ tục (procedure) trong ngôn ngữ lập trình PASCAL. Trong trường hợp này,
+        kiểu của nó là void.</p>
+      <p>Ví dụ hàm tìm giá trị max trong ba số là max3s ở trên có thể được viết thành thủ tục hiển thị số cực đại trong
+        ba số như sau.</p>
+      <p>Nhập 3 số lẻ bất kỳ cách nhau bởi khoảng trắng vào ô <b>Stdin Inputs</b> và nhấn nút <b>Execute</b> màu xanh
+        để
+        xem kết quả.</p>
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4JLg?arg=0"></div>
+      <p>Lúc này, trong hàm <b>main</b> ta gọi hàm <b>max3s</b> bằng câu lệnh: <b>max3s(x,y,z);</b></p>
+
+
+      <div class="w3-section w3-bottombar"></div>
+      <h4><b>Tài liệu và các nguồn tham khảo khác</b></h4>
+      <ul>
+        <li><a
+            href="https://www.amazon.com/Programming-Language-2nd-Brian-Kernighan/dp/0131103628?asin=0131103628&revisionId=&format=4&depth=1"
+            target="_blank">C
+            Programming Language, 2nd Edition 2nd Edition by Brian W. Kernighan (Author), Dennis M. Ritchie (Author)</a>
+        </li>
+        <li><a href="https://www.programiz.com/c-programming" target="_blank">Learn C Programming </a></li>
+        <li><a href="https://www.tutorialspoint.com/cprogramming/index.htm" target="_blank">C Tutorial </a></li>
+      </ul>
+
+    </div>
+    <div class="w3-black w3-center w3-padding-24">Giáo trình Ngôn ngữ lập trình.</div>
+    <!-- End page content -->
+  </div>
+  <script src="https://www.jdoodle.com/assets/jdoodle-pym.min.js" type="text/javascript"></script>
+  <script>
+    // Script to open and close sidebar
+    function w3_open() {
+      document.getElementById("mySidebar").style.display = "block";
+      document.getElementById("myOverlay").style.display = "block";
+    }
+
+    function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+      document.getElementById("myOverlay").style.display = "none";
+    }
+  </script>
+
+</body>
+
+</html>

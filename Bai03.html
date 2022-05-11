@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+<title>Bài 3 </title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="w3.css">
+<link rel="stylesheet" href="font.css">
+<link rel="stylesheet" href="font-awesome.min.css">
+<style>
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Raleway", sans-serif
+  }
+</style>
+
+<body class="w3-light-grey w3-content" style="max-width:1600px">
+
+  <!-- Sidebar/menu -->
+  <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+    <div class="w3-container">
+      <a href="#" style="text-decoration: none;" onclick="w3_close()"
+        class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu"> X </a>
+      <!--<h4><b>Giáo trình</b></h4>-->
+    </div>
+    <div class="w3-bar-block">
+      <a href="Bai01.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 1</a>
+      <a href="Bai02.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 2</a>
+      <a href="Bai03.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal">Bài 3</a>
+      <a href="Bai04.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 4</a>
+      <a href="Bai05.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 5</a>
+      <a href="Bai06.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 6</a>
+      <a href="Bai07.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 7</a>
+    </div>
+  </nav>
+
+  <!-- Overlay effect when opening sidebar on small screens -->
+  <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"
+    title="close side menu" id="myOverlay">=</div>
+
+  <!-- !PAGE CONTENT! -->
+  <div class="w3-main" style="margin-left:300px">
+
+    <!-- Header -->
+    <header id="portfolio">
+      <!--<a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;"
+          class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>-->
+      <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()">=</span>
+      <div class="w3-container">
+        <h1><b>Bài 3: CÁC LỆNH CẤU TRÚC</b></h1>
+      </div>
+    </header>
+    <div class="w3-container w3-padding-large" style="margin-bottom:32px">
+      <h4><b>I. Lệnh rẽ nhánh có điều kiện if</b></h4>
+      <p><b>1. Lệnh if-else </b></p>
+      <p> Toán tử if cho phép lựa chọn chạy theo một trong hai nhánh tuỳ thuộc vào sự bằng không và khác không của biểu
+        thức. Nó có hai cách viết sau :</p>
+      <div class="w3-code notranslate htmlHigh">
+        /* Dạng một */<br>
+        if ( biểu thức ) khối lệnh 1;
+      </div>
+      <p>hay</p>
+      <div class="w3-code notranslate htmlHigh">
+        /* Dạng hai */<br>
+        if ( biểu thức ) khối lệnh 1;<br>
+        else khối lệnh 2 ;<br>
+      </div>
+      <p>Hoạt động của biểu thức dạng 1:</p>
+      <p>Máy tính giá trị của biểu thức.
+        Nếu biểu thức đúng ( biểu thức có giá trị khác 0 ) máy sẽ thực hiện khối lệnh 1 và sau đó sẽ thực hiện các lệnh
+        tiếp sau lệnh if trong chương trình.
+        Nếu biểu thức sai ( biểu thức có giá trị bằng 0 ) thì máy bỏ qua khối lệnh 1 mà thực hiện ngay các lệnh tiếp sau
+        lệnh if trong chương trình.</p>
+      <p>Hoạt động của biểu thức dạng 2:</p>
+      <p>Máy tính giá trị của biểu thức. Nếu biểu thức đúng ( biểu thức có giá trị khác 0 ) máy sẽ thực hiện khối lệnh 1
+        và sau đó sẽ thực hiện các lệnh tiếp sau khối lệnh 2 trong chương trình. Nếu biểu thức sai ( biểu thức có giá
+        trị bằng 0 ) thì máy bỏ qua khối lệnh 1 mà thực hiện khối lệnh 2 sau đó thực hiện tiếp các lệnh tiếp sau khối
+        lệnh 2 trong chương trình.</p>
+      <p>Ví dụ:</p>
+      <p>Chương trình nhập vào hai số a và b, tìm max của hai số rồi in kết quả lên màn hình. Chương trình có thể viết
+        bằng cả hai cách trên như sau:</p>
+      <p><b>Cách 1 </b></p>
+      <p>Nhập hai số lẻ bất kỳ cách nhau bởi khoảng trắng vào ô <b>Stdin Inputs</b> và nhấn nút <b>Execute</b> màu xanh
+        để
+        xem kết quả.</p>
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4J5D?arg=0"></div>
+      <p><b>Cách 2</b></p>
+      <p>Nhập hai số lẻ bất kỳ cách nhau bởi khoảng trắng vào ô <b>Stdin Inputs</b> và nhấn nút <b>Execute</b> màu xanh
+        để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4J5T?arg=0"></div>
+      <p><b>Sự lồng nhau của các toán tử if</b></p>
+      <p>C cho phép sử dụng các toán tử if lồng nhau có nghĩa là trong các khối lệnh (1 và 2) ở trên có thể chứa các
+        toán tử if - else khác. Trong trường hợp này, nếu không sử dụng các dấu đóng mở ngoặc cho các khối thì sẽ có thể
+        nhầm lẫn giữa các if-else.</p>
+      <p>Chú ý là máy sẽ gắn toán tử else với toán tử if không có else gần nhất. Chẳng hạn như đoạn chương trình ví dụ
+        sau:</p>
+      <div class="w3-code notranslate htmlHigh">
+        if ( n>0 ) /* if thứ nhất*/ <br>
+        if ( a>b ) /* if thứ hai*/ z=a; <br>
+        else z=b;
+      </div>
+      <p>thì else ở đây sẽ đi với if thứ hai.</p>
+      <p>Đoạn chương trình trên tương đương với:</p>
+      <div class="w3-code notranslate htmlHigh">
+        if ( n>0 ) /* if thứ nhất*/<br>
+        { <br>
+        if ( a>b ) /* if thứ hai*/ z=a; <br>
+        else z=b;<br>
+        }
+      </div>
+      <p>Trường hợp ta muốn else đi với if thứ nhất ta viết như sau:</p>
+      <div class="w3-code notranslate htmlHigh">
+        if ( n>0 ) /* if thứ nhất*/<br>
+        { <br>
+        if ( a>b ) /* if thứ hai*/ z=a;<br>
+        } else z=b;<br>
+      </div>
+      <p><b>2. Lệnh else-if</b></p>
+      <p>Khi muốn thực hiện một trong n quyết định ta có thể sử dụng cấu trúc sau:</p>
+      <div class="w3-code notranslate htmlHigh">
+        if ( biểu thức 1 ) khối lệnh 1; <br>
+        else if ( biểu thức 2 ) khối lệnh 2;<br>
+        ...<br>
+        else if ( biểu thức n-1) khối lệnh n-1;<br>
+        else khối lệnh n;<br>
+      </div>
+      <p>Trong cấu trúc này, máy sẽ đi kiểm tra từ biểu thức 1 trở đi đến khi gặp biểu thức nào có giá trị khác 0.
+        Nếu biểu thức thứ i (1,2,...n-1) có giá trị khác 0, máy sẽ thực hiện khối lệnh i, rồi sau đó đi thực hiện lệnh
+        nằm tiếp theo khối lệnh n trong chương trình.
+        Nếu trong cả n-1 biểu thức không có biểu thức nào khác 0, thì máy sẽ thực hiện khối lệnh n rồi sau đó đi thực
+        hiện lệnh nằm tiếp theo khối lệnh n trong chương trình.</p>
+      <p>Ví dụ chương trình sau đây.</p>
+      <p>Nhập số nguyên bất kỳ từ 1 đến 10 vào ô <b>Stdin Inputs</b> và nhấn nút <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4J6m?arg=0"></div>
+      <p><b>3. Lệnh rẽ nhánh có điều kiện switch...case</b></p>
+      <p>Là cấu trúc tạo nhiều nhánh đặc biệt. Nó căn cứ vào giá trị một biểu thức nguyên để để chọn một trong nhiều
+        cách nhảy.</p>
+      <p>Cấu trúc tổng quát của nó là:</p>
+      <div class="w3-code notranslate htmlHigh">
+        switch ( biểu thức nguyên )<br>
+        {<br>
+        case n1 khối lệnh 1<br>
+        case n2 khối lệnh 2<br>
+        ...<br>
+        case nk khối lệnh k<br>
+        [default khối lệnh k+1]<br>
+        }
+      </div>
+      <p>Với ni là các số nguyên, hằng ký tự hoặc biểu thức hằng. Các ni cần có giá trị khác nhau. Đoạn chương trình nằm
+        giữa các dấu { } gọi là thân của toán tử switch. default là một thành phần không bắt buộc phải có trong thân của
+        switch. Sự hoạt động của toán tử switch phụ thuộc vào giá trị của biểu thức viết trong dấu ngoặc ( ) như sau:
+      </p>
+      <p>Khi giá trị của biểu thức này bằng ni, máy sẽ nhảy tới các câu lệnh có nhãn là case ni. Khi giá trị biểu thức
+        khác tất cả các ni thì cách làm việc của máy lại phụ thuộc vào sự có mặt hay không của lệnh default như sau:</p>
+      <ul>
+        <li>Khi có default máy sẽ nhảy tới câu lệnh sau nhãn default.</li>
+        <li>Khi không có default máy sẽ nhảy ra khỏi cấu trúc switch.</li>
+      </ul>
+      <p>Chú ý: Máy sẽ nhảy ra khỏi toán tử switch khi nó gặp câu lệnh break hoặc dấu ngoặc nhọn đóng cuối cùng của thân
+        switch. Ta cũng có thể dùng câu lệnh goto trong thân của toán tử switch để nhảy tới một câu lệnh bất kỳ bên
+        ngoài switch. Khi toán tử switch nằm trong thân một hàm nào đó thì ta có thể sử dụng câu lệnh return trong thân
+        của switch để ra khỏi hàm này ( lệnh return sẽ đề cập sau).</p>
+      <p> Khi máy nhảy tới một câu lệnh nào đó thì sự hoạt động tiếp theo của nó sẽ phụ thuộc vào các câu lệnh đứng sau
+        câu lệnh này. Như vậy nếu máy nhảy tới câu lệnh có nhãn case ni thì nó có thể thực hiện tất cả các câu lệnh sau
+        đó cho tới khi nào gặp câu lệnh break, goto hoặc return. Nói cách khác, máy có thể đi từ nhóm lệnh thuộc case ni
+        sang nhóm lệnh thuộc case thứ ni+1. Nếu mỗi nhóm lệnh được kết thúc bằng break thì toán tử switch sẽ thực hiện
+        chỉ một trong các nhóm lệnh này.</p>
+      <p>Ví dụ chương trình sau đây.</p>
+      <p>Nhập số nguyên bất kỳ từ 1 đến 10 vào ô <b>Stdin Inputs</b> và nhấn nút <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4JiG?arg=0"></div>
+      <p><b>4. Các lệnh break, continue, goto</b></p>
+      <p><b>Lệnh Break</b></p>
+      <p>Câu lệnh break cho phép ra khỏi các chu trình với lệnh điều khiển for, while và switch. Khi có nhiều chu trình
+        lồng nhau, câu lệnh break sẽ đưa máy ra khỏi chu trình bên trong nhất chứa nó không cần điều kiện gì. Mọi câu
+        lệnh break có thể thay bằng câu lệnh goto với nhãn thích hợp.</p>
+      <p>Ví dụ chương trình sau đây dùng lệnh lặp while hiển thị các số nguyên từ 10 đến 15. Chi tiết về while sẽ đề cập
+        bên dưới bài học này.</p>
+      <p>Nhấn nút <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4JiZ?stdin=0&arg=0"></div>
+      <p><b>Câu lệnh continue</b></p>
+      <p>Trái với câu lệnh break, lệnh continue dùng để bắt đầu một vòng mới của chu trình chứa nó. Trong while và do
+        while, lệnh continue chuyển điều khiển về thực hiện ngay phần kiểm tra, còn trong for điều khiển được chuyển về
+        bước khởi đầu lại (tức là bước: tính biểu thức 3, sau đó quay lại bước 2 để bắt đầu một vòng mới của chu trình).
+      </p>
+      <p>Chú ý: Lệnh continue chỉ áp dụng cho chu trình tức các lệnh lặp chứ không áp dụng cho switch.</p>
+      <p>Ví dụ chương trình sau đây dùng lệnh lặp while hiển thị các số nguyên từ 10 đến 19 nhưng bỏ qua số 15. Chi tiết
+        về while sẽ đề cập
+        bên dưới bài học này.</p>
+      <p>Nhấn nút <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4Jjb?stdin=0&arg=0"></div>
+
+      <p><b>Lệnh nhảy không điều kiện - toán tử goto</b></p>
+      <p>Nhãn có cùng dạng như tên biến và có dấu : đứng ở phía sau. Nhãn có thể được gán cho bất kỳ câu lệnh nào trong
+        chương trình.</p>
+      <p>Ví dụ:</p>
+      <p>ts : s = s++; thì ở đây ts là nhãn của câu lệnh gán s = s++.</p>
+      <p>Toán tử goto có dạng: <b>goto nhãn;</b></p>
+      <p>Khi gặp toán tử này máy sẽ nhảy tới câu lệnh có nhãn viết sau từ khoá goto.</p>
+      <p>Khi dùng toán tử goto cần chú ý:</p>
+      <p> Câu lệnh goto và nhãn cần nằm trong một hàm, có nghĩa là toán tử goto chỉ cho phép nhảy từ vị trí này đến vị
+        trí khác trong thân một hàm và không thể dùng để nhảy từ một hàm này sang một hàm khác.
+        Không cho phép dùng toán tử goto để nhảy từ ngoài vào trong một khối lệnh. Tuy nhiên việc nhảy từ trong một khối
+        lệnh ra ngoài là hoàn toàn hợp lệ.
+        Ví dụ như đoạn chương trình sau là sai.</p>
+      <div class="w3-code notranslate htmlHigh">
+        goto n1; <br>
+        ... {<br>
+        ...<br>
+        n1: printf("\n Gia tri cua N la: ");<br>
+        ...<br>
+        }
+      </div>
+      <p>Ví dụ chương trình sau đây dùng lệnh lặp while hiển thị các số nguyên từ 10 đến 19 nhưng bỏ qua số 15 dùng goto
+        thay vì dùng break như ví dụ trên. Chi tiết
+        về while sẽ đề cập
+        bên dưới bài học này.</p>
+      <p>Nhấn nút <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4Jly?stdin=0&arg=0"></div>
+      <p><b>5. Cấu trúc vòng lặp for</b></p>
+      <p>Cú pháp:</p>
+      <div class="w3-code notranslate htmlHigh">
+        for( biểu thức 1; biểu thức 2; biểu thức 3)<br>
+        &nbsp;Lệnh hoặc khối lệnh ;<br>
+      </div>
+      <p>Toán tử for gồm ba biểu thức và thân for. Thân for là một câu lệnh hoặc một khối lệnh viết sau từ khoá for. Bất
+        kỳ biểu thức nào trong ba biểu thức trên có thể vắng mặt nhưng phải giữ dấu.</p>
+      <p>Thông thường biểu thức 1 là toán tử gán để tạo giá trị ban đầu cho biến điều khiển, biểu thức 2 là một quan hệ
+        logic biểu thị điều kiện để tiếp tục chu trình, biểu thức ba là một toán tử gán dùng để thay đổi giá trị biến
+        điều khiển.</p>
+      <p>Hoạt động của vòng lặp for :theo các bước sau:</p>
+      <ul>
+        <li>Xác định biểu thức 1</li>
+        <li>Xác định biểu thức 2</li>
+        <li>Tuỳ thuộc vào tính đúng sai của biểu thức 2 để máy lựa chọn một trong hai nhánh: Nếu biểu thức hai có giá
+          trị 0 ( sai ), máy sẽ ra khỏi for và chuyển tới câu lệnh sau thân for. Nếu biểu thức hai có giá trị khác 0 (
+          đúng ), máy sẽ thực
+          hiện các câu lệnh trong thân for. Tính biểu thức 3, sau đó quay lại bước 2 để bắt đầu một vòng mới của chu
+          trình.</li>
+      </ul>
+      <p>Nếu biểu thức 2 vắng mặt thì nó luôn được xem là đúng. Trong trường hợp này việc ra khỏi chu trình for cần phải
+        được thực hiện nhờ các lệnh break, goto hoặc return viết trong thân chu trình. Trong dấu ngoặc tròn sau từ khoá
+        for gồm ba biểu thức phân cách nhau bởi dấu; Trong mỗi biểu thức không những có thể viết một biểu thức mà có
+        quyền viết một dãy biểu thức phân cách nhau bởi dấu phảy. Khi đó các biểu thức trong mỗi phần được xác định từ
+        trái sang phải.</p>
+      <p>Tính đúng sai của dãy biểu thức được tính là tính đúng sai của biểu thức cuối cùng trong dãy này. Trong thân
+        của for ta có thể dùng thêm các toán tử for khác, vì thế ta có thể xây dựng các toán tử for lồng nhau.
+        Khi gặp câu lệnh break trong thân for, máy ra sẽ ra khỏi toán tử for sâu nhất chứa câu lệnh này. Trong thân for
+        cũng có thể sử dụng toán tử goto để nhảy đến một ví trí mong muốn bất kỳ. Xem các ví dụ sau đây để hiểu hơn về
+        for.
+      </p>
+      <p>Ví dụ chương trình sau đây dùng lệnh lặp for hiển thị các số nguyên từ 1 đến 9.</p>
+      <p>Nhấn nút <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4JlS?stdin=0&arg=0"></div>
+
+      <p>Ví dụ chương trình sau đây dùng lệnh lặp for hiển thị tổng các số nguyên từ 1 đến 9.</p>
+      <p>Nhấn nút <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4JlY?stdin=0&arg=0"></div>
+
+      <p>Ví dụ chương trình sau đây dùng lệnh lặp for hiển thị các số nguyên lẻ từ 1 đến 9.</p>
+      <p>Nhấn nút <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4Jm3?stdin=0&arg=0"></div>
+
+      <p><b>6. Cấu trúc vòng lặp while</b></p>
+      <p>Toán tử while dùng để xây dựng chu trình lặp dạng:</p>
+      <div class="w3-code notranslate htmlHigh">
+        while( biểu thức )<br>
+        &nbsp;Lệnh hoặc khối lệnh;
+      </div>
+      <p>Như vậy toán tử while gồm một biểu thức và thân chu trình. Thân chu trình có thể là một lệnh hoặc một khối
+        lệnh.</p>
+      <p>Hoạt động của chu trình như sau:</p>
+      <p>Máy xác định giá trị của biểu thức, tuỳ thuộc giá trị của nó máy sẽ chọn cách thực hiện như sau : Nếu biểu thức
+        có giá trị 0 ( biểu thức sai ), máy sẽ ra khỏi chu trình và chuyển tới thực hiện câu lệnh tiếp sau chu trình
+        trong chương trình.</p>
+      <p>Nếu biểu thức có giá trị khác không ( biểu thức đúng ), máy sẽ thực hiện lệnh hoặc khối lệnh trong thân của
+        while. Khi máy thực hiện xong khối lệnh này nó lại thực hiện xác định lại giá trị biểu thức rồi làm tiếp các
+        bước như trên.</p>
+      <p>Chú ý:</p>
+
+      <p>Trong các dấu ngoặc ( ) sau while chẳng những có thể đặt một biểu thức mà còn có thể đặt một dãy biểu thức phân
+        cách nhau bởi dấu phảy. Tính đúng sai của dãy biểu thức được hiểu là tính đúng sai của biểu thức cuối cùng trong
+        dãy.</p>
+      <p>Bên trong thân của một toán tử while lại có thể sử dụng các toán tử while khác. bằng cách đó ta đi xây dựng
+        được các chu trình lồng nhau.</p>
+      <p>Khi gặp câu lệnh break trong thân while, máy sẽ ra khỏi toán tử while sâu nhất chứa câu lệnh này.</p>
+      <p>Trong thân while có thể sử dụng toán tử goto để nhảy ra khỏi chu trình đến một vị trí mong muốn bất kỳ. Ta cũng
+        có thể sử dụng toán tử return trong thân while để ra khỏi một hàm nào đó.</p>
+      <p>Xem các ví dụ for được viết lại dưới dạng while sau đây.</p>
+      <p>Ví dụ chương trình sau đây dùng lệnh lặp while hiển thị các số nguyên từ 1 đến 9.</p>
+      <p>Nhấn nút <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4Jmu?stdin=0&arg=0"></div>
+
+      <p>Ví dụ chương trình sau đây dùng lệnh lặp while hiển thị tổng các số nguyên từ 1 đến 9.</p>
+      <p>Nhấn nút <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4JmA?stdin=0&arg=0"></div>
+
+      <p>Ví dụ chương trình sau đây dùng lệnh lặp while hiển thị các số nguyên lẻ từ 1 đến 9.</p>
+      <p>Nhấn nút <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4JmB?stdin=0&arg=0"></div>
+      <p><b>7. Cấu trúc vòng lặp do ...while</b></p>
+      <p>Khác với các toán tử while và for, việc kiểm tra điều kiện kết thúc đặt ở đầu chu trình, trong chu trình do
+        while việc kiểm tra điều kiện kết thúc đặt cuối chu trình.</p>
+      <p>Như vậy thân của chu trình bao giờ cũng được thực hiện ít nhất một lần. Chu trình do while có dạng sau:</p>
+      <div class="w3-code notranslate htmlHigh">
+        do<br>
+        &nbsp;Lệnh hoặc khối lệnh;<br>
+        while ( biểu thức );
+      </div>
+      <p>Lệnh hoặc khối lệnh là thân của chu trình có thể là một lệnh riêng lẻ hoặc là một khối lệnh.</p>
+      <p>Hoạt động của chu trình như sau: Máy thực hiện các lệnh trong thân chu trình. Khi thực hiện xong tất cả các
+        lệnh trong thân của chu trình, máy sẽ xác định giá trị của biểu thức sau từ khoá while rồi quyết định thực hiện
+        như sau:</p>
+      <ul>
+        <li>Nếu biểu thức đúng ( khác 0 ) máy sẽ thực hiện lặp lại khối lệnh của chu trình lần thứ hai rồi thực hiện
+          kiểm tra lại biểu thức như trên.</li>
+        <li>Nếu biểu thức sai ( bằng 0 ) máy sẽ kết thúc chu trình và chuyển tới thực hiện lệnh đứng sau toán tử while.
+        </li>
+      </ul>
+      <p>Chú ý: Những điều lưu ý với toán tử while ở trên hoàn toàn đúng với do while.</p>
+      <p>Ví dụ chương trình sau đây dùng lệnh lặp do while hiển thị các số nguyên từ 1 đến 9.</p>
+      <p>Nhấn nút <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4JmH?stdin=0&arg=0"></div>
+      <p>Ví dụ chương trình sau đây dùng lệnh lặp do while hiển thị các số nguyên từ 1 đến 9 nhưng giá trị i chúng ta
+        khởi tạo bằng 10.
+      <p>
+      <p>Nhấn nút <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4JmK?stdin=0&arg=0"></div>
+      <p>Kết quả hiển thị giá trị 10 ra màn hình. Trong khi đó nếu dùng while, sẽ không có giá trị nào xuất hiện như
+        sau:</p>
+      <p>Ví dụ chương trình sau đây dùng lệnh lặp while hiển thị các số nguyên từ 1 đến 9 nhưng giá trị i chúng ta khởi
+        tạo bằng 10.
+      <p>
+      <p>Nhấn nút <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4JmO?stdin=0&arg=0"></div>
+      <p>Đây chính là một trong những khác biệt giữa while và do while.</p>
+
+      <div class="w3-section w3-bottombar"></div>
+      <h4><b>Tài liệu và các nguồn tham khảo khác</b></h4>
+      <ul>
+        <li><a
+            href="https://www.amazon.com/Programming-Language-2nd-Brian-Kernighan/dp/0131103628?asin=0131103628&revisionId=&format=4&depth=1"
+            target="_blank">C
+            Programming Language, 2nd Edition 2nd Edition by Brian W. Kernighan (Author), Dennis M. Ritchie (Author)</a>
+        </li>
+        <li><a href="https://www.programiz.com/c-programming" target="_blank">Learn C Programming </a></li>
+        <li><a href="https://www.tutorialspoint.com/cprogramming/index.htm" target="_blank">C Tutorial </a></li>
+      </ul>
+    </div>
+    <div class="w3-black w3-center w3-padding-24">Giáo trình Ngôn ngữ lập trình.</div>
+
+  </div>
+  <!-- End page content -->
+  </div>
+  <script src="https://www.jdoodle.com/assets/jdoodle-pym.min.js" type="text/javascript"></script>
+  <script>
+    // Script to open and close sidebar
+    function w3_open() {
+      document.getElementById("mySidebar").style.display = "block";
+      document.getElementById("myOverlay").style.display = "block";
+    }
+
+    function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+      document.getElementById("myOverlay").style.display = "none";
+    }
+  </script>
+
+</body>
+
+</html>

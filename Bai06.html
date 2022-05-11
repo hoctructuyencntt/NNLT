@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<title>Bài 6 </title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="w3.css">
+<link rel="stylesheet" href="font.css">
+<link rel="stylesheet" href="font-awesome.min.css">
+<style>
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Raleway", sans-serif
+  }
+</style>
+
+<body class="w3-light-grey w3-content" style="max-width:1600px">
+
+  <!-- Sidebar/menu -->
+  <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+    <div class="w3-container">
+      <a href="#" style="text-decoration: none;" onclick="w3_close()"
+        class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu"> X </a>
+      <!--<h4><b>Giáo trình</b></h4>-->
+    </div>
+    <div class="w3-bar-block">
+      <a href="Bai01.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 1</a>
+      <a href="Bai02.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 2</a>
+      <a href="Bai03.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 3</a>
+      <a href="Bai04.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 4</a>
+      <a href="Bai05.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 5</a>
+      <a href="Bai06.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal">Bài 6</a>
+      <a href="Bai07.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 7</a>
+    </div>
+  </nav>
+
+  <!-- Overlay effect when opening sidebar on small screens -->
+  <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"
+    title="close side menu" id="myOverlay">=</div>
+
+  <!-- !PAGE CONTENT! -->
+  <div class="w3-main" style="margin-left:300px">
+
+    <!-- Header -->
+    <header id="portfolio">
+      <!--<a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;"
+          class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>-->
+      <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()">=</span>
+      <div class="w3-container">
+        <h1><b>Bài 6: Chuỗi ký tự</b></h1>
+      </div>
+    </header>
+    <div class="w3-container w3-padding-large" style="margin-bottom:32px">
+      <h4><b>I. Chuỗi trong C</b></h4>
+      <p>Trong ngôn ngữ lập trình C, chuỗi là một tập hợp các ký tự (char) được lưu trữ trên các ô nhớ liên tiếp và luôn
+        luôn có 1 ký tự null là \0 báo hiệu kết thúc chuỗi.</p>
+      <p>Ví dụ: chuỗi "Infoworld" được lưu trữ như sau:</p>
+      <img src="img/bai06_1.jpg">
+      <p> Như vậy, nếu bạn muốn khai báo chuỗi để lưu n ký tự, bạn cần mảng ký tự có kích thước tối đa ít nhất là n+1.
+      </p>
+      <h4><b>II. Khai báo và khởi tạo biến chuỗi</b></h4>
+      <p>Bạn có thể khai báo và khởi tạo biến chuỗi theo 1 trong các cách dưới đây:</p>
+      <div class="w3-code notranslate htmlHigh">
+        char c[] = "abcd";<br>
+        char c[50] = "abcd";<br>
+        char c[] = {'a', 'b', 'c', 'd', '\0'};<br>
+        char c[5] = {'a', 'b', 'c', 'd', '\0'};<br>
+      </div>
+      <p>Nhưng không được làm như sau:</p>
+      <div class="w3-code notranslate htmlHigh">
+        char c[5] = "abcde";
+      </div>
+      <p>Bởi vì chuỗi của bạn có 5 ký tự cộng thêm 1 ký tự \0 là 6, sẽ bị vượt quá kích thước tối đa.</p>
+      <h4><b>III. Cách nhập xuất chuỗi trong C</b></h4>
+      <p>Bạn có thể sử dụng hàm <b>scanf()</b> để nhập chuỗi không có chứa dấu trắng (dấu cách, dấu tab, dấu \n) và hàm
+        <b>printf()</b> để xuất chuỗi.
+      </p>
+      <p>Ví dụ chương trình nhập xuất chuỗi dùng scanf() và printf().</p>
+      <p>Nhập một chuỗi bất kỳ không có khoảng trắng (ví dụ Minh) và một chuỗi có khoảng trắng (Ngoc Minh) vào ô
+        <b>Stdin Inputs</b>. Nhấn nút
+        <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4K9n?arg=0"></div>
+      <p> Nếu bạn để ý thì hàm scanf() dùng dấu trắng để nhập nhiều input đồng thời. Ví dụ nhập Minh sẽ hiển thị Minh
+        nhưng nếu nhập Ngoc Minh chỉ hiển thị Ngoc.
+        Do đó bạn chỉ nên dùng hàm scanf() khi nhập chuỗi viết liền. Chúng ta sẽ cùng tìm hiểu cách nhập chuỗi có khoảng
+        trắng ngay sau đây.</p>
+      <h4><b>IV. Cách nhập chuỗi có khoảng trắng</b></h4>
+      <p>Để nhập chuỗi bao gồm cả dấu trắng, bạn nên sử dụng hàm <b>fgets()</b> để nhập. Tương ứng, bạn cũng có thể in
+        ra chuỗi
+        bằng hàm <b>puts()</b>.</p>
+      <p>Nhập một chuỗi bất kỳ có khoảng trắng (Ngoc Minh) vào ô
+        <b>Stdin Inputs</b>. Nhấn nút
+        <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4Ka1?arg=0"></div>
+      <p><b>Lưu ý:</b></p>
+      <ul>
+        <li>Chúng ta hoàn toàn có thể dùng hàm <b>printf()</b> để xuất chuỗi có khoảng trắng. Sự khác biệt là hàm
+          <b>puts()</b> sẽ in
+          thêm 1 dấu \n ở cuối chuỗi.
+        </li>
+        <li>Hàm <b>gets()</b> cũng có thể dùng để nhập chuỗi. Tuy nhiên hàm này không còn được khuyến khích được sử dụng
+          vì nó
+          không chỉ định kích thước tối đa của chuỗi có thể gây ra tràn bộ nhớ làm lỗi chương trình.</li>
+      </ul>
+      <h4><b>V. Các hàm xử lý chuỗi phổ biến trong C</b></h4>
+      <p> C hỗ trợ rất nhiều hàm về chuỗi. Các hàm này có thể tìm thấy trong tập tin <b>string.h</b>. Một số thao tác mà
+        các hàm này thực hiện là:</p>
+      <ul>
+        <li>Nối chuỗi</li>
+        <li>So sánh chuỗi</li>
+        <li>Định vị một ký tự trong chuỗi</li>
+        <li>Sao chép một chuỗi sang chuỗi khác</li>
+        <li>Xác định chiều dài của chuỗi.</li>
+      </ul>
+      <p><b>Hàm strcat()</b></p>
+      <p>Hàm strcat() được sử dụng để nối hai chuỗi vào nhau. Cú pháp hàm là:</p>
+      <div class="w3-code notranslate htmlHigh">
+        strcat(str1, str2);
+      </div>
+      <p>trong đó str1 và str2 là hai chuỗi đã được khai báo và khởi tạo. Hàm này sẽ thực hiện nối chuỗi str2 vào sau
+        chuỗi str1.</p>
+      <p>Nhập chuỗi str1 (không chứa khoảng trắng, ví dụ Ngoc) và chuỗi str2 (không chứa khoảng trắng, ví dụ Minh) vào ô
+        <b>Stdin Inputs</b>. Lưu ý str1 và str2 cách nhau bởi khoảng trắng. Nhấn nút
+        <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4KkY?arg=0"></div>
+      <p>Giả sử chúng ta nhập Ngoc Minh vào ô <b>Stdin Inputs</b>, kết quả sẽ là NgocMinh.</p>
+      <p><b>Hàm strcmp()</b></p>
+
+      <p> Việc so sánh hai số (bằng nhau hay không bằng nhau) có thể thực hiện bằng cách sử dụng các toán tử quan hệ.
+        Tuy nhiên, để so sánh hai chuỗi kí tự, phải dùng một hàm. Hàm strcmp() so sánh hai chuỗi với nhau và trả về một
+        số nguyên phụ thuộc vào kết quả so sánh. Cú pháp của hàm strcmp() như sau:</p>
+      <div class="w3-code notranslate htmlHigh">
+        strcmp(str1, str2);
+      </div>
+      <p>trong đó str1 và str2 là hai chuỗi đã được khai báo và khởi tạo. Hàm trả về giá trị:</p>
+      <ul>
+        <li>Nhỏ hơn 0 nếu str1 &lt; str2</li>
+        <li> 0 nếu str1 = str2</li>
+        <li>Lớn hơn 0 nếu str1 > str2</li>
+      </ul>
+      <p>Chương trình sau đây so sánh biến name1 với các biến name2, name3, name4 và hiển thị kết quả của phép so sánh:
+      </p>
+      <p>Nhấn nút
+        <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4Kl5?stdin=0&arg=0"></div>
+      <p>Lưu ý giá trị trả về trong mỗi phép so sánh ở ví dụ trên. Đó là sự khác nhau về mã ASCII của hai kí tự khác
+        nhau đầu tiên tìm thấy trong hai chuỗi.</p>
+      <p><b>Hàm strchr()</b></p>
+      <p>Hàm strchr() xác định vị trí xuất hiện của một ký tự trong một chuỗi. Cú pháp hàm là:</p>
+      <div class="w3-code notranslate htmlHigh">
+        strchr(str, chr);
+      </div>
+      <p>trong đó str là một mảng ký tự hay chuỗi. chr là một biến ký tự chứa giá trị cần tìm. Hàm trả về con trỏ trỏ
+        đến giá trị tìm được đầu tiên trong chuỗi, hoặc NULL nếu không tìm thấy.</p>
+      <p>Chương trình sau đây xác định liệu ký tự 'a' có xuất hiện trong tên hai thành phố hay không.</p>
+      <p>Nhấn nút
+        <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4Klc?stdin=0&arg=0"></div>
+      <p><b>Hàm strcpy()</b></p>
+      <p>
+        Trong C không có toán tử nào xử lý một chuỗi như là một đơn vị duy nhất. Vì vậy, phép gán một giá trị chuỗi này
+        cho một chuỗi khác đòi hỏi phải sử dụng hàm strcpy(). Cú pháp hàm là:</p>
+      <div class="w3-code notranslate htmlHigh">
+        strcpy(str1, str2);
+      </div>
+      <p>trong đó str1 và str2 là hai mảng ký tự đã được khai báo và khởi tạo. Hàm sao chép giá trị str2 vào str1 và trả
+        về chuỗi str1.</p>
+      <p>
+        Chương trình sau đây minh họa việc sử dụng hàm strcpy(). Nó thay đổi tên của một khách sạn và hiển thị tên mới.
+      </p>
+      <p>Nhấn nút
+        <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4Klk?stdin=0&arg=0"></div>
+      <p><b>Hàm strlen()</b></p>
+      <p>Hàm strlen() trả về chiều dài của chuỗi. Chiều dài của chuỗi rất hay được sử dụng trong các vòng lặp truy câp
+        từng kí tự của chuỗi. Cú pháp của hàm là:</p>
+      <div class="w3-code notranslate htmlHigh">
+        strlen(str);
+      </div>
+      <p>trong đó str là mảng ký tự đã được khai báo và khởi tạo. Hàm trả về chiều dài của chuỗi str.</p>
+      <p>Chương trình sau đây đưa ra ví dụ đơn giản sử dụng hàm strlen(). Nó tìm chiều dài của tên một công ty và hiển
+        thị tên công ty đó với các ký tự được phân cách nhau bởi ký tự '*'.</p>
+      <p>Nhấn nút
+        <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4Klt?stdin=0&arg=0"></div>
+      <h4><b>VI. Truyền chuỗi vào hàm</b></h4>
+      <p>
+        Chuỗi, hay mảng ký tự, có thể được truyền vào hàm. Ví dụ, chương trình sau đây sẽ nhận vào các chuỗi và lưu
+        trong một mảng ký tự hai chiều. Sau đó, mảng này sẽ được truyền vào trong một hàm dùng để tìm chuỗi dài nhất
+        trong mảng đó.</p>
+      <p>Nhập 3 chuỗi cách nhau bởi khoảng trắng vào ô
+        <b>Stdin Inputs</b>. Nhấn nút
+        <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4KlJ?arg=0"></div>
+      <p>Ví dụ nhập aa bbb cccc, kết quả hiển thị: <b>Chuoi dai nhat la: cccc</b></p>
+
+      <div class="w3-section w3-bottombar"></div>
+      <h4><b>Tài liệu và các nguồn tham khảo khác</b></h4>
+      <ul>
+        <li><a
+            href="https://www.amazon.com/Programming-Language-2nd-Brian-Kernighan/dp/0131103628?asin=0131103628&revisionId=&format=4&depth=1"
+            target="_blank">C
+            Programming Language, 2nd Edition 2nd Edition by Brian W. Kernighan (Author), Dennis M. Ritchie
+            (Author)</a>
+        </li>
+        <li><a href="https://www.programiz.com/c-programming" target="_blank">Learn C Programming </a></li>
+        <li><a href="https://www.tutorialspoint.com/cprogramming/index.htm" target="_blank">C Tutorial </a></li>
+      </ul>
+
+    </div>
+    <div class="w3-black w3-center w3-padding-24">Giáo trình Ngôn ngữ lập trình.</div>
+
+    <!-- End page content -->
+  </div>
+  <script src="https://www.jdoodle.com/assets/jdoodle-pym.min.js" type="text/javascript"></script>
+  <script>
+    // Script to open and close sidebar
+    function w3_open() {
+      document.getElementById("mySidebar").style.display = "block";
+      document.getElementById("myOverlay").style.display = "block";
+    }
+
+    function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+      document.getElementById("myOverlay").style.display = "none";
+    }
+  </script>
+
+</body>
+
+</html>
