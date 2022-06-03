@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<title>Bài mở đầu: Giới thiệu về ngôn ngữ C </title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="w3.css">
+<link rel="stylesheet" href="font.css">
+<link rel="stylesheet" href="font-awesome.min.css">
+<style>
+  #myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: pink;
+    color: black;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 4px;
+  }
+
+  #myBtn:hover {
+    background-color: #555;
+  }
+
+  .w3-main a {
+    background-color: red;
+  }
+
+  .pagination {
+    display: inline-block;
+  }
+
+  .pagination a {
+    color: white;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    background-color: gray;
+  }
+
+  .pagination a.active {
+    background-color: gray;
+    color: white;
+    border: 1px solid #4CAF50;
+  }
+
+  .pagination a:hover:not(.active) {
+    background-color: #ddd;
+  }
+
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Raleway", sans-serif
+  }
+
+
+  #tab {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  #tab td,
+  #tab th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  /*
+  #tab tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+*/
+  #tab tr:hover {
+    background-color: #ddd;
+  }
+
+  #tab th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+  }
+
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+  .w3-code a {
+    background-color: transparent;
+    text-decoration: none;
+    color: blue;
+  }
+
+  .video-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  .video-container::after {
+    padding-top: 56.25%;
+    display: block;
+    content: '';
+  }
+
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+<body class="w3-black w3-content" style="max-width:1600px">
+
+  <!-- Sidebar/menu -->
+  <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+    <div class="w3-container">
+      <a href="#" style="text-decoration: none;" onclick="w3_close()"
+        class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu"> X </a>
+      <!--<h4><b>Giáo trình</b></h4>-->
+    </div>
+    <div class="w3-bar-block">
+      <a href="Baimodau.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal">Bài mở đầu:
+        Giới
+        thiệu về ngôn ngữ C</a>
+      <a href="Bai01.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 1: Các thành phần cơ bản
+        trong ngôn ngữ C</a>
+      <a href="Bai02.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 2: Các câu lệnh đơn</a>
+      <a href="Bai03.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 3: Các câu lệnh rẽ
+        nhánh</a>
+      <a href="Bai04.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 4: Các câu lệnh lặp</a>
+      <a href="Bai05.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 5: Hàm</a>
+      <a href="Bai06.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 6: Mảng</a>
+      <a href="Bai07.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 7: Chuỗi</a>
+      <a href="Bai08.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 8: Con trỏ</a>
+      <a href="Thamkhao.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Nguồn tham
+        khảo</a>
+    </div>
+  </nav>
+
+  <!-- Overlay effect when opening sidebar on small screens -->
+  <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"
+    title="close side menu" id="myOverlay">=</div>
+
+  <!-- !PAGE CONTENT! -->
+  <div class="w3-main" style="margin-left:300px">
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Lên đầu trang</button>
+    <!-- Header -->
+    <header id="portfolio">
+      <!--<a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;"
+          class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>-->
+      <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()">=</span>
+      <div class="w3-container">
+        <h1><b>Bài mở đầu: Giới thiệu về ngôn ngữ C</b></h1>
+        <div class="w3-section w3-bottombar"></div>
+      </div>
+    </header>
+
+    <div class="w3-container w3-padding-large" style="margin-bottom:32px">
+      <div class="w3-center">
+        <div class="pagination">
+          <a href="Bai01.html">Bài tiếp theo</a>
+        </div>
+      </div>
+      <div class="w3-code notranslate htmlHigh">
+        <h4>Nội dung bài học</h4>
+        <ol>
+          <li><a href="#muc1">Tổng quan về ngôn ngữ lập trình C</a>
+          </li>
+          <li><a href="#muc2">Khởi động và thoát khỏi chương trình C</a>
+            <ul>
+              <li><a href="#muc2_1">Trên máy PC</a>
+              <li><a href="#muc2_2">Trình soạn thảo, biên dịch trực tuyến</a>
+            </ul>
+          </li>
+        </ol>
+      </div>
+      <h4 id="muc1"><b>I. Tổng quan về ngôn ngữ lập trình C</b></h4>
+      <p>
+        Tiền thân của ngôn ngữ lập trình C là ngôn ngữ BCPL ( Basic Conbined Programming Language) do Martin Richards
+        nghiên cứu. Ảnh hưởng của ngôn ngữ BCPL lên ngôn ngữ lập trình C gián tiếp thông qua ngôn ngữ B, do Ken Thompson
+        viết năm 1970 cho hệ điều hành UNIX chạy trên họ máy tính PDP - 7.</p>
+      <p>Nhu cầu cải tiến và phát triển cho UNIX đã thúc đẩy Dennis Ritchie và Brian Kernighan sáng tạo ra ngôn ngữ lập
+        trình C ngay tại phòng thí nghiệm BELL ( Hoa Kỳ) vào đầu những năm 70 nhằm mục đích ban đầu là phát triển một
+        ngôn ngữ hệ thống mềm dẻo thay thế cho ngôn ngữ Assembly vốn nặng nề và “cứng nhắc” với các thiết bị phần cứng.
+      </p>
+      <p>Ngôn ngữ lập trình C đặc biệt khác với ngôn ngữ BCPL và ngôn ngữ B ở chỗ : ngôn ngữ BCPL và ngôn ngữ B chỉ có
+        duy nhất một kiểu dữ liệu là từ máy, trong khi đó ngôn ngữ lập trình C đã có các đối tượng dữ liệu cơ bản như kí
+        tự,
+        các kiểu số nguyên và các kiểu số thực. Đặc biệt con trỏ trong ngôn ngữ lập trình C tạo ra thêm được rất nhiều
+        tính ưu việt.</p>
+      <p>
+        Sau khi ra đời, đặc biệt thành công với hệ điều hành UNIX, ngôn ngữ lập trình C bắt đầu được phổ biến rộng rãi
+        và
+        người ta đã nhận thấy sức mạnh của nó. C là ngôn ngữ lập trình tương đối vạn năng, có mức độ thích nghi cao, mềm
+        dẻo. Khác với ngôn ngữ Pascal, là ngôn ngữ lập trình có cấu trúc rất chặt chẽ và thường được dùng để giảng dạy
+        về
+        lập trình đặc biệt trong các trường đại học, thì ngôn ngữ lập
+        trình C lại được sử dụng rộng rãi trong các lĩnh vực chuyên nghiệp vì tính hiệu quả và mềm dẻo của nó.</p>
+      <h4 id="muc2"><b>II. Khởi động và thoát khỏi C </b></h4>
+      <h4 id="muc2_1"><b>II.1. Trên máy PC</b></h4>
+      <h5><b>Phần mềm soạn thảo và biên dịch</b></h5>
+      <p>Trên PC chúng ta có thể sử dụng rất nhiều phần mềm hỗ trợ soạn thảo, biên dịch các chương trình ngôn ngữ C như
+        <a href="https://turboc.me/download-turbo-c-file/">Turbo C</a>, <a
+          href="https://sourceforge.net/projects/orwelldevcpp/">Dev-C++</a>, hay <a
+          href="https://code.visualstudio.com/download">Visual Studio Code</a>.
+      </p>
+      <p>Phụ thuộc vào phần mềm đang sử dụng, chúng ta sẽ có giao diện khởi động, soạn thảo, trợ giúp khác nhau. Trong
+        giáo trình này chúng ta sử dụng Dev C++ vì tính tiện lợi và phổ dụng của nó. </p>
+
+      <h5><b>Cài đặt và sử dụng môi trường Dev C++</b></h5>
+      <p>Tải Dev-C++ <a href="https://sourceforge.net/projects/orwelldevcpp/">tại đây</a> và cài đặt. Sau khi cài đặt
+        thành công, chúng ta tiến hành các bước sau để sử dụng môi trường Dev-C++</p>
+      <p>Cấu hình Dev-C++ bằng cách vào Tools chọn Compiler Options</p>
+      <img src="img/devc_1.png" class="center">
+      <p>Tại mục Settings chọn Linker từ của sổ bên trái và thay đổi Generate debugging information đến Yes
+      </p>
+      <img src="img/devc_2.png" class="center">
+      <p>Tạo dự án mới bằng cách vào File chọn New chọn Project
+      </p>
+      <img src="img/devc_3.png" class="center">
+      <p>Tạo dự án mới bằng cách vào File chọn New chọn Project
+      </p>
+      <img src="img/devc_3.png" class="center">
+      <p>Một số tính năng cơ bản khi chọn New:</p>
+      <ul>
+        <li>Source File: Tập tin mã nguồn ngôn ngữ C có phần mở rộng .c</li>
+        <li>Project: Tương đương một thư mục gốc chứa nhiều tập tin mã nguồn (*.c) và các tập tin tài nguyên khác. Các
+          tập tin trong cùng một Project phải có liên hệ nhau.</li>
+        <li>Resource File: Các tập tin tài nguyên cho một dự án như tập tin ảnh (.bmp, .png,…), video (.mp4),...</li>
+      </ul>
+      <p>Trong hộp thoại New Project, chọn Empty Project, chọn C Project và nhập tên dự án vào ô Name và nhấn OK
+      </p>
+      <img src="img/devc_4.png" class="center">
+      <p>Trong hộp thoại Create new project, chọn vị trí lưu dự án trong mục Save in, thay đổi tên (hay để mặc định) tập
+        tin trong mục File name và nhấn Save:
+      </p>
+      <img src="img/devc_5.png" class="center">
+      <p>Trong hộp thoại Create new project, chọn vị trí lưu dự án trong mục Save in, thay đổi tên (hay để mặc định) tập
+        tin trong mục File name và nhấn Save:
+      </p>
+      <img src="img/devc_6.png" class="center">
+      <p>Bây giờ chúng ta có thể soạn thảo chương trình C đầu tiên trong Dev-C++. Phần này sẽ đề cập trong <a
+          href="Bai01.html">bài
+          tiếp theo</a>.</p>
+      <h5><b>Thoát khỏi môi trường Dev-C++</b></h5>
+      <p>Để thoát khỏi môi trường Dev-C++, chúng ta vào File chọn Exit</p>
+      <img src="img/devc_3.png" class="center">
+      <h4 id="muc2_2"><b>II.2. Trình soạn thảo, biên dịch trực tuyến</b></h4>
+      <p>Trong thời đại điện toán đám mây, bên cạnh việc cài đặt và sử dụng trực tiếp các phần mềm trên PC, chúng ta có
+        thể sử dụng các trình soạn thảo, biên dịch trực tuyến như <a href="https://vscode.dev/">Visual Studio Code</a>,
+        <a href="https://replit.com/">Replit</a> hay <a href="https://www.jdoodle.com/">JDoodle</a>.
+      </p>
+      <p>Ưu điểm của việc sử dụng các trình trực tuyến:</p>
+      <ul>
+        <li>Không cần tải và cài đặt.</li>
+        <li>Thuận lợi cho việc học, ôn tập và thực hành trên các thiết bị khác nhau như máy tính bảng, điện thoại thông
+          minh.</li>
+        <li>Dễ dàng cộng tác, chia sẻ.</li>
+        <li>Bảo mật cao và theo nhu cầu người dùng.</li>
+      </ul>
+      <p>Giáo trình này sử dụng <a href="https://www.jdoodle.com/">JDoodle</a> để soạn thảo và biên dịch các ví dụ giúp
+        người học thuận lợi hơn trong quá trình
+        học, ôn tập kiến thức và kĩ năng thực hành. JDoole có thể được truy cập qua website <a
+          href="https://www.jdoodle.com/">https://www.jdoodle.com/</a> từ
+        trình duyệt hay có thể tải và cài đặt ứng dụng trên các thiết bị di động.</p>
+      <h5><b>Sử dụng JDoodle</b></h5>
+      <p>Truy cập website <a href="https://www.jdoodle.com/">https://www.jdoodle.com/</a> và chọn Sign In để đăng nhập:
+      </p>
+      <img src="img/jdoodle_1.png" class="center">
+      <p>Chọn tài khoản Gmail có sẵn hay tạo tài khoản mới (chọn Register):</p>
+      <img src="img/jdoodle_2.png" class="center">
+      <p>Sau khi đăng nhập thành công, chọn ngôn ngữ C trong rất nhiều ngôn ngữ lập trình JDoodle hỗ trợ:</p>
+      <img src="img/jdoodle_3.png" class="center">
+      <p>Sẽ có chương trình mẫu đầu tiên và bạn có thể viết lại chương trình nếu muốn. Để thực thi chương trình C, nhấn
+        nút
+        Execute màu xanh:</p>
+      <img src="img/jdoodle_4.png" class="center">
+      <p>Để lưu chương trình đến tài khoản cá nhân, nhấn nút ... bên phải nút Execute</p>
+      <img src="img/jdoodle_5.png" class="center">
+      <p>Chọn Save (nếu là chương trình đầu tiên) hay Save As, gõ tên chương trình cần lưu trong mục Project Name và
+        nhấn nút Save As (màu xanh):</p>
+      <img src="img/jdoodle_6.png" class="center">
+      <p>Sau khi lưu, để xem lại chương trình, bạn có thể chọn mục My Projects:</p>
+      <img src="img/jdoodle_7.png" class="center">
+      <p>Trong cửa sổ My Projects bạn có thể nhấn nút Open để mở lại chương trình và chỉnh sửa (sau đó nhấn Save), có
+        thể xóa chương trình khỏi tài khoản cá nhân bằng cách nhấn nút Remove, chia sẻ chương trình đến người khác với
+        liên kết tại mục Share URL hay nhúng vào một website khác dùng liên kết tại Embed URL hay nhấn Close để đóng cửa
+        sổ:</p>
+      <img src="img/jdoodle_8.png" class="center">
+      <h5><b>Thoát khỏi JDoodle</b></h5>
+      <p>Sau khi lưu chương trình C đến tài khoản cá nhân, trước khi đóng trình duyệt (hay ứng dụng), chúng ta cần thoát
+        khỏi tài khoản
+        cá nhân bằng cách nhấn chuột vào biểu tượng tài khoản và chọn Logout:</p>
+      <img src="img/jdoodle_9.png" class="center">
+      <p>Như vậy, qua bài mở đầu này, chúng ta đã tìm hiểu qua ngôn ngữ C và các môi trường cho phép soạn thảo và biên
+        dịch một chương trình C. Trong bài tiếp theo chúng ta sẽ cùng tìm hiểu về các thành phần cơ bản của một chương
+        trình C và viết chương trình đầu tiên.</p>
+      <div class="w3-center">
+        <div class="pagination">
+          <a href="Bai01.html">Bài tiếp theo</a>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- End page content -->
+  </div>
+
+  <script>
+    // Script to open and close sidebar
+    function w3_open() {
+      document.getElementById("mySidebar").style.display = "block";
+      document.getElementById("myOverlay").style.display = "block";
+    }
+
+    function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+      document.getElementById("myOverlay").style.display = "none";
+    }
+    // Phần button top
+    var mybutton = document.getElementById("myBtn");
+
+
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+
+
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+  </script>
+
+</body>
+
+</html>

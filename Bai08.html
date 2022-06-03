@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html>
+<title>Bài 8: Con trỏ</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="w3.css">
+<link rel="stylesheet" href="font.css">
+<link rel="stylesheet" href="font-awesome.min.css">
+<style>
+  #myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: pink;
+    color: black;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 4px;
+  }
+
+  #myBtn:hover {
+    background-color: #555;
+  }
+
+  .w3-main a {
+    background-color: red;
+  }
+
+  .pagination {
+    display: inline-block;
+  }
+
+  .pagination a {
+    color: white;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    background-color: gray;
+  }
+
+  .pagination a.active {
+    background-color: gray;
+    color: white;
+    border: 1px solid #4CAF50;
+  }
+
+  .pagination a:hover:not(.active) {
+    background-color: #ddd;
+  }
+
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Raleway", sans-serif
+  }
+
+
+  table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  table td,
+  table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  /*
+  #tab tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+*/
+  table tr:hover {
+    background-color: #ddd;
+  }
+
+  table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+  }
+
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+  .w3-code a {
+    background-color: transparent;
+    text-decoration: none;
+    color: blue;
+  }
+</style>
+
+<body class="w3-black w3-content" style="max-width:1600px">
+
+  <!-- Sidebar/menu -->
+  <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+    <div class="w3-container">
+      <a href="#" style="text-decoration: none;" onclick="w3_close()"
+        class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu"> X </a>
+      <!--<h4><b>Giáo trình</b></h4>-->
+    </div>
+    <div class="w3-bar-block">
+      <a href="Baimodau.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài mở đầu:
+        Giới
+        thiệu về ngôn ngữ C</a>
+      <a href="Bai01.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 1: Các thành phần cơ bản
+        trong ngôn ngữ C</a>
+      <a href="Bai02.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 2: Các câu lệnh đơn</a>
+      <a href="Bai03.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 3: Các câu lệnh rẽ
+        nhánh</a>
+      <a href="Bai04.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 4: Các câu lệnh lặp</a>
+      <a href="Bai05.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 5: Hàm</a>
+      <a href="Bai06.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 6: Mảng</a>
+      <a href="Bai07.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 7: Chuỗi</a>
+      <a href="Bai08.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal">Bài 8: Con trỏ</a>
+      <a href="Thamkhao.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Nguồn tham
+        khảo</a>
+    </div>
+  </nav>
+
+  <!-- Overlay effect when opening sidebar on small screens -->
+  <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"
+    title="close side menu" id="myOverlay">=</div>
+
+  <!-- !PAGE CONTENT! -->
+  <div class="w3-main" style="margin-left:300px">
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Lên đầu trang</button>
+    <!-- Header -->
+    <header id="portfolio">
+      <!--<a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;"
+          class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>-->
+      <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()">=</span>
+      <div class="w3-container">
+        <h1><b>Bài 8: Con trỏ</b></h1>
+      </div>
+    </header>
+    <div class="w3-container w3-padding-large" style="margin-bottom:32px">
+      <div class="w3-center">
+        <div class="pagination">
+          <a href="Bai07.html">Bài trước</a>
+        </div>
+      </div>
+      <div class="w3-code notranslate htmlHigh">
+        <h4>Nội dung bài học</h4>
+        <ol>
+          <li><a href="#muc1">Biến con trỏ</a>
+            <ul>
+              <li><a href="#muc1_1">Khái niệm</a>
+              <li><a href="#muc1_2">Khai báo biến con trỏ</a>
+              <li><a href="#muc1_3"> Sử dụng con trỏ trong các biểu thức</a>
+              <li><a href="#muc1_4">Hàm có tham số con trỏ</a>
+              <li><a href="#muc1_5">Cấp phát vùng nhớ, thay đổi kích thước và giải phóng vùng nhớ</a>
+            </ul>
+          </li>
+          <li><a href="#muc2">Con trỏ và mảng 1 chiều</a>
+            <ul>
+              <li><a href="#muc2_1"> Địa chỉ của các phần tử mảng</a>
+              <li><a href="#muc2_2">Con trỏ trỏ tới phần tử mảng</a>
+              <li><a href="#muc2_3"> Tham số thực và tham số hình thức trong mảng 1 chiều</a>
+              <li><a href="#muc2_3"> Mảng và chuỗi kí tự</a>
+
+            </ul>
+          </li>
+          <li><a href="#muc3">Con trỏ và mảng nhiều chiều</a>
+            <ul>
+              <li><a href="#muc3_1"> Nhập số liệu cho mảng nhiều chiều.</a>
+              <li><a href="#muc3_2">Phép cộng địa chỉ trong mảng hai chiều</a>
+              <li><a href="#muc3_3"> Con trỏ và mảng hai chiều</a>
+
+            </ul>
+          </li>
+        </ol>
+      </div>
+      <h4 id="muc1"><b>I. Biến con trỏ</b></h4>
+      <h5 id="muc1_1"><b>I.1. Khái niệm</b></h5>
+      <p>Các biến được sử dụng từ trước đến nay đều là biến có kích thước và kiểu dữ liệu xác định, người ta gọi những
+        biến này là biến tĩnh (static)
+        Khi chạy chương trình, gặp những biến này, máy sẽ cung cấp lượng bộ nhớ và địa chỉ cho các biến đó mà không cần
+        biết các biến đó sử dụng lúc nào hoặc thậm chí có được sử dụng hay không. Các biến tĩnh sẽ tồn tại trong suốt
+        thời gian thực hiện chương trình, vì vậy nếu ta chạy một chương trình lớn trong khi máy của ta lại hạn chế bộ
+        nhớ thì sẽ xảy ra tình trạng không đủ bộ nhớ.
+        Nhưng khi dùng mảng ta phải khai báo kích thước mảng. Vì vậy đối với những chương trình mà ta không dự đoán
+        trước được kích thước của chúng ra sao thì sẽ xảy ra tình trạng:</p>
+      <ul>
+        <li>Cấp dư, gây lãng phí bộ nhớ.</li>
+        <li>Cấp thiếu, chạy không được.</li>
+      </ul>
+      <p> Đó là những nhược điểm của biến tĩnh.</p>
+      <p><i>Vậy biến tĩnh là biến có kích thước, kiểu của biến và địa chỉ của chúng là không đổi, các biến này tồn tại
+          trong suốt quá trình chạy chương trình.</i></p>
+      <p>Để khắc phục những nhược điểm trên, các ngôn ngữ lập trình thường sử dụng những biến động vì có những đặc
+        điểm sau:</p>
+      <ul>
+        <li>Không sinh ra lúc bắt đầu chương trình mà sinh ra trong quá trình thực hiện chương trình.</li>
+        <li>Có thể thay đổi được kích thước, vùng nhớ và địa chỉ của vùng nhớ được cấp phát lúc chạy chương trình.
+        </li>
+        <li>Có thể giải phóng biến động sau khi đã sử dụng để tiết kiệm bộ nhớ.</li>
+      </ul>
+      <p>Thế nhưng biến động cũng có nhược điểm là không thể truy cập đến nó được bởi vì biến động không chứa địa chỉ
+        nhất định.
+        Để khắc phục nhược điểm này người ta sử dụng một loại biến đặc biệt gọi là <b>biến con trỏ (pointer)</b>.</p>
+      <p>Biến con trỏ có những đặc điểm sau:</p>
+      <ul>
+        <li>Không chứa dữ liệu nhưng chứa địa chỉ của dữ liệu tức địa chỉ của biến khác, thông thường là các biến
+          động.</li>
+        <li>Kích thước của biến con trỏ không phụ thuộc vào đối tượng mà nó trỏ tới là kiểu gì. Kích thước cố định của
+          biến con trỏ là 2 byte dùng để lưu địa chỉ của biến. Khi nó đang lưu địa chỉ của biến nào, ta nói nó đang
+          trỏ tới biến ấy.</li>
+      </ul>
+      <p>Vậy: <i>"biến con trỏ là loại biến chuyên dùng để chứa địa chỉ của biến động, giúp ta truy nhập đến biến
+          động"</i>.</p>
+      <h5 id="muc1_2"><b>I.2. Khai báo biến con trỏ</b></h5>
+      <p>Con trỏ là một biến dùng để chứa địa chỉ, vì có nhiều loại địa chỉ nên cũng có nhiều kiểu con trỏ tương ứng:
+      </p>
+      <ul>
+        <li>Con trỏ kiểu int dùng để chứa địa chỉ các biến kiểu nguyên.</li>
+        <li>Con trỏ kiểu float, double dùng để chứa địa chỉ của các biến kiểu float, double. </li>
+      </ul>
+
+      <p>Khai báo:</p>
+      <p><b>Kiểu *Tên_biến_con_trỏ</b></p>
+      <p>Ví dụ:</p>
+      <div class="w3-code notranslate htmlHigh">
+        int x, y, *px, *c; <br>
+        // Khai báo 2 biến kiểu int, 2 biến con trỏ kiểu int là px và c.
+      </div>
+      <p><b>Quy định vùng trỏ tới</b></p>
+      <p>Cú pháp:</p>
+      <div class="w3-code notranslate htmlHigh">
+        Tên con trỏ = &biến
+      </div>
+      <p>Ví dụ khai báo các biến con trỏ:</p>
+      <div class="w3-code notranslate htmlHigh">
+        int x, y, *px, *c;<br>
+        float *t, *d;
+      </div>
+      <p>Trong ví dụ trên: </p>
+      <ul>
+        <li>Quy định vùng trỏ tới: c= &y; (1) px = &x; (2) t = &y; (3)</li>
+        <li>Câu lệnh (1): Gán địa chỉ của y cho con trỏ c.</li>
+        <li>Câu lệnh (2) : Gán địa chỉ của biến x cho con trỏ px. Như vậy trong con trỏ c chứa địa chỉ của biến y và
+          trong con trỏ px chứa địa chỉ của biến x.</li>
+        <li>Câu lệnh (3): Vì t là con trỏ kiểu float nó chỉ chứa được địa chỉ của biến kiểu float, trong khi đó y lại
+          là biến kiểu int nên không thể chấp nhận được. Hiệu ứng của các câu lệnh xác định (1) và (2) kể trên là nội
+          dung của biến con trỏ sẽ là nội dung của biến mà nó trỏ tới( tức biến động đang chứa dữ liệu). Ví dụ: Ở câu
+          lệnh (2) : *px = 567 sẽ có tác dụng giống với câu lệnh : x = 567;</li>
+      </ul>
+      <p><b>Kiểu giá trị trong khai báo</b></p>
+      <p>Nếu kiểu của con trỏ và kiểu của biến mà nó trỏ tới không cùng một kiểu sẽ gây ra lỗi. Ví dụ:</p>
+      <div class="w3-code notranslate htmlHigh">
+        float a, b[7], f(), *px; <br>
+        // mọi thành phần trong khai báo này đều cho hoặc nhận giá trị kiểu float.
+      </div>
+      <p>"Mọi thành phần của cùng một khai báo (biến, phần tử mảng, con trỏ) khi xuất hiện trong biểu thức đều cho cùng
+        một kiểu giá trị".</p>
+      <h5 id="muc1_3"><b>I.3. Sử dụng con trỏ trong các biểu thức</b></h5>
+      <p>Sau khi khai báo biến con trỏ, bạn có thể sử dụng các biến này trong các biểu thức. Ví dụ đối với con trỏ px kể
+        trên ta có thể sử dụng cách viết các toán hạng trong biểu thức:</p>
+      <ul>
+        <li>px: Theo tên con trỏ.</li>
+        <li>*px: Theo dạng khai báo của con trỏ.</li>
+      </ul>
+      <p><i>Sử dụng tên con trỏ và phép gán</i></p>
+      <p>Vì con trỏ cũng là một biến nên khi tên của nó xuất hiện trong biểu thức thì giá trị của nó cũng được sử dụng
+        trong biểu thức này. Giá trị của nó có nghĩa là địa chỉ của biến nào đó (biến động).</p>
+      <p>Khi tên con trỏ ở bên trái của toán tử gán thì giá trị của biểu thức ở bên phải được gán cho con trỏ. Ví dụ:
+      </p>
+      <div class="w3-code notranslate htmlHigh">
+        (1) int a, *p, *a;<br>
+        (2) p = &a;<br>
+        (3) q = p;
+      </div>
+      <p>Trong ví dụ trên:</p>
+      <ul>
+        <li>Câu lệnh (1): khai báo biến a kiểu int và 2 biến con trỏ p và q cũng thuộc kiểu int.</li>
+        <li>Câu lệnh (2): gán địa chỉ của biến a cho con trỏ p
+        <li>Câu lệnh (3): gán giá trị của p cho q.</li>
+      </ul>
+      <p>Kết quả con trỏ q cũng chứa địa chỉ của biến a.</p>
+      <p>Cũng giống như các biến khác, nội dung của biến con trỏ cũng có thể thay đổi. Ví dụ nếu con trỏ p chứa địa chỉ
+        của phần tử mảng arr[i] thì sau khi thực hiện phép toán
+        ++p hoặc p++ nó sẽ chứa địa chỉ của phần tử arr[i+1]. Mảng 1 chiều và con trỏ sẽ được tìm hiểu trong mục kế tiếp
+        của bài này.</p>
+      <p><i>Sử dụng dạng khai báo của con trỏ</i></p>
+      <p>Nếu con trỏ px trỏ tới biến x thì các cách viết x và *px là tương đương nhau. Sau khi khai báo float x, y, z,
+        *px, *py thì các câu lệnh sau đây đều có tác dụng như nhau:</p>
+      <div class="w3-code notranslate htmlHigh">
+        y = 3*x + z;<br>
+        *px = 3*x + z;<br>
+        *py = 3*(*px) + z;
+      </div>
+      <p>Như vậy khi đã biết địa chỉ của một biến thì không những sử dụng giá trị của nó mà còn có thể gán cho nó một
+        giá trị mới để thay đổi nội dung của biến.</p>
+      <h5 id="muc1_4"><b>I.4. Hàm có tham số con trỏ</b></h5>
+      <p>Ở mục này chúng ta sẽ nghiên cứu các tham số thực là các biến tĩnh sẽ truyền cho các tham số hình thức của hàm
+        là các biến con trỏ.
+      <p>Đa số các trường hợp người ta sử dụng cách truyền theo giá trị. Còn nếu muốn truyền theo tham chiếu (theo biến)
+        tức là truyền cả địa chỉ và nội dung biến thì phải sử dụng biến con trỏ. Ví dụ chương trình sau dùng hàm
+        <b>hoanvi()</b> với tham số là hai con trỏ.
+      </p>
+      <p>Nhập 2 số nguyên bất kỳ cách nhau bởi khoảng trắng vào ô
+        <b>Stdin Inputs</b>. Nhấn nút
+        <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4KFV?arg=0"></div>
+      <p>Người ta chia tham số của hàm thành 2 loại:</p>
+      <ul>
+        <li>Các tham số dùng để chứa các giá trị do các biến (tham số thực) nhập vào và ta gọi các tham số này là các
+          tham số vào.</li>
+        <li>Các tham số dùng để chứa kết quả do xử lý, tính toán, ta gọi các tham số này là các tham số ra.</li>
+      </ul>
+      <p>Ví dụ cần lập hàm giải PT bậc 2: ax<sup>2</sup> + bx + c = 0</p>
+      <ul>
+        <li>Các hệ số a, b , c là các tham số vào</li>
+        <li>Các nghiệm x1, x2 là các tham số ra.</li>
+      </ul>
+      <p>Để trả lời câu hỏi "Khi nào thì sử dụng tham số con trỏ?". Câu trả lời là: "Chỉ sử dụng cho các tham số ra."
+      <h5 id="muc1_5"><b>I.5. Cấp phát vùng nhớ, thay đổi kích thước và giải phóng vùng nhớ</b></h5>
+      <p><i>Cấp phát vùng nhớ để lưu dữ liệu</i></p>
+
+      <p>Thông thường chúng ta chỉ quan tâm đến khai báo và cung cấp vùng nhớ để lưu địa chỉ của biến con trỏ mà không
+        lưu ý đến việc cung cấp vùng nhớ để lưu trữ dữ liệu nên khi chạy chương trình thường mắc sai lầm.</p>
+      <p> Khi ta khai báo: int *px; chỉ có tác dụng cung cấp cho bản thân biến px một vùng nhớ là 2 byte. Khai báo này
+        không hề cung cấp vùng nhớ để lưu trữ dữ liệu mà px trỏ tới. Vì vậy khi sử dụng biến con trỏ, ta phải:</p>
+      <ul>
+
+        <li>Cung cấp vùng nhớ cho biến con trỏ</li>
+        <li>Cung cấp vùng nhớ để lưu dữ liệu</li>
+      </ul>
+      <p>Khi khai báo : int x, *px; có nghĩa là đã cung cấp vùng nhớ cho bản thân con trỏ px và cũng đã cung cấp vùng
+        nhớ cho biến x.</p>
+      <p>Còn câu lệnh: px = &x; có nghĩa là chỉ định vùng nhớ mà px trỏ tới là vùng nhớ của x mà vùng nhớ này đã được
+        cung cấp rồi bằng hiệu ứng int x;</p>
+      <p>Để tránh những sai lầm đáng tiếc, Turbo C có sẵn 2 câu lệnh malloc hoặc calloc định nghĩa trong alloc.h hay
+        stdlib.h để cung cấp vùng nhớ trực tiếp cho biến con trỏ.</p>
+      <p>Cú pháp tổng quát là:</p>
+      <div class="w3-code notranslate htmlHigh">
+        Biến con trỏ = malloc(sizeof(tên kiểu)); <br>
+        Biến con trỏ = calloc(n, sizeof(tên kiểu));
+      </div>
+      <p>Sự khác biệt duy nhất giữa 2 lệnh ở chỗ calloc vùng nhớ bằng n lần số bytes xác định bởi sizeof(tên kiểu)</p>
+      Ví dụ các câu lệnh sau đây có giá trị tương đương:
+      <div class="w3-code notranslate htmlHigh">
+        px = malloc (sizeof(int));<br>
+        px = calloc (1, sizeof(int));<br>
+        px = calloc (2, sizeof(char));
+      </div>
+      <p>malloc và calloc cho ra các con trỏ trỏ tới kí tự, cho nên nếu muốn cấp phát bộ nhớ cho các loại biến khác
+        thì phải dùng phép biến đổi kiểu cưỡng bức.</p>
+      <p><i>Thay đổi kích thước vùng nhớ động</i></p>
+      <p>Sau khi đã cấp phát vùng nhớ để lưu dữ liệu bằng 1 trong 2 cách:</p>
+      <ul>
+        <li>Khi khai báo biến con trỏ như : int *px;</li>
+        <li>Hoặc dùng lệnh malloc, calloc;</li>
+      </ul>
+      <p>Ta có thể thay đổi kích thước vùng nhớ đã cấp phát bằng lệnh realloc định nghĩa trong alloc.h có cú pháp như
+        sau:</p>
+      <div class="w3-code notranslate htmlHigh">
+        void *realloc(void *ptr, size)
+      </div>
+      <p>Tham số</p>
+      <p>ptr: Đây là con trỏ tới khối bộ nhớ đã được cấp phát trước đó với malloc, calloc hoặc realloc để được tái cấp
+        phát. Nếu giá trị là NULL, thì một khối mới được cấp phát và một con trỏ tới nó được trả về bởi hàm này.</p>
+      <p>size: Đây là kích cỡ mới cho khối bộ nhớ. Nếu giá trị là 0 và con trỏ ptr trỏ tới một khối nhớ đang tồn tại,
+        khối nhớ được trỏ tới bởi ptr được giải phóng và một con trỏ NULL được trả về.</p>
+      <p><i>Cho biết kích thước vùng nhớ còn lại</i></p>
+      <ul>
+        <li>Đối với kiểu bộ nhớ Tyni, Small, Medium: unsigned coreleft(void)</li>
+        <li>Đối với kiểu bộ nhớ Compact, Large, Huge: unsigned long coreleft(void)</li>
+      </ul>
+      <p><i>Giải phóng vùng nhớ động</i>
+      <div class="w3-code notranslate htmlHigh">
+        void free(void *block)
+      </div>
+      <p>Trong đó *block : Vùng nhớ cần giải phóng tức là tên của biến con trỏ đang chiếm giữ vùng nhớ.</p>
+      <p><b>Ưu điểm của biến con trỏ</b></p>
+      <p>Linh động trong việc cung cấp vùng nhớ: Khi sử dụng biến con trỏ trong chương trình thì việc cấp phát vùng nhớ
+        sẽ được thực hiện trong quá trình chạy chương trình, không phải cung cấp ngay từ đầu nên thời gian nạp chương
+        trình sẽ nhanh chóng hơn. Mặt khác các biến sau khi không còn sử dụng ta có thể giải phóng vùng nhớ (xóa dữ
+        liệu) để sử dụng phần bộ nhớ này vào việc khác nên tiết kiệm được bộ nhớ.</p>
+      <p>Thay đổi cách thức truyền tham số: Việc truyền tham số thực cho các tham số hình thức ở trong các hàm có 2
+        cách: Truyền theo giá trị và truyền theo biến. Sự khác nhau cơ bản của 2 cách truyền này là:</p>
+      <ul>
+        <li>Đối với truyền theo trị : Sau khi thực hiện xong các lệnh trong hàm thì các tham số thực không bị thay đổi
+          giá trị dù rằng trong hàm đó có thay đổi chúng hay không.</li>
+        <li>Đối với truyền theo biến : Sau khi thực hiện xong hàm thì các tham số thực bị thay đổi nếu như trong hàm có
+          sự thay đổi chúng.</li>
+      </ul>
+      <p>Theo quy ước mặc định là truyền theo trị, còn nếu muốn truyền theo biến thì phải dùng biến con trỏ.</p>
+      <h4 id="muc2"><b>II. Con trỏ và mảng 1 chiều</b></h4>
+      <h5 id="muc2_1"><b>II.1. Địa chỉ của các phần tử mảng</b></h5>
+      <p>Giả sử ta khai báo : int a[10];</p>
+      <p>Nghĩa là ta đã khai báo mảng a là một mảng 1 chiều có 10 phần tử kiểu số nguyên. Để lấy địa chỉ của một phần tử
+        nào đó ta dùng lệnh: &a[i]
+        Với i là phần tử trong khoảng từ 0 đến 9</p>
+      <p><b>Địa chỉ của phần tử mảng đầu tiên</b></p>
+      <p>Với khai báo int a[10] máy sẽ bố trí cho mảng a một vùng nhớ liên tiếp 20 bytes cho 10 phần tử mảng kiểu nguyên
+        (mỗi phần tử 2 bytes). Như phần trên thì địa chỉ của từng phần tử mảng được xác định bằng phép toán &a[i]. Vậy
+        địa chỉ của phần tử mảng đầu tiên sẽ là &a[0]. Do đó trong C quy định:
+        &a[0] tương đương với a (tên mảng), &a[i] tương đương với a + i, a[i] tương đương với *(a +i).
+        Như vậy tên mảng đồng nghĩa với phần tử đầu tiên của mảng, do đó có thể nói:
+        <i>"Tên mảng là một hằng địa chỉ"</i>
+      </p>
+      <h5 id="muc2_2"><b>II.2. Con trỏ trỏ tới phần tử mảng</b></h5>
+      <p>Khi con trỏ pa trỏ tới phần tử a[k] thì:</p>
+      <ul>
+        <li>pa+i trỏ tới phần tử thứ i sau a[k], có nghĩa là nó trỏ tới a[k+i]. </li>
+        <li>pa-i trỏ tới phần tử thứ i trước a[k], có nghĩa là nó trỏ tới a[k-i].</li>
+
+        <li>*(pa+i) tương đương với pa[i].</li>
+      </ul>
+      <p>Như vậy, sau hai câu lệnh:</p>
+      <div class="w3-code notranslate htmlHigh">
+        float a[20], *p; p=a;
+      </div>
+      thì bốn cách viết sau có tác dụng như nhau:
+      <div class="w3-code notranslate htmlHigh">
+        a[i] *(a+i)<br>
+        p[i] *(p+i)
+      </div>
+      <p>Ví dụ tính tổng các phần tử của mảng 1 chiều.</p>
+      <p>Cách 1</p>
+      <p> Nhấn nút
+        <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4KK4?stdin=0&arg=0"></div>
+
+      <p>Cách 2</p>
+      <p> Nhấn nút
+        <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4KK8?stdin=0&arg=0"></div>
+
+      <p>Cách 3</p>
+      <p> Nhấn nút
+        <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4KKa?stdin=0&arg=0"></div>
+      <p>Chú ý: Mảng một chiều và con trỏ tương ứng phải cùng kiểu.</p>
+      <h5 id="muc2_3"><b>II.3. Tham số thực và tham số hình thức trong mảng 1 chiều</b></h5>
+      <p>Giả sử tham số thực là tên mảng a kiểu int (hoặc float, double...) thì tham số hình thức px tương ứng phải là
+        một con trỏ cùng kiểu int (hoặc float, double...). Tham số hình thức có thể khai báo:</p>
+      <p>Theo kiểu con trỏ:</p>
+      <div class="w3-code notranslate htmlHigh">
+        int *px; <br>
+        float *px; <br>
+        double *px;
+      </div>
+      <p>Theo tên mảng:</p>
+      <div class="w3-code notranslate htmlHigh">
+        int px[ ];<br>
+        float px[ ]; <br>
+        double px[ ];
+      </div>
+      <p>Khi hàm bắt đầu làm việc thì giá trị thực của a được truyền cho tham số hình thức px. Vì a là hằng địa chỉ xác
+        định địa chỉ của phần tử đầu tiên của mảng nên con trỏ px sẽ chứa địa chỉ của phần tử này (tức là phần tử đầu
+        tiên của mảng). Sau đó nếu muốn trỏ tới phần tử a[i] ta có thể sử dụng 1 trong 2 dạng sau trong thân hàm:
+        *(px +i) và px[i]</p>
+      <p>Ví dụ tính tổng các phần tử của mảng a bằng cách truyền tham số thực là tên mảng cho các tham số hình thức
+        trong hàm <b>tong()</b>.</p>
+      <p>Cách 1</p>
+      <p> Nhấn nút
+        <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4KKo?stdin=0&arg=0"></div>
+      <p>Cách 2</p>
+      <p> Nhấn nút
+        <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4KKq?stdin=0&arg=0"></div>
+      <h5 id="muc_2_4"><b>II.4. Mảng và chuỗi kí tự</b></p>
+        <ul>
+          <li>Chuỗi kí tự là một dãy các kí tự kể cả kí tự trống được rào trong cặp dấu nháy kép ("").</li>
+          <li>Khi gặp một chuỗi kí tự máy sẽ cấp phát một vùng nhớ cho một mảng kiểu char để chứa các kí tự và chứa thêm
+            kí tự “\0”( kí tự kết thúc một chuỗi). Mỗi kí tự trong chuỗi tương ứng với mỗi phần tử trong mảng. Vì vậy
+            chuỗi kí tự nào cũng là một hằng địa chỉ biểu thị của phần tử đầu tiên. Do đó nếu ta khai báo biến ten như
+            một
+            con trỏ kiểu char thì sau đó có thể gán dữ liệu chuỗi cho biến này. Ví dụ:</li>
+        </ul>
+        <div class="w3-code notranslate htmlHigh">
+          char *ten;<br>
+          ten = "Nguyen Van Xuan";
+        </div>
+        <p>Sau đó nếu có in chuỗi này ra màn hình, ta có thể thực hiện 1 trong 2 câu lệnh sau:</p>
+        <div class="w3-code notranslate htmlHigh">
+          printf("Nguyen Van Xuan");
+        </div>
+        <p>Hoặc</p>
+        <div class="w3-code notranslate htmlHigh">
+          printf(ten);
+        </div>
+        <p>Nếu muốn nhập một chuỗi (chẳng hạn tên của một người) ta có thể thực hiện bằng 1 trong 2 cách:</p>
+        <p>Nếu dùng mảng:</p>
+        <div class="w3-code notranslate htmlHigh">
+          char t[24]; <br>
+          printf("\n cho biet ten: ");<br>
+          scanf("%s", t);
+        </div>
+        <p>Nếu dùng con trỏ:</p>
+        <div class="w3-code notranslate htmlHigh">
+          char *ten, t[24];
+          ten = t;
+          printf("\n Cho biết tên: ");
+          scanf("%s", ten);
+        </div>
+        <p>hoặc</p>
+        <div class="w3-code notranslate htmlHigh">
+          scanf("%s", t);
+        </div>
+
+        <h4 id="muc3"><b>III. Con trỏ và mảng nhiều chiều</b></h4>
+        <h5 id="muc3_1"><b>III.1. Nhập số liệu cho mảng nhiều chiều.</b></h5>
+        <p>Mảng nhiều chiều phức tạp hơn mảng một chiều, ta không thể áp dụng các quy tắc của mảng 1 chiều cho mảng
+          nhiều
+          chiều được:</p>
+        <ul>
+          <li>Ta không thể sử dụng phép toán lấy địa chỉ để nhập giá trị cho từng phần tử mảng.</li>
+          <li>Ta không thể sử dụng địa chỉ của phần tử mảng để nhập dữ liệu cho từng phần tử mảng được.</li>
+          <li>Ta không thể sử dụng biến con trỏ để nhập dữ liệu cho mảng hai chiều được.</li>
+        </ul>
+        <p>Tóm lại cả 3 cách nhập số liệu cho mảng 1 chiều đều không thể áp dụng cho mảng nhiều chiều. Vậy muốn nhập dữ
+          liệu cho mảng hai chiều ta thực hiện theo nguyên tắc sau:</p>
+        <ul>
+          <li>Nhập dữ liệu và gán cho biến trung gian (x): scanf("%f", &x);</li>
+          <li>Gán biến trung gian cho phần tử mảng a[i][j]: a[i][j] = x;</li>
+        </ul>
+        <h5 id="muc3_2"><b>III.2. Phép cộng địa chỉ trong mảng hai chiều</b></h5>
+        <p>Giả sử ta có mảng hai chiều a[2][3] có 6 phần tử úng với sáu địa chỉ liên tiếp trong bộ nhớ được xếp theo thứ
+          tự sau:</p>
+        <div class="w3-code notranslate htmlHigh">
+          Phần tử a[0][0] a[0][1] a[0][2] a[1][0] a[1][1] a[1][2]<br>
+          Địa chỉ 1 2 3 4 5 6
+        </div>
+        <p> Tên mảng a biểu thị địa chỉ đầu tiên của mảng. Phép cộng địa chỉ ở đây được thực hiện như sau : C coi mảng
+          hai
+          chiều là mảng (một chiều) của mảng, như vậy khai báo float a[2][3]; thì a là mảng mà mỗi phần tử của nó là một
+          dãy 3 số thực (một hàng của mảng).</p>
+        <p>Vì vậy:</p>
+        <p>a trỏ phần tử thứ nhất của mảng: phần tử a[0][0], a+1 trỏ phần tử đầu hàng thứ hai của mảng: phần tử
+          a[1][0]...
+        </p>
+        <h5 id="muc3_3"><b>III.3. Con trỏ và mảng hai chiều</b></p>
+          <p>Để lần lượt duyệt trên các phần tử của mảng hai chiều ta có thể dùng con trỏ như minh họa ở ví dụ sau:</p>
+          <div class="w3-code notranslate htmlHigh">
+            float *pa,a[2][3];<br>
+            pa = (float*)a;
+          </div>
+          <p>lúc đó:</p>
+          <div class="w3-code notranslate htmlHigh">
+            pa trỏ tới a[0][0]<br>
+            pa+1 trỏ tới a[0][1]<br>
+            pa+2 trỏ tới a[0][2]<br>
+            pa+3 trỏ tới a[1][0]<br>
+            pa+4 trỏ tới a[1][1]<br>
+            pa+5 trỏ tới a[1][2]
+          </div>
+          <p>Đoạn mã minh họa:</p>
+          <div class="w3-code notranslate htmlHigh">
+            float a[2][3],*pa; <br>
+            int i;<br>
+            pa = (float*)a;<br>
+            for (i=0;i<6;++i)<br>
+              &nbsp; &nbsp; scanf("%f", pa+i);
+          </div>
+
+          <div class="w3-center">
+            <div class="pagination">
+              <a href="Bai07.html">Bài trước</a>
+            </div>
+          </div>
+
+    </div>
+
+
+    <!-- End page content -->
+  </div>
+  <script src="https://www.jdoodle.com/assets/jdoodle-pym.min.js" type="text/javascript"></script>
+
+  <script>
+    // Script to open and close sidebar
+    function w3_open() {
+      document.getElementById("mySidebar").style.display = "block";
+      document.getElementById("myOverlay").style.display = "block";
+    }
+
+    function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+      document.getElementById("myOverlay").style.display = "none";
+    }
+
+    // Phần button top
+    var mybutton = document.getElementById("myBtn");
+
+
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+
+
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+  </script>
+
+</body>
+
+</html>

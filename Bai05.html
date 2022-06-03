@@ -1,12 +1,60 @@
 <!DOCTYPE html>
 <html>
-<title>Bài 5 </title>
+<title>Bài 5: Hàm </title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="w3.css">
 <link rel="stylesheet" href="font.css">
 <link rel="stylesheet" href="font-awesome.min.css">
 <style>
+  #myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: pink;
+    color: black;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 4px;
+  }
+
+  #myBtn:hover {
+    background-color: #555;
+  }
+
+  .w3-main a {
+    background-color: #04AA6D;
+  }
+
+  .pagination {
+    display: inline-block;
+  }
+
+  .pagination a {
+    color: white;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    background-color: gray;
+  }
+
+  .pagination a.active {
+    background-color: gray;
+    color: white;
+    border: 1px solid #4CAF50;
+  }
+
+  .pagination a:hover:not(.active) {
+    background-color: #ddd;
+  }
+
   body,
   h1,
   h2,
@@ -16,9 +64,52 @@
   h6 {
     font-family: "Raleway", sans-serif
   }
+
+
+  table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  table td,
+  table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  /*
+  #tab tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+*/
+  table tr:hover {
+    background-color: #ddd;
+  }
+
+  table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+  }
+
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+  .w3-code a {
+    background-color: transparent;
+    text-decoration: none;
+    color: blue;
+  }
 </style>
 
-<body class="w3-light-grey w3-content" style="max-width:1600px">
+<body class="w3-black w3-content" style="max-width:1600px">
 
   <!-- Sidebar/menu -->
   <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
@@ -28,13 +119,21 @@
       <!--<h4><b>Giáo trình</b></h4>-->
     </div>
     <div class="w3-bar-block">
-      <a href="Bai01.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 1</a>
-      <a href="Bai02.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 2</a>
-      <a href="Bai03.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 3</a>
-      <a href="Bai04.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 4</a>
-      <a href="Bai05.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal">Bài 5</a>
-      <a href="Bai06.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 6</a>
-      <a href="Bai07.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 7</a>
+      <a href="Baimodau.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài mở đầu:
+        Giới
+        thiệu về ngôn ngữ C</a>
+      <a href="Bai01.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 1: Các thành phần cơ bản
+        trong ngôn ngữ C</a>
+      <a href="Bai02.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 2: Các câu lệnh đơn</a>
+      <a href="Bai03.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 3: Các câu lệnh rẽ
+        nhánh</a>
+      <a href="Bai04.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 4: Các câu lệnh lặp</a>
+      <a href="Bai05.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal">Bài 5: Hàm</a>
+      <a href="Bai06.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 6: Mảng</a>
+      <a href="Bai07.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 7: Chuỗi</a>
+      <a href="Bai08.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Bài 8: Con trỏ</a>
+      <a href="Thamkhao.html" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">Nguồn tham
+        khảo</a>
     </div>
   </nav>
 
@@ -44,306 +143,252 @@
 
   <!-- !PAGE CONTENT! -->
   <div class="w3-main" style="margin-left:300px">
-
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Lên đầu trang</button>
     <!-- Header -->
     <header id="portfolio">
       <!--<a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;"
           class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>-->
       <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()">=</span>
       <div class="w3-container">
-        <h1><b>Bài 5: Kiểu mảng</b></h1>
+        <h1><b>Bài 5: Hàm</b></h1>
       </div>
     </header>
     <div class="w3-container w3-padding-large" style="margin-bottom:32px">
-      <h4><b>I. Khai báo mảng</b></h4>
-      <p>Là tập hợp các phần tử có cùng dữ liệu. Giả sử bạn muốn lưu n số nguyên để tính trung bình, bạn không thể khai
-        báo n biến để lưu n giá trị rồi sau đó tính trung bình. Ví dụ 1 : bạn muốn tính trung bình 10 số nguyên nhập vào
-        từ bàn phím, bạn sẽ khai báo 10 biến: a, b, c, d, e, f, g, h, i, j có kiểu int và lập thao tác nhập cho 10 biến
-        này như sau:</p>
-      <div class="w3-code notranslate htmlHigh">
-        printf("Nhap vao bien a:"); <br>
-        scanf("%d", &a);
+      <div class="w3-center">
+        <div class="pagination">
+          <a href="Bai04.html">Bài trước</a>
+          <a href="Bai06.html">Bài tiếp theo</a>
+        </div>
       </div>
-      <p>10 biến bạn sẽ thực hiện 2 lệnh trên 10 lần, sau đó tính trung bình: (a + b + c + d + e + f + g + h + i + j)/10
-      </p>
-      <p>Điều này chỉ phù hợp với n nhỏ, còn đối với n lớn thì khó có thể thực hiện được. Vì vậy khái niệm mảng được sử
-        dụng.</p>
-      <p><b>Cách khai báo mảng</b></p>
       <div class="w3-code notranslate htmlHigh">
-        KieuDLptu Tenmang[sopt];
+        <h4>Nội dung bài học</h4>
+        <ol>
+          <li><a href="#muc1"> Giới thiệu hàm</a>
+            <ul>
+              <li><a href="#muc1_1">Khái niệm</a>
+              <li><a href="#muc1_2">Quy tắc xây dựng một hàm</a>
+              <li><a href="#muc1_3"> Gọi hàm</a>
+              <li><a href="#muc1_4">Nguyên tắc hoạt động của hàm</a>
+
+            </ul>
+          </li>
+          <li><a href="#muc2"> Truyền tham số cho hàm</a>
+            <ul>
+              <li><a href="#muc2_1"> Truyền tham trị</a>
+              <li><a href="#muc2_2">Truyền tham chiếu</a>
+            </ul>
+          </li>
+          <li><a href="#muc3">Phạm vi biến</a>
+        </ol>
       </div>
-      Ví dụ:
+      <h4 id="muc1"><b>I. Giới thiệu hàm</b></h4>
+      <h5 id="muc1_1"><b>I.1 Khái niệm</b></h5>
+      <p>Một chương trình viết trong ngôn ngữ C là một dãy các hàm, trong đó có một hàm chính (hàm <b>main()</b>). Hàm
+        chia các
+        bài toán lớn thành các công việc nhỏ hơn, giúp thực hiện những công việc lặp lại nào đó một cách nhanh chóng mà
+        không phải viết lại đoạn chương trình. Thứ tự các hàm trong chương trình là bất kỳ, song chương trình bao giờ
+        cũng đi thực hiện từ hàm <b>main()</b>.
+        Hàm có thể xem là một đơn vị độc lập của chương trình. Các hàm có vai trò ngang nhau, vì vậy không có phép xây
+        dựng một hàm bên trong các hàm khác.</p>
+      <h5 id="muc1_2"><b>I.2. Quy tắc xây dựng một hàm</b></h5>
+      <p>Xây dựng một hàm bao gồm: khai báo kiểu hàm, đặt tên hàm, khai báo các tham số và đưa ra câu lệnh cần thiết để
+        thực
+        hiện yêu cầu đề ra cho hàm. Một hàm được viết theo mẫu sau:</p>
       <div class="w3-code notranslate htmlHigh">
-        int ia[10];
-      </div>
-      <p>với int là kiểu mảng (KieuDLptu), ia là tên mảng (Tenmang), 10 số phần tử mảng (sopt).</p>
-      <p>Ý nghĩa: Khai báo một mảng số nguyên gồm 10 phần tử, mỗi phần tử có kiểu int. </p>
-      <p><b>Tham chiếu đến từng phần tử mảng</b></p>
-      <p>Sau khi mảng được khai báo, mỗi phần tử trong mảng đều có chỉ số để tham chiếu. <b>Chỉ số bắt đầu từ 0 đến n-1
-          (với n là kích thước mảng)</b>. Trong ví dụ trên, ta khai báo mảng 10 phần tử thì chỉ số bắt đầu từ 0 đến 9. 0
-        1 2 3
-        4 5 6 7 8 9</p>
-      <p>Cách tham chiếu : Tên mảng [chỉ số]</p>
-      <p><b>Nhập dữ liệu cho mảng</b></p>
-      <div class="w3-code notranslate htmlHigh">
-        for (i = 0; i &gt; 10; i++) //vòng for có giá trị i chạy từ 0 đến 9<br>
-        { <br>
-        &nbsp; &nbsp;printf("Nhap vao phan tu thu %d: ", i + 1); <br>
-        &nbsp; &nbsp;scanf("%d", &ia[i]);<br>
+        kiểu_hàm tên_hàm (danh sách các tham số)<br>
+        {<br>
+        &nbsp;Khai báo các biến cục bộ <br>
+        &nbsp;Các câu lệnh<br>
+        &nbsp;[return[biểu thức];]<br>
         }
       </div>
-      <p><b>Đọc dữ liệu từ mảng</b></p>
+      <p>Trong dòng đầu tiên của khai báo hàm chứa các thông tin về: kiểu hàm, tên hàm, kiểu và tên mỗi tham số.</p>
+
+      <p>Khai báo các tham số có dạng: Kiểu_tham_số 1 tên_tham_số _1, kiểu_tham_số_2 tên_tham_số_2,..., kiểu_tham_số_n
+        tên_tham_số_n. Các tham số này còn gọi là tham số hình thức phân biệt với tham số thực khi gọi hàm.</p>
+      Ví dụ:
       <div class="w3-code notranslate htmlHigh">
-        for(i = 0; i &gt; 10; i++) <br>
-        &nbsp; &nbsp;printf("%3d ", ia[i]);
+        float max3s(float a, float b, float c)
       </div>
-      <p>Ví dụ chương trình tính trung bình cộng của n số nguyên cho trước.</p>
-      <p>Nhập giá trị n và kế tiếp nhập n số nguyên bất kỳ cách nhau bởi khoảng trắng vào ô <b>Stdin Inputs</b>. Ví dụ
-        nhập 3 1 1 2
-        nghĩa
-        là n = 3 và các phần tử mảng lần lượt là 1, 1, 2. Nhấn nút <b>Execute</b> màu xanh
+      <p>Khai báo hàm: kiểu hàm là float, tên hàm là max3s, các tham số là a, b, c cùng có kiểu là float.</p>
+
+      <p> Kế tiếp là thân hàm. Thân hàm là nội dung chính của hàm bắt đầu và kết thúc bằng các dấu { }.</p>
+      <p>Trong thân hàm chứa các câu lệnh cần thiết để thực hiện một yêu cầu nào đó đã đề ra cho hàm. Thân hàm có thể sử
+        dụng một câu lệnh return, có thể dùng nhiều câu lệnh return ở các chỗ khác nhau, và cũng có thể không sử dụng
+        câu
+        lệnh này.</p>
+      <p>Dạng tổng quát của return là:</p>
+      <div class="w3-code notranslate htmlHigh">
+        return [biểu thức];
+      </div>
+      <p>Giá trị của biểu thức trong câu lệnh return sẽ được gán cho hàm.</p>
+      <p>Ví dụ:</p>
+      <p>Xét bài toán: Tìm giá trị lớn nhất của ba số mà giá trị mà giá trị của chúng được đưa vào bàn phím.</p>
+      <p>
+        Xây dựng chương trình và tổ chức thành hai hàm: Hàm <b>main()</b> và hàm <b>max3s</b>. Nhiệm vụ của hàm
+        <b>max3s</b> là tính giá trị
+        lớn nhất của ba số đọc vào, giả sử là a,b,c. Nhiệm vụ của hàm <b>main()</b> là đọc ba giá trị vào từ bàn phím,
+        rồi dùng
+        hàm <b>max3s</b> để tính như trên, rồi đưa kết quả ra màn hình.
+      </p>
+      <p>Chương trình có thể được viết như sau:</p>
+      <p>Nhập 3 số lẻ bất kỳ cách nhau bởi khoảng trắng vào ô <b>Stdin Inputs</b> và nhấn nút <b>Execute</b> màu xanh
         để
         xem kết quả.</p>
       </p>
-      <div data-pym-src="https://www.jdoodle.com/embed/v0/4JNJ?arg=0"></div>
-
-      <h4><b>II. Mảng và tham số của hàm</b></h4>
-      <p>Khi truyền mảng sang hàm, không tạo bản sao mảng mới. Vì vậy mảng truyền sang hàm có dạng tham biến. Nghĩa là
-        giá trị của các phần tử trong mảng sẽ bị ảnh hưởng nếu có sự thay đổi trên chúng.</p>
-      <p>Ví dụ chương trình tìm số lớn nhất dùng hàm</p>
-      <p>Nhập n số nguyên bất kỳ cách nhau bởi khoảng trắng vào ô <b>Stdin Inputs</b>. Ví dụ nhập 3 10 7 2. Nhấn nút
-        <b>Execute</b> màu xanh
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4JKO?arg=0"></div>
+      <p> Các hàm không cho giá trị giống như thủ tục (procedure) trong ngôn ngữ lập trình PASCAL. Trong trường hợp này,
+        kiểu của nó là <b>void</b>.</p>
+      <p>Ví dụ hàm tìm giá trị max trong ba số là max3s ở trên có thể được viết thành thủ tục hiển thị số cực đại trong
+        ba số như sau.</p>
+      <p>Nhập 3 số lẻ bất kỳ cách nhau bởi khoảng trắng vào ô <b>Stdin Inputs</b> và nhấn nút <b>Execute</b> màu xanh
         để
-        xem kết quả.
+        xem kết quả.</p>
       </p>
-      </p>
-      <div data-pym-src="https://www.jdoodle.com/embed/v0/4JPq?arg=0"></div>
-      <p>Chương trình ban đầu hàm max có hai tham số truyền vào và kết quả trả về là giá trị max có kiểu nguyên, một
-        tham số là mảng 1 chiều kiểu int và một tham số có kiểu int. Với chương trình sau khi sửa hàm max chỉ còn một
-        tham số truyền vào nhưng cho kết quả như nhau.</p>
-      <p>Ví dụ chương trình tìm số lớn nhất dùng hàm max chỉ có một tham số</p>
-      <p>Nhập n số nguyên bất kỳ cách nhau bởi khoảng trắng vào ô <b>Stdin Inputs</b>. Ví dụ nhập 3 10 7 2. Nhấn nút
-        <b>Execute</b> màu xanh
-        để
-        xem kết quả.
-      </p>
-      </p>
-      <div data-pym-src="https://www.jdoodle.com/embed/v0/4JPL?arg=0"></div>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4JLg?arg=0"></div>
+      <p>Lúc này, trong hàm <b>main</b> ta gọi hàm <b>max3s</b> bằng câu lệnh: <b>max3s(x,y,z);</b></p>
 
-      <p>Do sau khi sửa chương trình mảng ia[MAX] được khai báo lại là biến
-        toàn cục nên hàm max không cần truyền tham số mảng vào cũng có thể sử dụng được. Tuy vậy, khi lập trình bạn nên
-        viết như chương trình ban đầu là truyền tham số mảng vào (dạng tổng quát) để hàm max có thể thực hiện được trên
-        nhiều
-        mảng khác nhau. Còn với chương trình sửa lại bạn chỉ sử dụng hàm max được với mảng a mà thôi.</p>
-      <h4><b>III. Sắp xếp mảng</b></h4>
-      <p>Trong thực tế ta thường gặp những công việc cần phải sắp xếp theo một thứ tự nào đó, chẳng hạn danh sách học
-        sinh trong lớp có thể được sắp xếp theo Họ hoặc Điểm trung bình. Việc sắp xếp thứ tự 1 mảng giúp ta dễ dàng tìm
-        kiếm các phần tử của mảng.
-        Từ trước đến nay người ta đã tìm ra nhiều phương pháp sắp xếp mảng như:</p>
+      <h5 id="muc1_3"><b>I.3. Gọi hàm</b></h5>
+      <p>Một cách tổng quát lời gọi hàm có dạng sau: <b>tên hàm ([Danh sách các tham số thực])</b></p>
+      <p> Số các tham số thực tế phải bằng số tham số hình thức trong danh sách tham số và lần lượt chúng có kiểu tương
+        ứng với nhau. Có thể xem lại ví dụ cách sử dụng hàm <b>max3s(x,y,z)</b> ở trên.</p>
+      <h5 id="muc1_4"><b>I.4. Nguyên tắc hoạt động của hàm</b></h5>
+      <p>Khi gặp một lời gọi hàm thì nó sẽ bắt đầu được thực hiện. Nói cách khác, khi máy gặp lời gọi hàm ở một vị trí
+        nào đó trong chương trình, máy sẽ tạm dời chỗ đó và chuyển đến hàm tương ứng. Quá trình đó diễn ra theo trình tự
+        sau:</p>
       <ul>
-        <li>Phương pháp chèn vào thẳng (Straight insertion)</li>
-        <li>Phương pháp chèn vào chia đôi hay còn gọi là phương pháp chèn nhị phân (binary insertion)</li>
-        <li>Phương pháp chọn lựa thẳng (Straight selection)</li>
-        <li>Các phương pháp đổi chỗ gồm:
+        <li>Cấp phát bộ nhớ cho các biến cục bộ.</li>
+
+        <li>Gán giá trị của các tham số thực cho các đối tương ứng.</li>
+        <li>Thực hiện các câu lệnh trong thân hàm.</li>
+        <li>Khi gặp câu lệnh return hoặc dấu } cuối cùng của thân hàm thì máy sẽ xoá các đối, biến cục bộ và ra khỏi
+          hàm.</li>
+        <li>Nếu trở về từ một câu lệnh return có chứa biểu thức thì giá trị của biểu thức được gán cho hàm. Giá trị của
+          hàm sẽ được sử dụng trong các biểu thức chứa nó.</li>
+      </ul>
+      <p>Cho chương trình C chưa hoàn chỉnh như sau:</p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4SqJ?arg=0"></div>
+      <div class="w3-code notranslate htmlHigh">
+        <h5><b>&#9755; Bài tập:</b>
           <ul>
-            <li>Phương pháp nổi bọt (bubble sort)</li>
-            <li>Phương pháp rung (shakesort)</li>
+            <li>Nhấn dòng liên kết <span style="color:red;">Edit this program in
+                JDoodle.com</span> để truy cập trang chủ JDoodle.</li>
+            <li>Hoàn chỉnh hàm tong(n) để chương trình xuất ra giá trị 1 + 2 +...+ n. Ví dụ nhập vào ô Stdin Inputs là 3
+              và nhấn Execute sẽ hiển thị 1 + 2 +...+ n = 6.</li>
+            <li>Lưu đến tài
+              khoản cá
+              nhân trên JDoodle.</li>
           </ul>
-        </li>
-        <li>Các phương pháp sắp xếp khác gồm có:
-          <ul>
-            <li>Phương pháp shell</li>
-            <li>Phương pháp Heapsort</li>
-            <li>Phương pháp Quicksort</li>
-          </ul>
-        </li>
-      </ul>
-      <p>Phần dưới đây trình bày hai giải thuật sắp xếp thường được sử dụng nhiều nhất đó là phương pháp Bubble sort và
-        Quicksort. Chúng ta sẽ gặp lại và tìm hiểu kỹ hơn về các thuật toán này trong môn học Cấu trúc dữ liệu và Giải
-        thuật.</p>
-      <p><b>Phương pháp Bubble sort</b></p>
-      <p>Thuật toán sắp xếp nổi bọt thực hiện sắp xếp dãy số bằng cách lặp lại công việc đổi chỗ 2 số liên tiếp nhau nếu
-        chúng đứng sai thứ tự (số sau bé hơn số trước với trường hợp sắp xếp tăng dần) cho đến khi dãy số được sắp xếp.
-      </p>
-      <p>Ví dụ minh họa: Giả sử chúng ta cần sắp xếp dãy số [5 1 4 2 8] này tăng dần.</p>
-      <p>Lần lặp đầu tiên:</p>
-      <div class="w3-code notranslate htmlHigh">
-        ( 5 1 4 2 8 ) –> ( 1 5 4 2 8 ) So sánh hai phần tử đầu tiên, và đổi chỗ cho nhau do 5 >
-        1.<br>
-        ( 1 5 4 2 8 ) –> ( 1 4 5 2 8 ) Đổi chỗ do 5 > 4<br>
-        ( 1 4 5 2 8 ) –> ( 1 4 2 5 8 ) Đổi chỗ do 5 > 2<br>
-        ( 1 4 2 5 8 ) –> ( 1 4 2 5 8 ) Hai phần tử đang xét đã đúng thứ tự (8 > 5), vậy ta không cần đổi chỗ.
+        </h5>
       </div>
-
-      <p>Lần lặp thứ 2:</p>
-      <div class="w3-code notranslate htmlHigh">
-        ( 1 4 2 5 8 ) –> ( 1 4 2 5 8 )<br>
-        ( 1 4 2 5 8 ) –> ( 1 2 4 5 8 ) Đổi chỗ do 4 > 2<br>
-        ( 1 2 4 5 8 ) –> ( 1 2 4 5 8 )<br>
-        ( 1 2 4 5 8 ) –> ( 1 2 4 5 8 )
-      </div>
-      <p>Bây giờ, dãy số đã được sắp xếp, Nhưng thuật toán của chúng ta không nhận ra điều đó ngay được. Thuật toán sẽ
-        cần thêm một lần lặp nữa để kết luận dãy đã sắp xếp khi và khi khi nó đi từ đầu tới cuối mà không có bất kỳ lần
-        đổi chỗ nào được thực hiện.</p>
-
-      <p>Lần lặp thứ 3:</p>
-      <div class="w3-code notranslate htmlHigh">
-        ( 1 2 4 5 8 ) –> ( 1 2 4 5 8 )<br>
-        ( 1 2 4 5 8 ) –> ( 1 2 4 5 8 )<br>
-        ( 1 2 4 5 8 ) –> ( 1 2 4 5 8 )<br>
-        ( 1 2 4 5 8 ) –> ( 1 2 4 5 8 )
-      </div>
-
-      <p>Ví dụ chương trình sau đây sắp xếp và hiển thị dãy số nguyên cho trước.</p>
-      <p>Nhấn nút <b>Execute</b> màu xanh để
+      <h4 id="muc2"><b>II. Truyền tham số cho hàm</b></h4>
+      <h5 id="muc2_1"><b>II.1. Truyền tham trị</b></h5>
+      <p>Là truyền giá trị của biến (không phải là địa chỉ ô nhớ), khi đó phương thức sẽ tự động tạo ra một địa chỉ ô
+        nhớ mới để lưu trữ giá trị này, do đó nó chỉ được thay đổi trong phương thức hiện hành và giá trị của biến không
+        bị thay đổi bên ngoài phương thức hiện hành.</p>
+      <p>Ví dụ truyền tham trị trong C. Nhấn nút <b>Execute</b> màu xanh để
         xem kết quả.
       </p>
-      <div data-pym-src="https://www.jdoodle.com/embed/v0/4K2L?stdin=0&arg=0"></div>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4JL2?stdin=0&arg=0"></div>
+      <p>Trong ví dụ trên, giá trị của biến x không bị thay đổi bên ngoài phương thức change(), mặc dù bên trong phương
+        thức change() chúng ta đã cố gắng thay đổi bằng cách tăng m lên 1.</p>
+      <h5 id="muc2_2"><b>II.2. Truyền tham chiếu</b></h5>
+      <p>Là truyền địa chỉ ô nhớ của biến, do đó khi thay đổi giá trị của biến bên trong phương thức thì giá trị của
+        biến cũng bị thay đổi bên ngoài phương thức.</p>
+      <p>Ví dụ truyền tham trị trong C. Nhấn nút <b>Execute</b> màu xanh để
+        xem kết quả.
+      </p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4JL5?stdin=0&arg=0"></div>
 
-      <p>Đánh giá độ phức tạp thuật toán thuật toán sắp xếp nổi bọt</p>
-      <ul>
-        <li>Trường hợp tốt: O(n)</li>
-        <li>Trung bình: O(n<sup>2</sup>)</li>
-        <li>Trường hợp xấu: O(n<sup>2</sup>)</li>
-        <li>Không gian bộ nhớ sử dụng: O(1)</li>
-      </ul>
-      <p><b>Thuật toán Quick Sort - Sắp xếp nhanh</b></p>
-      <p>Thuật toán sắp xếp quick sort là một thuật toán chia để trị (Divide and Conquer algorithm). Nó chọn một phần tử
-        trong mảng làm điểm đánh dấu (pivot). Thuật toán sẽ thực hiện chia mảng thành các mảng con dựa vào pivot đã
-        chọn.
-        Việc lựa chọn pivot ảnh hưởng rất nhiều tới tốc độ sắp xếp. Nhưng máy tính lại không thể biết khi nào thì nên
-        chọn theo cách nào. Dưới đây là một số cách để chọn pivot thường được sử dụng:</p>
-      <ul>
-        <li>Luôn chọn phần tử đầu tiên của mảng.</li>
-        <li>Luôn chọn phần tử cuối cùng của mảng. (Được sử dụng trong bài này)</li>
-        <li>Chọn một phần tử random.</li>
-        <li>Chọn một phần tử có giá trị nằm giữa mảng(median element).</li>
-      </ul>
-      <p>Tầm quan trọng của phân đoạn trong thuật toán quick sort</p>
-      <p>Mấu chốt chính của thuật toán quick sort là việc phân đoạn dãy số (Xem hàm partition()). Mục tiêu của công việc
-        này là: Cho một mảng và một phần tử x là pivot. Đặt x vào đúng vị trí của mảng đã sắp xếp. Di chuyển tất cả các
-        phần tử của mảng mà nhỏ hơn x sang bên trái vị trí của x, và di chuyển tất cả các phần tử của mảng mà lớn hơn x
-        sang bên phải vị trí của x.</p>
-
-      <p> Khi đó ta sẽ có 2 mảng con: mảng bên trai của x và mảng bên phải của x. Tiếp tục công việc với mỗi mảng
-        con (chọn pivot, phân đoạn) cho tới khi mảng được sắp xếp.</p>
-
-      <p>Thuật toán phân đoạn</p>
-      <p>Đặt pivot là phần tử cuối cùng của dãy số arr. Chúng ta bắt đầu từ phần tử trái nhất của dãy số có chỉ số là
-        left, và phần tử phải nhất của dãy số có chỉ số là right -1(bỏ qua phần tử pivot). Chừng nào left &lt; right mà
-        arr[left] > pivot và arr[right] &lt; pivot thì đổi chỗ hai phần tử left và right. Sau cùng, ta đổi chỗ hai phần
-        tử left và pivot cho nhau. Xem hình minh họa phía dưới. Khi đó, phần tử left đã đứng đúng vị trí và chia dãy số
-        làm đôi (bên trái và bên phải)</p>
-
-      <p> Code minh họa thuật toán phân đoạn</p>
+      <p>Trong ví dụ trên, giá trị của biến x bị thay đổi cả bên trong và bên ngoài phương thức change().</p>
+      <p> Lưu ý: Để hiểu về truyền tham chiếu trong C, bạn phải có hiểu biết về con trỏ (pointer) trong C và đây là nội
+        dung trong <a href="Bai08.html">Bài 8 - Con trỏ</a>.</p>
+      <p>Cho chương trình C hoán vị giá trị x và y như sau:</p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4Srj?stdin=0&arg=0"></div>
       <div class="w3-code notranslate htmlHigh">
-        int partition (int arr[], int low, int high)<br>
+        <h5><b>&#9755; Bài tập:</b>
+          <ul>
+            <li>Nhấn nút Execute để xem kết quả. Nhận xét.</li>
+            <li>Nhấn dòng liên kết <span style="color:red;">Edit this program in
+                JDoodle.com</span> để truy cập trang chủ JDoodle.</li>
+            <li>Điều chỉnh nội dung hàm hoanvi(x, y) để xuất ra màn hình:<br>
+              Truoc khi hoan vi: x = 3 y = 5<br>
+              Sau khi hoan vi: x = 5 y = 3
+            </li>
+            <li>Lưu đến tài
+              khoản cá
+              nhân trên JDoodle.</li>
+          </ul>
+        </h5>
+      </div>
+      <h4 id="muc3"><b>III. Phạm vi biến</b></h4>
+      <p>Có 3 vị trí mà biến có thể được khai báo trong C:</p>
+      <ul>
+        <li>Bên trong một hàm hoặc một khối lệnh được gọi là biến cục bộ.</li>
+        <li>Bên ngoài tất cả các hàm và được gọi là biến toàn cục.</li>
+        <li>Trong định nghĩa các hàm, các tham số được gọi là các tham số hình thức.</li>
+      </ul>
+      <h5><b>III.1. Biến cục bộ</b></h5>
+      <p> Biến cục bộ được khai báo bên trong một hàm hoặc khai báo bên trong một khối lệnh. Chúng được sử dụng bởi các
+        lệnh
+        trong hàm hoặc khối lệnh và không được sử dụng bên ngoài của hàm hay khối lệnh đó. </p>
+      <p>Dưới đây là ví dụ về việc sử dụng
+        biến cục bộ. Tại đây biến a,b và c được sử dụng trong hàm main():</p>
+      <div class="w3-code notranslate htmlHigh">
+        int main ()<br>
         {<br>
-        &nbsp; &nbsp;int pivot = arr[high]; // pivot<br>
-        &nbsp; &nbsp;int left = low;<br>
-        &nbsp; &nbsp;int right = high - 1;<br>
-        &nbsp; &nbsp;while(true) {<br>
-        &nbsp; &nbsp;&nbsp; &nbsp;while(left &lt;= right && arr[left] &lt; pivot) left++; // Tìm phần tử >=
-        arr[pivot]<br>
-        &nbsp; &nbsp;&nbsp; &nbsp;while(right >= left && arr[right] > pivot) right--; // Tìm phần tử &lt;=
-        arr[pivot]<br>
-        &nbsp; &nbsp;&nbsp; &nbsp;if (left >= right) break; // Đã duyệt xong thì thoát vòng lặp<br>
-        &nbsp; &nbsp;&nbsp; &nbsp;swap(&arr[left], &arr[right]); // Nếu chưa xong, đổi chỗ.<br>
-        &nbsp; &nbsp;&nbsp; &nbsp;left++; // Vì left hiện tại đã xét, nên cần tăng<br>
-        &nbsp; &nbsp;&nbsp; &nbsp;right--; // Vì right hiện tại đã xét, nên cần giảm<br>
-        &nbsp; &nbsp;}<br>
-        &nbsp; &nbsp;swap(&arr[left], &arr[high]);<br>
-        &nbsp; &nbsp;return left; // Trả về chỉ số sẽ dùng để chia đổi mảng<br>
+        &nbsp;&nbsp;/* Khai bao bien cuc bo */<br>
+        &nbsp;&nbsp;int a, b;<br>
+        &nbsp;&nbsp;int c;<br><br>
+
+        &nbsp;&nbsp;/* khoi tao thuc su */<br>
+        &nbsp;&nbsp;a = 10;<br>
+        &nbsp;&nbsp;b = 20;<br>
+        &nbsp;&nbsp;c = a + b;<br><br>
+
+        &nbsp;&nbsp;return 0;<br>
         }
       </div>
-      <p>Ví dụ cho quá trình phân đoạn</p>
+      <h5><b>III.2. Biến toàn cục</b></h5>
+      <p> Biến toàn cục được định nghĩa bên ngoài một hàm, thường là phần đầu của chương trình. Biến toàn cục có thể
+        chứa các giá trị trong thời gian chương trình chạy và có thể được truy cập bởi bất kì hàm nào định nghĩa trong
+        chương trình. Điều đó nghĩa là biến toàn cục được sử dụng suốt
+        chương trình sau khi nó khai báo. Dưới đây là ví dụ minh họa cho biến cục bộ (a, b) và toàn cục (g):</p>
       <div class="w3-code notranslate htmlHigh">
-
-        arr[] = {10, 80, 30, 90, 40, 50, 70}<br>
-        Indexes: 0 1 2 3 4 5 6<br><br>
-
-        pivot = 6, left = 0, right = 5<br><br>
-
-        arr[left] = 10 &lt; arr[pivot] = 70 và left &lt;= right, left = 1<br>
-        arr[left] = 80 > arr[pivot] = 70, tạm dừng<br><br>
-
-        arr[right] = 50 &lt; arr[pivot] = 70, tạm dừng<br><br>
-
-        Do left &lt; right, đổi chỗ arr[left], arr[right]<br>
-        arr[] = {10, 50, 30, 90, 40, 80, 70}<br>
-        left = 2, right = 4<br><br>
-
-        arr[left] = 30 &lt; arr[pivot] = 70 và left &lt;= right, left = 3<br>
-        arr[left] = 90 > arr[pivot] = 70, tạm dừng<br><br>
-
-        arr[right] = 40 &lt; arr[pivot] = 70, tạm dừng<br><br>
-
-        Do left &lt; right, đổi chỗ arr[left], arr[right]<br>
-        arr[] = {10, 50, 30, 40, 90, 80, 70}<br>
-        left = 4, right = 3<br><br>
-
-        // Do left >= right<br>
-        arr[] = {10, 50, 30, 40, 70, 80, 90}. // Đổi chỗ arr[left] và arr[pivot]<br>
-      </div>
-      <p>Bây giờ, 70 đã nằm đúng vị trí, các phần từ &lt;= 70 nằm phía trước và lớn hơn 70 nằm phía sau.</p>
-      <p>Quy trình của thuật toán sắp xếp quick sort</p>
-      <ul>
-        <li>Bước 1: Lấy phần tử chốt là phần tử ở cuối danh sách.</li>
-        <li>Bước 2: Chia mảng theo phần tử chốt.</li>
-        <li>Bước 3: Sử dụng sắp xếp nhanh một cách đệ qui với mảng con bên trái.</li>
-        <li>Bước 4: Sử dụng sắp xếp nhanh một cách đệ qui với mảng con bên phải.</li>
-      </ul>
-      <p>Mã hàm quickSort</p>
-      <div class="w3-code notranslate htmlHigh">
-        void quickSort(int arr[], int low, int high)<br>
+        #include &lt;stdio.h&gt;<br>
+        /* Khai bao bien toan cuc */<br>
+        int g;<br>
+        int main ()<br>
         {<br>
-        &nbsp; &nbsp;if (low &lt; high)<br>
-        &nbsp; &nbsp;{<br>
-        &nbsp; &nbsp;&nbsp; &nbsp;/* pi là chỉ số nơi phần tử này đã đứng đúng vị trí<br>
-        &nbsp; &nbsp;&nbsp; &nbsp;và là phần tử chia mảng làm 2 mảng con trái & phải */<br>
-        &nbsp; &nbsp;&nbsp; &nbsp;int pi = partition(arr, low, high);<br>
+        &nbsp;&nbsp;/* Khai bao bien cuc bo */<br>
+        &nbsp;&nbsp;int a, b;<br>
 
-        &nbsp; &nbsp;&nbsp; &nbsp;// Gọi đệ quy sắp xếp 2 mảng con trái và phải<br>
-        &nbsp; &nbsp;&nbsp; &nbsp;quickSort(arr, low, pi - 1);<br>
-        &nbsp; &nbsp;&nbsp; &nbsp;quickSort(arr, pi + 1, high);<br>
-        &nbsp; &nbsp;}<br>
+        &nbsp;&nbsp;/* khoi tao thuc su */<br>
+        &nbsp;&nbsp;a = 10;<br>
+        &nbsp;&nbsp;b = 20;<br>
+        &nbsp;&nbsp;g = a + b;<br><br>
+
+        &nbsp;&nbsp;return 0;<br>
         }
       </div>
-      <p>Ví dụ chương trình sau đây sắp xếp tăng dần và hiển thị dãy số nguyên cho trước.</p>
-      <p>Nhấn nút <b>Execute</b> màu xanh để
-        xem kết quả.
-      </p>
-      <div data-pym-src="https://www.jdoodle.com/embed/v0/4K6A?stdin=0&arg=0"></div>
-      <h4><b>IV. Gán giá trị cho mảng</b></h4>
-      <p>Hai mảng A và B có cùng kiểu thành phần (các phần tử mảng có cùng kiểu dữ liệu) có thể chuyển giá trị cho nhau
-        bằng hàm <b>memmove</b>, cú pháp như sau:
-      <div class="w3-code notranslate htmlHigh">
-        memmove(b, a, sizeof(a))
+      <p>Một chương trình có thể có biến toàn cục và cục bộ trùng tên. Trong trường hợp đó biến cục bộ bên trong hàm sẽ
+        được ưu tiên sử dụng. Dưới đây là ví dụ, nhấn nút Execute để xem kết quả:</p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4SDe?stdin=0&arg=0"></div>
+      <h5><b>III.3. Tham số hình thức</b></h5>
+      <p>Tham số hình thức (xem lại mục <a href="#muc1_2">Quy tắc xây dựng hàm</a>) được coi như biến cục bộ bên trong
+        hàm đó và
+        thường có giá trị ưu tiên hơn biến
+        toàn cục. Dưới đây là ví dụ, nhấn nút Execute để xem kết quả:</p>
+      <div data-pym-src="https://www.jdoodle.com/embed/v0/4SDj?stdin=0&arg=0"></div>
+
+      <div class="w3-center">
+        <div class="pagination">
+          <a href="Bai04.html">Bài trước</a>
+          <a href="Bai06.html">Bài tiếp theo</a>
+        </div>
       </div>
-      <p><b>a</b>: Tên mảng nguồn; <b>b</b>: Tên mảng đích; <b>sizeof(a)</b>: Số phần tử chép.</p>
-      <p>Hàm này thuộc thư viện <b>string.h</b>.
-      <p>Ví dụ chương trình sau đây chuyển các giá trị từ mảng a cho trước sang mảng b.</p>
-      <p>Nhấn nút <b>Execute</b> màu xanh để
-        xem kết quả.
-      </p>
-      <div data-pym-src="https://www.jdoodle.com/embed/v0/4K6Z?stdin=0&arg=0"></div>
-
-
-      <div class="w3-section w3-bottombar"></div>
-      <h4><b>Tài liệu và các nguồn tham khảo khác</b></h4>
-      <ul>
-        <li><a
-            href="https://www.amazon.com/Programming-Language-2nd-Brian-Kernighan/dp/0131103628?asin=0131103628&revisionId=&format=4&depth=1"
-            target="_blank">C
-            Programming Language, 2nd Edition 2nd Edition by Brian W. Kernighan (Author), Dennis M. Ritchie
-            (Author)</a>
-        </li>
-        <li><a href="https://www.programiz.com/c-programming" target="_blank">Learn C Programming </a></li>
-        <li><a href="https://www.tutorialspoint.com/cprogramming/index.htm" target="_blank">C Tutorial </a></li>
-      </ul>
 
     </div>
-    <div class="w3-black w3-center w3-padding-24">Giáo trình Ngôn ngữ lập trình.</div>
 
     <!-- End page content -->
   </div>
@@ -358,6 +403,25 @@
     function w3_close() {
       document.getElementById("mySidebar").style.display = "none";
       document.getElementById("myOverlay").style.display = "none";
+    }
+    // Phần button top
+    var mybutton = document.getElementById("myBtn");
+
+
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+
+
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
     }
   </script>
 
