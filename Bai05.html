@@ -241,6 +241,7 @@
         xem kết quả.</p>
       </p>
       <div data-pym-src="https://www.jdoodle.com/embed/v0/4JKO?arg=0"></div>
+      <iframe width="100%" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Afloat%20max3s%28float%20a,float%20b,float%20c%20%29%3B%20/*%20Nguy%C3%AAn%20m%E1%BA%ABu%20h%C3%A0m*/%20%0A%0Aint%20main%28%29%0A%7B%20%0A%20%20%20%20float%20x,%20y,%20z%3B%20%0A%20%20%20%20x%20%3D%203.0%3B%0A%20%20%20%20y%20%3D%205.6%3B%0A%20%20%20%20z%20%3D%202.5%3B%0A%20%20%20%20printf%28%22%5Cn%20Max%20cua%20ba%20so%20x%20%3D%20%253.2f%20y%20%3D%20%253.2f%20z%20%3D%20%253.2f%20la%3A%20%253.2f%22,%20x,%20y,%20z,%20max3s%28x,%20y,%20z%29%29%3B%0A%7D%20/*%20K%E1%BA%BFt%20th%C3%BAc%20h%C3%A0m%20main*/%0A%0Afloat%20max3s%28float%20a,%20float%20b,%20float%20c%29%0A%7B%20%0A%20%20%20%20float%20max%3B%20%0A%20%20%20%20max%20%3D%20a%3B%20%0A%20%20%20%20if%28max%20%3C%20b%29%20max%20%3D%20b%3B%20%0A%20%20%20%20if%20%28max%20%3C%20c%29%20max%20%3D%20c%3B%20%0A%20%20%20%20return%28max%29%3B%0A%7D%20/*%20K%E1%BA%BFt%20th%C3%BAc%20h%C3%A0m%20max3s*/&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
       <p> Các hàm không cho giá trị giống như thủ tục (procedure) trong ngôn ngữ lập trình PASCAL. Trong trường hợp này,
         kiểu của nó là <b>void</b>.</p>
       <p>Ví dụ hàm tìm giá trị max trong ba số là max3s ở trên có thể được viết thành thủ tục hiển thị số cực đại trong
@@ -250,6 +251,7 @@
         xem kết quả.</p>
       </p>
       <div data-pym-src="https://www.jdoodle.com/embed/v0/4JLg?arg=0"></div>
+      <iframe width="100%" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Avoid%20max3s%28float%20a,float%20b,float%20c%20%29%3B%20/*%20Nguy%C3%AAn%20m%E1%BA%ABu%20h%C3%A0m*/%20%0A%0Aint%20main%28%29%0A%7B%20%0A%20%20%20%20float%20x,%20y,%20z%3B%20%0A%20%20%20%20x%20%3D%202.5%3B%0A%20%20%20%20y%20%3D%204.5%3B%0A%20%20%20%20z%20%3D%203.0%3B%0A%20%20%20%20printf%28%22%5Cn%20Max%20cua%20ba%20so%20x%20%3D%20%253.2f%20y%20%3D%20%253.2f%20z%20%3D%20%253.2f%20la%3A%20%22,%20x,%20y,%20z%29%3B%0A%20%20%20%20max3s%28x,%20y,%20z%29%3B%0A%7D%20/*%20K%E1%BA%BFt%20th%C3%BAc%20h%C3%A0m%20main*/%0A%0Avoid%20max3s%28float%20a,%20float%20b,%20float%20c%29%0A%7B%20%0A%20%20%20%20float%20max%3B%20%0A%20%20%20%20max%20%3D%20a%3B%20%0A%20%20%20%20if%28max%20%3C%20b%29%20max%20%3D%20b%3B%20%0A%20%20%20%20if%20%28max%20%3C%20c%29%20max%20%3D%20c%3B%20%0A%20%20%20%20printf%28%22%253.2f%22,%20max%29%3B%0A%7D%20/*%20K%E1%BA%BFt%20th%C3%BAc%20max3s*/&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=13&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
       <p>Lúc này, trong hàm <b>main</b> ta gọi hàm <b>max3s</b> bằng câu lệnh: <b>max3s(x,y,z);</b></p>
 
       <h5 id="muc1_3"><b>I.3. Gọi hàm</b></h5>
@@ -294,6 +296,7 @@
         xem kết quả.
       </p>
       <div data-pym-src="https://www.jdoodle.com/embed/v0/4JL2?stdin=0&arg=0"></div>
+      <iframe width="100%" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%3Cstdio.h%3E%0A%20%0Avoid%20change%28int%20num%29%20%7B%0A%20%20%20%20num%20%3D%20num%20%2B%201%3B%0A%7D%0A%20%0Aint%20main%28%29%20%7B%0A%20%20%20%20int%20x%20%3D%20100%3B%0A%20%20%20%20printf%28%22Truoc%20khi%20goi%20phuong%20thuc%20x%20%3D%20%25d%20%5Cn%22,%20x%29%3B%0A%20%20%20%20change%28x%29%3B%20//%20truyen%20tham%20tri%20vao%20phuong%20thuc%0A%20%20%20%20printf%28%22Sau%20khi%20goi%20phuong%20thuc%20x%20%3D%20%25d%20%5Cn%22,%20x%29%3B%0A%20%20%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
       <p>Trong ví dụ trên, giá trị của biến x không bị thay đổi bên ngoài phương thức change(), mặc dù bên trong phương
         thức change() chúng ta đã cố gắng thay đổi bằng cách tăng m lên 1.</p>
       <h5 id="muc2_2"><b>II.2. Truyền tham chiếu</b></h5>
@@ -303,7 +306,7 @@
         xem kết quả.
       </p>
       <div data-pym-src="https://www.jdoodle.com/embed/v0/4JL5?stdin=0&arg=0"></div>
-
+<iframe width="100%" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%3Cstdio.h%3E%0A%20%0Avoid%20change%28int%20*num%29%20%7B%0A%20%20%20%20*num%20%3D%20*num%20%2B%201%3B%0A%7D%0A%20%0Aint%20main%28%29%20%7B%0A%20%20%20%20int%20x%20%3D%20100%3B%0A%20%20%20%20printf%28%22Truoc%20khi%20goi%20phuong%20thuc%20x%20%3D%20%25d%20%5Cn%22,%20x%29%3B%0A%20%20%20%20change%28%26x%29%3B%20//%20truyen%20tham%20chieu%20vao%20phuong%20thuc%0A%20%20%20%20printf%28%22Sau%20khi%20goi%20phuong%20thuc%20x%20%3D%20%25d%20%5Cn%22,%20x%29%3B%0A%20%20%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
       <p>Trong ví dụ trên, giá trị của biến x bị thay đổi cả bên trong và bên ngoài phương thức change().</p>
       <p> Lưu ý: Để hiểu về truyền tham chiếu trong C, bạn phải có hiểu biết về con trỏ (pointer) trong C và đây là nội
         dung trong <a href="Bai08.html">Bài 8 - Con trỏ</a>.</p>
@@ -378,13 +381,14 @@
       <p>Một chương trình có thể có biến toàn cục và cục bộ trùng tên. Trong trường hợp đó biến cục bộ bên trong hàm sẽ
         được ưu tiên sử dụng. Dưới đây là ví dụ, nhấn nút Execute để xem kết quả:</p>
       <div data-pym-src="https://www.jdoodle.com/embed/v0/4SDe?stdin=0&arg=0"></div>
+      <iframe width="100%" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%3Cstdio.h%3E%0A%0A/*%20Khai%20bao%20bien%20toan%20cuc%20*/%0Aint%20g%20%3D%2020%3B%0A%20%0Aint%20main%20%28%29%0A%7B%0A%20%20/*%20khai%20bao%20bien%20cuc%20bo%20*/%0A%20%20int%20g%20%3D%2010%3B%0A%20%0A%20%20printf%20%28%22Gia%20tri%20cua%20g%20%3D%20%25d%5Cn%22,%20%20g%29%3B%0A%20%20%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
       <h5><b>III.3. Tham số hình thức</b></h5>
       <p>Tham số hình thức (xem lại mục <a href="#muc1_2">Quy tắc xây dựng hàm</a>) được coi như biến cục bộ bên trong
         hàm đó và
         thường có giá trị ưu tiên hơn biến
         toàn cục. Dưới đây là ví dụ, nhấn nút Execute để xem kết quả:</p>
       <div data-pym-src="https://www.jdoodle.com/embed/v0/4SDj?stdin=0&arg=0"></div>
-
+<iframe width="100%" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%20%0A/*%20khai%20bao%20bien%20toan%20cuc%20*/%0Aint%20a%20%3D%2020%3B%0A/*%20khai%20bao%20ham%20*/%0Aint%20hamtinhtong%28int%20a,%20int%20b%29%3B%0A%20%0Aint%20main%20%28%29%0A%7B%0A%20%20/*%20khai%20bao%20bien%20cuc%20bo%20trong%20ham%20main%20*/%0A%20%20int%20a%20%3D%2015%3B%0A%20%20int%20b%20%3D%2025%3B%0A%20%20int%20c%20%3D%200%3B%0A%0A%20%20printf%20%28%22Gia%20tri%20cua%20a%20trong%20ham%20main%28%29%20%3D%20%25d%5Cn%22,%20%20a%29%3B%0A%20%20c%20%3D%20hamtinhtong%28%20a,%20b%29%3B%0A%20%20printf%20%28%22Gia%20tri%20cua%20c%20trong%20ham%20main%28%29%20%3D%20%25d%5Cn%22,%20%20c%29%3B%0A%20%20%0A%0A%20%20return%200%3B%0A%7D%0A%0A/*%20ham%20de%20cong%20hai%20so%20nguyen%20*/%0Aint%20hamtinhtong%28int%20a,%20int%20b%29%0A%7B%0A%20%20%20%20printf%20%28%22Gia%20tri%20cua%20a%20trong%20ham%20hamtinhtong%28%29%20%3D%20%25d%5Cn%22,%20%20a%29%3B%0A%20%20%20%20printf%20%28%22Gia%20tri%20cua%20b%20trong%20ham%20hamtinhtong%28%29%20%3D%20%25d%5Cn%22,%20%20b%29%3B%0A%0A%20%20%20%20return%20a%20%2B%20b%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
       <div class="w3-center">
         <div class="pagination">
           <a href="Bai04.html">Bài trước</a>
