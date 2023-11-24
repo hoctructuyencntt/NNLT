@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Kiểm tra mã ngôn ngữ</title>
+    <style>
+        /* CSS của bạn ở đây */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            padding: 0;
+            font-size: 28px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .content {
+            background-color: #eee;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+        }
+
+        #codeInput,
+        #codeOutput {
+            width: 100%;
+            max-width: 100%;
+            height: 200px;
+            padding: 10px;
+            font-family: monospace;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+        }
+
+        #checkButton,
+        #supportButton,
+        #nextExerciseButton {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        #checkButton:hover,
+        #supportButton:hover,
+        #nextExerciseButton:hover {
+            background-color: #555;
+        }
+
+        .match {
+            color: green;
+        }
+
+        .mismatch {
+            color: red;
+        }
+
+        #codeOutputContainer {
+            display: none;
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Kiểm tra kết thúc bài 2</h1>
+    </header>
+    <div class="container">
+        <div id="yeuCau" class="content">
+            <div id="noiDungYeuCau"></div>
+        </div>
+        <div id="hoTro" class="content" style="display: none;">
+            <div id="noiDungHoTro"></div>
+        </div>
+        <textarea id="codeInput" placeholder="Nhập mã ngôn ngữ của bạn"></textarea>
+        <button id="checkButton" onclick="kiemTraMang()">Kiểm tra</button>
+        <button id="supportButton" onclick="toggleHienThiGoiY()">Hỗ trợ</button>
+        <button id="nextExerciseButton" onclick="taiMaMauTiepTheo()" style="display: none;">Bài kế tiếp</button>
+        <div id="codeOutputContainer">
+            <p>Mã mẫu để so sánh:</p>
+            <textarea id="codeOutput" placeholder="Đoạn mã mẫu" disabled></textarea>
+        </div>
+        <p id="ketQua"></p>
+    </div>
+
+    <script>
+        var mauHienTai = 0; // Bài tập hiện tại
+        var mauMauList = [
+            {
+                mauUrl: "https://gist.githubusercontent.com/hoctructuyencntt/80b39ee19014bccb6d05169188423372/raw/a8127f3bf357777efeb4e1df75754355e34529a3/bt1_mau.txt",
+                yeuCauUrl: "https://gist.githubusercontent.com/hoctructuyencntt/1574a74377a119945b400a22eb3c94e7/raw/dd442b1c510149dd5bb2d7b546cc126bb84d65c3/bt1_yeucau.txt",
+                goiYUrl: "https://gist.githubusercontent.com/hoctructuyencntt/044dbff80a1da0d120a38fef36480b93/raw/9da231a5b3c372d40cb49d837b9d288cbc24ecad/bt1_goiy.txt"
+            },
+            {
+                mauUrl: "https://gist.githubusercontent.com/hoctructuyencntt/db7c65fdf385e42bedf4d347092810ef/raw/db1c17bc57cbe35fa50d2b739e2fe04b05a247d9/bt2_mau.txt",
+                yeuCauUrl: "https://gist.githubusercontent.com/hoctructuyencntt/b9c8e44a790668065bc7558e516c910b/raw/7224e4ef4aab54f55d0d3c9fe5527f8cdc8a19d7/bt2_yeucau.txt",
+                goiYUrl: "https://gist.githubusercontent.com/hoctructuyencntt/5fe383d9831a7e41b15ee25d235e6ed3/raw/6a6c3b151d44f3544644bd6faa0f9a51d96fa651/bt2_goiy.txt"
+            },
+            {
+                mauUrl: "https://gist.githubusercontent.com/hoctructuyencntt/8b4d4a851553074e4f213f5046c0f3f2/raw/0158674382952ecf2a2f6c65ebb1eafa256d3da3/bt3_mau.txt",
+                yeuCauUrl: "https://gist.githubusercontent.com/hoctructuyencntt/a35de765d8e9c9b55255b7e46f440d22/raw/70879aab8bca97f212452f06eab725ded58e683a/bt3_yeucau.txt",
+                goiYUrl: "https://gist.githubusercontent.com/hoctructuyencntt/0a7220f1bc8bcb37d3e0b83c6b429f37/raw/e274d4ebcf7b9b778da1ea56e322e80dafee0d51/bt3_goiy.txt"
+            },
+            {
+                mauUrl: "https://gist.githubusercontent.com/hoctructuyencntt/ad338009b26309cc20dfc3c1557529d9/raw/4cfb0089c6c9f687a1432b1f6abd82cca772542e/bt4_mau.txt",
+                yeuCauUrl: "https://gist.githubusercontent.com/hoctructuyencntt/ec8ac1b5e73bc03e8f8277f38c80364d/raw/e49716e1f87f33a9c19f649b25636eb6b9788063/bt4_yeucau.txt",
+                goiYUrl: "https://gist.githubusercontent.com/hoctructuyencntt/fe64100ea12fa0579ab5b3cbf8bbb0ba/raw/d0ca7b7529c597cad9fa3a9c7aec7568aa9fb7a0/bt4_goiy.txt"
+            },
+            {
+                mauUrl: "https://gist.githubusercontent.com/hoctructuyencntt/ba8e542171a0b36c7aaec00b2994c55c/raw/63ab1bbf21915955e0a330ea0e6a6df1cf4767d0/bt5_mau.txt",
+                yeuCauUrl: "https://gist.githubusercontent.com/hoctructuyencntt/b341ffe09db7021dfb13c8cfb6d13778/raw/3452b0618441827b7c05d01f16cf74846d6544e7/bt5_yeucau.txt",
+                goiYUrl: "https://gist.githubusercontent.com/hoctructuyencntt/e93547b5f4139001b031034a26806e70/raw/298387b12860403a1d6685d074284965642dddcb/bt5_goiy.txt"
+            }
+            // Thêm bài tập khác tại đây
+        ];
+
+        function taiMaMauTiepTheo() {
+            if (mauHienTai < mauMauList.length - 1) {
+                mauHienTai++;
+                taiMaMau(mauMauList[mauHienTai]);
+            } else {
+                // Chuyển hướng đến trang chúc mừng khi hoàn thành tất cả bài tập
+                window.location.href = 'chucmung.html';
+            }
+        }
+
+        function taiMaMau(mau) {
+            var xhttpYeuCau = new XMLHttpRequest();
+            xhttpYeuCau.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    var noiDungYeuCau = document.getElementById('noiDungYeuCau');
+                    noiDungYeuCau.innerHTML = this.responseText;
+                }
+            };
+            xhttpYeuCau.open("GET", mau.yeuCauUrl, true);
+            xhttpYeuCau.send();
+
+            var xhttpMau = new XMLHttpRequest();
+            xhttpMau.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    var codeOutput = document.getElementById('codeOutput');
+                    codeOutput.value = this.responseText;
+                }
+            };
+            xhttpMau.open("GET", mau.mauUrl, true);
+            xhttpMau.send();
+
+            var xhttpHoTro = new XMLHttpRequest();
+            xhttpHoTro.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    var noiDungHoTro = document.getElementById('noiDungHoTro');
+                    noiDungHoTro.innerHTML = this.responseText;
+                }
+            };
+            xhttpHoTro.open("GET", mau.goiYUrl, true);
+            xhttpHoTro.send();
+
+            document.getElementById('codeInput').value = '';
+            document.getElementById('ketQua').textContent = '';
+            document.getElementById('nextExerciseButton').style.display = 'none';
+            document.getElementById('codeOutputContainer').style.display = 'none';
+            document.getElementById('hoTro').style.display = 'none'; // Ẩn vùng hỗ trợ
+            document.getElementById('supportButton').textContent = 'Hỗ trợ'; // Đổi nút thành "Hỗ trợ"
+        }
+
+        function kiemTraMang() {
+            var codeInput = document.getElementById('codeInput').value;
+            var codeOutput = document.getElementById('codeOutput').value;
+
+            codeInput = codeInput.replace(/\s/g, '');
+            codeOutput = codeOutput.replace(/\s/g, '');
+
+            if (codeInput === codeOutput) {
+                document.getElementById('ketQua').textContent = 'Mã ngôn ngữ khớp.';
+                document.getElementById('ketQua').classList.remove('mismatch');
+                document.getElementById('ketQua').classList.add('match');
+                document.getElementById('nextExerciseButton').style.display = 'block';
+            } else {
+                document.getElementById('ketQua').textContent = 'Mã ngôn ngữ không khớp.';
+                document.getElementById('ketQua').classList.remove('match');
+                document.getElementById('ketQua').classList.add('mismatch');
+                document.getElementById('nextExerciseButton').style.display = 'none';
+            }
+        }
+
+        function toggleHienThiGoiY() {
+            var hoTroContainer = document.getElementById('hoTro');
+            var supportButton = document.getElementById('supportButton');
+
+            if (hoTroContainer.style.display === 'none') {
+                hoTroContainer.style.display = 'block';
+                supportButton.textContent = 'Ẩn hỗ trợ'; // Đổi nút thành "Ẩn hỗ trợ"
+            } else {
+                hoTroContainer.style.display = 'none';
+                supportButton.textContent = 'Hỗ trợ'; // Đổi nút thành "Hỗ trợ"
+            }
+        }
+
+        // Tải bài tập đầu tiên khi trang được nạp
+        window.onload = function () {
+            taiMaMau(mauMauList[0]);
+        };
+    </script>
+</body>
+
+</html>

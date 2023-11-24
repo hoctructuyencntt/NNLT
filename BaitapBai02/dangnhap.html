@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px; /* Thêm giới hạn chiều rộng tối đa */
+            margin: 0 auto; /* Căn giữa theo chiều ngang */
+        }
+
+        .login-container h1 {
+            margin: 0 0 20px;
+            font-size: 24px;
+        }
+
+        .login-container label {
+            font-weight: bold;
+            display: block; /* Hiển thị nhãn trên từng dòng */
+            margin-bottom: 5px; /* Khoảng cách giữa các nhãn */
+        }
+
+        .login-container input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        box-sizing: border-box; /* Đặt box-sizing thành border-box để tính padding và border vào chiều rộng tổng */
+        overflow: hidden; /* Ngăn tràn nội dung ra ngoài */
+
+        .login-container input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .login-container input[type="submit"]:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Đăng nhập</h1>
+        <form id="dangNhapForm">
+            <label for="hoTen">Họ và tên:</label>
+            <input type="text" id="hoTen" name="hoTen" required>
+
+            <label for="lop">Lớp:</label>
+            <input type="text" id="lop" name="lop" required>
+
+            <label for="monHoc">Môn học:</label>
+            <input type="text" id="monHoc" name="monHoc" required>
+
+            <input type="submit" value="Bắt đầu bài tập">
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('dangNhapForm');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const hoTen = document.getElementById('hoTen').value;
+            const lop = document.getElementById('lop').value;
+            const monHoc = document.getElementById('monHoc').value;
+
+            localStorage.setItem('hoTen', hoTen);
+            localStorage.setItem('lop', lop);
+            localStorage.setItem('monHoc', monHoc);
+
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
