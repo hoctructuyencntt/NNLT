@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc mừng</title>
+    <style>
+        /* CSS cho trang chucmung.html */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #333;
+            text-align: center;
+        }
+
+        p {
+            font-size: 18px;
+            color: #666;
+            text-align: center;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .next-chapter-button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .next-chapter-button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Chúc mừng sinh viên</h1>
+        <!-- Hiển thị thông tin từ trang dangnhap.html -->
+        <p>Tên: <span id="hoTen"></span></p>
+        <p>Lớp: <span id="lop"></span></p>
+        <p>Đã hoàn thành <b>Bài kiểm tra kết thúc Bài 3</b> môn học: <span id="monHoc"></span></p>
+        <!-- Nút "Chương tiếp theo" -->
+        <div class="button-container">
+            <button class="next-chapter-button" onclick="chuyenChuongTiepTheo()">Bài tiếp theo</button>
+        </div>
+    </div>
+
+    <script>
+        // Lấy thông tin từ Local Storage (lưu ý: cần sử dụng hệ thống đăng nhập để lưu thông tin này)
+        var hoTen = localStorage.getItem("hoTen");
+        var lop = localStorage.getItem("lop");
+        var monHoc = localStorage.getItem("monHoc");
+
+        // Hiển thị thông tin từ Local Storage lên trang chucmung.html
+        document.getElementById("hoTen").textContent = hoTen;
+        document.getElementById("lop").textContent = lop;
+        document.getElementById("monHoc").textContent = monHoc;
+
+        // Hàm chuyển đến bài tập mới khi nhấn nút "Bài tiếp theo"
+        function chuyenChuongTiepTheo() {
+            // Chuyển hướng đến trang index.html để bắt đầu bài tập mới
+            window.location.href = "https://hoctructuyencntt.github.io/NNLT/Bai04.html";
+        }
+    </script>
+</body>
+
+</html>

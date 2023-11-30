@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="prism.css">
+    <title>Bài tập 5: Kiểm tra ngày trong tháng</title>
+    <style>
+        pre {
+            margin: 0;
+        }
+
+        /* Thêm màu nền cho phần đầu của mỗi block code */
+        /*
+pre > code[class*="language-"]::before {
+    display: block;
+    content: '';
+    background: #282c34;
+    border-top-left-radius: 0.3em;
+    border-top-right-radius: 0.3em;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+*/
+        /* Thêm margin cho mỗi dòng code */
+        pre>code[class*="language-"] {
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+
+        /* Tùy chỉnh màu chữ */
+        .token.comment,
+        .token.prolog,
+        .token.doctype,
+        .token.cdata,
+        .token.tag,
+        .token.punctuation,
+        .token.operator,
+        .token.keyword {
+            color: #abb2bf;
+        }
+
+        .token.namespace {
+            opacity: 0.7;
+        }
+
+        /* Tùy chỉnh màu số và chữ số */
+        .token.property,
+        .token.tag-id,
+        .token.function-name,
+        .token.constant,
+        .token.symbol,
+        .token.deleted {
+            color: #61afef;
+        }
+
+        /* Tùy chỉnh màu chuỗi và ký tự */
+        .token.boolean,
+        .token.number,
+        .token.selector,
+        .token.attr-name,
+        .token.string,
+        .token.char,
+        .token.builtin,
+        .token.inserted {
+            color: #98c379;
+        }
+
+        /* Tùy chỉnh màu biểu thức chính quy */
+        .token.atrule,
+        .token.attr-value,
+        .token.keyword.module {
+            color: #c678dd;
+        }
+
+        /* Tùy chỉnh màu biểu thức chính quy được đặt trong backticks ` */
+        .token.regex {
+            color: #e06c75;
+        }
+
+        /* Tùy chỉnh màu biểu thức chính quy không được đặt trong backticks ` */
+        .token.important {
+            font-weight: bold;
+            color: #e06c75;
+        }
+
+        /* Tùy chỉnh màu biểu thức chính quy trong lời bình luận */
+        .token.comment {
+            color: #5c6370;
+            font-style: italic;
+        }
+
+        #output {
+            white-space: pre;
+            background-color: black;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            height: 100px;
+            overflow: auto;
+        }
+
+        #test {
+            border: 3px gray solid;
+            border-radius: 10px;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Bài tập 5: Kiểm tra ngày trong tháng</h3>
+    <p>Yêu cầu người dùng nhập tháng và ngày. Sử dụng câu lệnh switch (kết hợp if nếu cần) để kiểm tra và in ra màn hình
+        số ngày trong tháng
+        đó. Đồng thời, kiểm tra xem ngày có hợp lệ không (ví dụ: không có ngày 30 trong tháng 2).</p>
+    <p>Copy đoạn mã mẫu sau và thay thế các dòng chú thích bằng các dòng mã tương ứng trên <a
+            href="https://www.jdoodle.com/c-online-compiler/" target="_blank">JDoodle</a>.</p>
+    <pre>
+<code class="language-c">
+#include&lt;stdio.h&gt;
+
+int main() {
+    int month, day;
+    // Nhập tháng (month) và ngày (day) dùng 1 scanf
+
+    // Nếu month:
+        //1, 3, 5, 7, 8, 10, 12:
+            //In ra: Tháng...có 31 ngày.
+        //4, 6, 9, 11:
+            //In ra: Tháng...có 31 ngày.
+        //2:
+            //Nếu day &gt;= 1 và day &lt;= 28:
+                //In ra:Tháng 2 có 28 hoặc 29 ngày.
+            //Ngược lại:
+                //In ra:Ngày không hợp lệ cho tháng 2.
+        //Khác:
+                //In ra:Tháng không hợp lệ.
+    
+    return 0;
+}
+</code>
+</pre>
+    <h3>Kiểm thử chương trình: Nếu chương trình đúng sẽ có kết quả như sau</h3>
+    <div id="test">
+        <p>Nhập các giá trị <b>month</b> và <b>day</b> cách nhau bởi khoảng trắng (ví dụ 5 15):</p>
+        <input type="text" id="input" placeholder="Stdin Inputs">
+        <button onclick="runCode()">Execute</button>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        function runCode() {
+            // Mã C không thể chạy trực tiếp trong trình duyệt
+            var input = document.getElementById('input').value;
+            const [month, day] = input.split(' ').map(Number);
+            switch (month) {
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:
+                    document.getElementById('output').textContent = 'Tháng ' + month + ' có 31 ngày.';
+                    break;
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                    document.getElementById('output').textContent = 'Tháng ' + month + ' có 30 ngày.';
+                    break;
+                case 2:
+                    if (day >= 1 && day <= 29) {
+                        document.getElementById('output').textContent = 'Tháng 2 có 28 hoặc 29 ngày.';
+                    } else {
+                        document.getElementById('output').textContent = 'Ngày không hợp lệ cho tháng 2.';
+                    }
+                    break;
+                default:
+                    document.getElementById('output').textContent = 'Tháng không hợp lệ.';
+            }
+        }
+    </script>
+    <script src="prism.js"></script>
+</body>
+
+</html>

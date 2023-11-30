@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="prism.css">
+    <title>Bài tập 2: Kiểm tra số dương, âm hay bằng không</title>
+    <style>
+        pre {
+            margin: 0;
+        }
+
+        /* Thêm màu nền cho phần đầu của mỗi block code */
+        /*
+pre > code[class*="language-"]::before {
+    display: block;
+    content: '';
+    background: #282c34;
+    border-top-left-radius: 0.3em;
+    border-top-right-radius: 0.3em;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+*/
+        /* Thêm margin cho mỗi dòng code */
+        pre>code[class*="language-"] {
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+
+        /* Tùy chỉnh màu chữ */
+        .token.comment,
+        .token.prolog,
+        .token.doctype,
+        .token.cdata,
+        .token.tag,
+        .token.punctuation,
+        .token.operator,
+        .token.keyword {
+            color: #abb2bf;
+        }
+
+        .token.namespace {
+            opacity: 0.7;
+        }
+
+        /* Tùy chỉnh màu số và chữ số */
+        .token.property,
+        .token.tag-id,
+        .token.function-name,
+        .token.constant,
+        .token.symbol,
+        .token.deleted {
+            color: #61afef;
+        }
+
+        /* Tùy chỉnh màu chuỗi và ký tự */
+        .token.boolean,
+        .token.number,
+        .token.selector,
+        .token.attr-name,
+        .token.string,
+        .token.char,
+        .token.builtin,
+        .token.inserted {
+            color: #98c379;
+        }
+
+        /* Tùy chỉnh màu biểu thức chính quy */
+        .token.atrule,
+        .token.attr-value,
+        .token.keyword.module {
+            color: #c678dd;
+        }
+
+        /* Tùy chỉnh màu biểu thức chính quy được đặt trong backticks ` */
+        .token.regex {
+            color: #e06c75;
+        }
+
+        /* Tùy chỉnh màu biểu thức chính quy không được đặt trong backticks ` */
+        .token.important {
+            font-weight: bold;
+            color: #e06c75;
+        }
+
+        /* Tùy chỉnh màu biểu thức chính quy trong lời bình luận */
+        .token.comment {
+            color: #5c6370;
+            font-style: italic;
+        }
+
+        #output {
+            white-space: pre;
+            background-color: black;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            height: 100px;
+            overflow: auto;
+        }
+
+        #test {
+            border: 3px gray solid;
+            border-radius: 10px;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Bài tập 2: Kiểm tra số dương, âm hay bằng không</h3>
+    <p>Yêu cầu người dùng nhập một số nguyên. Sử dụng câu lệnh if để kiểm tra xem số đó là số dương, số âm hay bằng
+        không và in kết quả ra màn hình.</p>
+    <p>Copy đoạn mã mẫu sau và thay thế các dòng chú thích bằng các dòng mã tương ứng trên <a
+            href="https://www.jdoodle.com/c-online-compiler/" target="_blank">JDoodle</a>.</p>
+    <pre>
+<code class="language-c">
+#include&lt;stdio.h&gt;
+
+int main() {
+    int num;
+
+    // Nhập số nguyên num
+    
+    // Kiểm tra:
+    // Nếu num &gt; 0, in ra màn hình: num là số dương.
+    // Ngược lại, nếu num &lt; 0, in ra màn hình: num là số âm.
+    // Ngược lại, in ra màn hình: num bằng không.
+    
+    return 0;
+}
+
+</code>
+</pre>
+    <h3>Kiểm thử chương trình: Nếu chương trình đúng sẽ có kết quả như sau</h3>
+    <div id="test">
+        <p>Nhập giá trị <b>num</b>:
+        </p>
+        <input type="text" id="input" placeholder="Stdin Inputs">
+        <button onclick="runCode()">Execute</button>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        function runCode() {
+            // Mã C không thể chạy trực tiếp trong trình duyệt
+            var input = document.getElementById('input').value;
+            var values = input.split(' ').map(Number);
+
+            // document.getElementById('output').textContent = 'Bạn đã nhập các giá trị sau: ' + values.join(', ');
+            if (values[0] > 0)
+                document.getElementById('output').textContent = values[0] + ' là số dương.';
+            else if (values[0] < 0)
+                document.getElementById('output').textContent = values[0] + ' là số âm.';
+            else
+                document.getElementById('output').textContent = values[0] + ' bằng không.';
+        }
+    </script>
+    <script src="prism.js"></script>
+</body>
+
+</html>
